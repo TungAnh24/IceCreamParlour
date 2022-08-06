@@ -31,7 +31,8 @@ namespace IceCreamParlour.Models
         public int UserType { get; set; }
         public string Card_No { get; set; }
         public System.DateTime JoinDate { get; set; }
-        public bool IsActive { get; set; }
+        public int IsActive { get; set; }
+        public int IsDelete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feedback> Feedbacks { get; set; }
