@@ -139,6 +139,7 @@
     <Compile Include="Models\Book.cs">
       <DependentUpon>IceCreamParlour_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\Feedback.cs">
       <DependentUpon>IceCreamParlour_DB.tt</DependentUpon>
     </Compile>
