@@ -219,8 +219,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\IceCreamParlour_DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IceCreamParlour_DB.Context.cs</LastGenOutput>
       <DependentUpon>IceCreamParlour_DB.edmx</DependentUpon>
+      <LastGenOutput>IceCreamParlour_DB.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\IceCreamParlour_DB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -229,13 +229,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\IceCreamParlour_DB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>IceCreamParlour_DB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\IceCreamParlour_DB.edmx.diagram">
-      <DependentUpon>IceCreamParlour_DB.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\css\style.css.map" />
     <Content Include="Content\css\style.scss" />
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
@@ -244,6 +237,13 @@
     <Content Include="Content\fonts\Helvetica\Helvetica-Bold.ttf" />
     <Content Include="Content\fonts\Helvetica\Helvetica.ttf" />
     <Content Include="Content\fonts\Helvetica\HelveticaLt.ttf" />
+    <EntityDeploy Include="Models\IceCreamParlour_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>IceCreamParlour_DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\IceCreamParlour_DB.edmx.diagram">
+      <DependentUpon>IceCreamParlour_DB.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
