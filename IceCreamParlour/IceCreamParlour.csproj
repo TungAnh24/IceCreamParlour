@@ -176,6 +176,9 @@
     <Compile Include="Models\Subscription_Payment.cs">
       <DependentUpon>IceCreamParlour_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>IceCreamParlour_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>IceCreamParlour_DB.tt</DependentUpon>
     </Compile>
