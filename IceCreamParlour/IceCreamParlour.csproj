@@ -196,6 +196,8 @@
     <Content Include="Content\images\about-img.png" />
     <Content Include="Content\images\b1.jpg" />
     <Content Include="Content\images\b2.jpg" />
+    <Content Include="Content\images\banana-ic-img.png" />
+    <Content Include="Content\images\Bookstore-ic-img.png" />
     <Content Include="Content\images\c1.jpg" />
     <Content Include="Content\images\c2.jpg" />
     <Content Include="Content\images\c3.jpg" />
@@ -205,10 +207,17 @@
     <Content Include="Content\images\cat4.png" />
     <Content Include="Content\images\cat5.png" />
     <Content Include="Content\images\cat6.png" />
+    <Content Include="Content\images\chocolate-ic-img.png" />
     <Content Include="Content\images\contact-img.jpg" />
     <Content Include="Content\images\contact-img.png" />
     <Content Include="Content\images\favicon.png" />
+    <Content Include="Content\images\mango-ic-img.png" />
+    <Content Include="Content\images\pineapple-ic-img.png" />
     <Content Include="Content\images\slider-img.png" />
+    <Content Include="Content\images\slider1-img.png" />
+    <Content Include="Content\images\slider2-img.png" />
+    <Content Include="Content\images\strawberry-ic-img.png" />
+    <Content Include="Content\images\vanilla-ic-img.png" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\ion.rangeSlider.min.js" />
