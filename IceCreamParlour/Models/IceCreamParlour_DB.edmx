@@ -14,6 +14,8 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Roles" Type="int" />
           <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="int" />
+          <Property Name="IsDelete" Type="int" />
         </EntityType>
         <EntityType Name="Books">
           <Key>
@@ -21,14 +23,16 @@
           </Key>
           <Property Name="Book_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar(max)" />
-          <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Image" Type="nvarchar" MaxLength="255" />
           <Property Name="Price" Type="float" Nullable="false" />
           <Property Name="Create_Date" Type="datetime" Nullable="false" />
           <Property Name="AdminAdd_Id" Type="bigint" Nullable="false" />
           <Property Name="Author" Type="nvarchar(max)" />
           <Property Name="AdminUpdate_Id" Type="bigint" />
           <Property Name="Update_Date" Type="datetime" />
+          <Property Name="IsActive" Type="int" />
+          <Property Name="IsDelete" Type="int" />
         </EntityType>
         <EntityType Name="Feedbacks">
           <Key>
@@ -110,6 +114,16 @@
           <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="Days" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="User_Id" />
@@ -123,7 +137,8 @@
           <Property Name="UserType" Type="int" Nullable="false" />
           <Property Name="Card_No" Type="nchar" MaxLength="10" />
           <Property Name="JoinDate" Type="datetime" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Feedbacks_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
@@ -231,6 +246,7 @@
           <EntitySet Name="Recipes" EntityType="Self.Recipes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subscription_Payment" EntityType="Self.Subscription_Payment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subscriptions" EntityType="Self.Subscriptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Feedbacks_Users" Association="Self.FK_Feedbacks_Users">
             <End Role="Users" EntitySet="Users" />
@@ -279,6 +295,8 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Roles" Type="Int32" />
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Int32" />
+          <Property Name="IsDelete" Type="Int32" />
           <NavigationProperty Name="Recipes" Relationship="Self.FK_Recipes_Admin" FromRole="Admin" ToRole="Recipes" />
         </EntityType>
         <EntityType Name="Book">
@@ -287,14 +305,16 @@
           </Key>
           <Property Name="Book_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Double" Nullable="false" />
           <Property Name="Create_Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="AdminAdd_Id" Type="Int64" Nullable="false" />
           <Property Name="Author" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AdminUpdate_Id" Type="Int64" />
           <Property Name="Update_Date" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Int32" />
+          <Property Name="IsDelete" Type="Int32" />
           <NavigationProperty Name="Order_Detail" Relationship="Self.FK_Order_Detail_Books" FromRole="Books" ToRole="Order_Detail" />
         </EntityType>
         <EntityType Name="Feedback">
@@ -388,6 +408,16 @@
           <Property Name="Days" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Subscription_Payment" Relationship="Self.FK_Subscription_Payment_Subscriptions" FromRole="Subscriptions" ToRole="Subscription_Payment" />
         </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="User_Id" />
@@ -401,7 +431,8 @@
           <Property Name="UserType" Type="Int32" Nullable="false" />
           <Property Name="Card_No" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="JoinDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Feedbacks" Relationship="Self.FK_Feedbacks_Users" FromRole="Users" ToRole="Feedbacks" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Users" FromRole="Users" ToRole="Orders" />
           <NavigationProperty Name="Subscription_Payment" Relationship="Self.FK_Subscription_Payment_Users" FromRole="Users" ToRole="Subscription_Payment" />
@@ -512,6 +543,7 @@
           <EntitySet Name="Recipes" EntityType="Self.Recipe" />
           <EntitySet Name="Subscription_Payment" EntityType="Self.Subscription_Payment" />
           <EntitySet Name="Subscriptions" EntityType="Self.Subscription" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_Recipes_Admin" Association="Self.FK_Recipes_Admin">
             <End Role="Admin" EntitySet="Admins" />
@@ -560,6 +592,8 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Roles" ColumnName="Roles" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -576,6 +610,8 @@
                 <ScalarProperty Name="Author" ColumnName="Author" />
                 <ScalarProperty Name="AdminUpdate_Id" ColumnName="AdminUpdate_Id" />
                 <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -666,6 +702,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DbIcecreamParlourModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="DbIcecreamParlourModel.User">
               <MappingFragment StoreEntitySet="Users">
@@ -679,6 +726,7 @@
                 <ScalarProperty Name="Card_No" ColumnName="Card_No" />
                 <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

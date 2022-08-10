@@ -30,6 +30,8 @@ namespace IceCreamParlour.Models
         public string Author { get; set; }
         public Nullable<long> AdminUpdate_Id { get; set; }
         public Nullable<System.DateTime> Update_Date { get; set; }
+        public Nullable<int> IsActive { get; set; }
+        public Nullable<int> IsDelete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Detail> Order_Detail { get; set; }

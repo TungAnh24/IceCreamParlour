@@ -175,6 +175,9 @@
     <Compile Include="Models\Subscription_Payment.cs">
       <DependentUpon>IceCreamParlour_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>IceCreamParlour_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>IceCreamParlour_DB.tt</DependentUpon>
     </Compile>
@@ -193,6 +196,8 @@
     <Content Include="Content\images\about-img.png" />
     <Content Include="Content\images\b1.jpg" />
     <Content Include="Content\images\b2.jpg" />
+    <Content Include="Content\images\banana-ic-img.png" />
+    <Content Include="Content\images\Bookstore-ic-img.png" />
     <Content Include="Content\images\c1.jpg" />
     <Content Include="Content\images\c2.jpg" />
     <Content Include="Content\images\c3.jpg" />
@@ -202,10 +207,17 @@
     <Content Include="Content\images\cat4.png" />
     <Content Include="Content\images\cat5.png" />
     <Content Include="Content\images\cat6.png" />
+    <Content Include="Content\images\chocolate-ic-img.png" />
     <Content Include="Content\images\contact-img.jpg" />
     <Content Include="Content\images\contact-img.png" />
     <Content Include="Content\images\favicon.png" />
+    <Content Include="Content\images\mango-ic-img.png" />
+    <Content Include="Content\images\pineapple-ic-img.png" />
     <Content Include="Content\images\slider-img.png" />
+    <Content Include="Content\images\slider1-img.png" />
+    <Content Include="Content\images\slider2-img.png" />
+    <Content Include="Content\images\strawberry-ic-img.png" />
+    <Content Include="Content\images\vanilla-ic-img.png" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\ion.rangeSlider.min.js" />
@@ -216,8 +228,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\IceCreamParlour_DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IceCreamParlour_DB.Context.cs</LastGenOutput>
       <DependentUpon>IceCreamParlour_DB.edmx</DependentUpon>
+      <LastGenOutput>IceCreamParlour_DB.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\IceCreamParlour_DB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -226,13 +238,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\IceCreamParlour_DB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>IceCreamParlour_DB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\IceCreamParlour_DB.edmx.diagram">
-      <DependentUpon>IceCreamParlour_DB.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\css\style.css.map" />
     <Content Include="Content\css\style.scss" />
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
@@ -241,6 +246,13 @@
     <Content Include="Content\fonts\Helvetica\Helvetica-Bold.ttf" />
     <Content Include="Content\fonts\Helvetica\Helvetica.ttf" />
     <Content Include="Content\fonts\Helvetica\HelveticaLt.ttf" />
+    <EntityDeploy Include="Models\IceCreamParlour_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>IceCreamParlour_DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\IceCreamParlour_DB.edmx.diagram">
+      <DependentUpon>IceCreamParlour_DB.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

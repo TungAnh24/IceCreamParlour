@@ -13,7 +13,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Bostorek</title>
+    <title>Ice-cream Parlour</title>
 
     <!-- bootstrap core css -->
     <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
@@ -31,12 +31,12 @@
     @RenderBody()
     <div class="hero_area">
         <!-- header section strats -->
-        <header class="header_section">
+        <header class="header_section" style="background-color:hotpink">
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
                     <a class="navbar-brand" href="index.html">
                         <span>
-                            Bostorek
+                            Ice-cream Parlour
                         </span>
                     </a>
 
@@ -53,18 +53,21 @@
                                 <a class="nav-link" href="about.html"> About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="categories.html">Categories</a>
+                                <a class="nav-link" href="categories.html">Books</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="blog.html"> Blog </a>
+                                <a class="nav-link" href="blog.html"> Recipes </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.html">Contact Us</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Login</a>
+                            </li>
                         </ul>
                         <from class="search_form">
                             <input type="text" class="form-control" placeholder="Search here...">
-                            <button class="" type="submit">
+                            <button class="" type="submit" style="background-color:deeppink">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </button>
                         </from>
@@ -82,30 +85,61 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="detail-box">
-                                        <h5>
-                                            Bostorek Bookstore
+                                        <h5 style="color:orange">
+                                            Ice-cream Parlour Books
                                         </h5>
                                         <h1>
                                             For All Your <br>
                                             Reading Needs
                                         </h1>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe dolorem deserunt quo quidem ad optio.
+                                            When summer approaches and the temperatures start going up, we really start craving homemade ice cream. 
+                                            That ice cream maker has been sitting in the cabinet for way too long, collecting dust, waiting for the opportunity to mix up some new and fun flavors
                                         </p>
-                                        <a href="">
+                                        <a href="" style="background-color:orange;border:orange">
                                             Read More
                                         </a>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="img-box">
-                                        <img src="images/slider-img.png" alt="">
+                                        <img src="~/Content/images/slider1-img.png" alt="" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="carousel-item">
+                        <div class="container ">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="detail-box">
+                                        <h5 style="color:orange">
+                                            Ice-cream Parlour Recipes
+                                        </h5style="color:orange">
+                                        <h1>                                            
+                                            With every recipe<br /> you need
+                                        </h1>
+                                        <p>
+                                            With these homemade ice cream recipes, you can churn up a new flavor every week, all summer long, any time the craving strikes.
+                                            Some don't even require an ice cream maker—just a little heavy cream and a dream. And maybe some sprinkles.
+                                        </p>
+                                        <a href="" style="background-color:orange;border:orange">
+                                            Read More
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="img-box">
+                                        <img src="~/Content/images/slider2-img.png" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="carousel-item">
                         <div class="container ">
                             <div class="row">
                                 <div class="col-md-6">
@@ -132,35 +166,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="container ">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-box">
-                                        <h5>
-                                            Bostorek Bookstore
-                                        </h5>
-                                        <h1>
-                                            For All Your <br>
-                                            Reading Needs
-                                        </h1>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe dolorem deserunt quo quidem ad optio.
-                                        </p>
-                                        <a href="">
-                                            Read More
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="img-box">
-                                        <img src="images/slider-img.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div>*@
                 </div>
                 <div class="carousel_btn_box">
                     <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
@@ -185,26 +191,25 @@
             <div class="container ">
                 <div class="heading_container heading_center">
                     <h2>
-                        Books Categories
+                        Some of our ice-cream flavors
                     </h2>
                     <p>
-                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
+                        Who wants an ice cream?
                     </p>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 col-md-4 ">
                         <div class="box ">
                             <div class="img-box">
-                                <img src="images/cat1.png" alt="">
+                                @*<img src="images/cat1.png" alt="">*@
+                                <img src="~/Content/images/chocolate-ic-img.png" alt="" />
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                    Textbooks
+                                    Chocolate   
                                 </h5>
                                 <p>
-                                    fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                                    The
-                                    point of using
+                                    Chocolate ice cream is a flavour of ice cream which is the second most common flavour of ice cream, after vanilla
                                 </p>
                             </div>
                         </div>
@@ -212,16 +217,16 @@
                     <div class="col-sm-6 col-md-4 ">
                         <div class="box ">
                             <div class="img-box">
-                                <img src="images/cat2.png" alt="">
+                                @*<img src="images/cat2.png" alt="">*@
+                                <img src="~/Content/images/vanilla-ic-img.png" alt=""/>
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                    Science
+                                    Vanilla
                                 </h5>
                                 <p>
-                                    fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                                    The
-                                    point of using
+                                    Vanilla ice cream is a sweet frozen dessert made from milk, cream, sugar, and vanilla flavoring from vanilla seeds,
+                                    pure vanilla extract, vanilla seed paste, or a combination
                                 </p>
                             </div>
                         </div>
@@ -229,16 +234,16 @@
                     <div class="col-sm-6 col-md-4 ">
                         <div class="box ">
                             <div class="img-box">
-                                <img src="images/cat3.png" alt="">
+                                @*<img src="images/cat3.png" alt="">*@
+                                <img src="~/Content/images/mango-ic-img.png" alt="" />
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                    History
+                                    Mango
                                 </h5>
                                 <p>
-                                    fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                                    The
-                                    point of using
+                                    Ice-cream flavoured with the King of Fruits! Mangoes impart a luscious creamy texture and rich flavour to this delicious frozen dessert. This ice-cream 
+                                    is available in the market but can also be made at home easily using fresh sweet mangoes or frozen mango pulp
                                 </p>
                             </div>
                         </div>
@@ -246,16 +251,16 @@
                     <div class="col-sm-6 col-md-4 ">
                         <div class="box ">
                             <div class="img-box">
-                                <img src="images/cat4.png" alt="">
+                                @*<img src="images/cat4.png" alt="">*@
+                                <img src="~/Content/images/strawberry-ic-img.png" alt="" />
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                    Biography
+                                    Strawberry
                                 </h5>
                                 <p>
-                                    fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                                    The
-                                    point of using
+                                    Strawberry ice cream is a flavor of ice cream made with strawberry or strawberry flavoring. It is made by blending in fresh strawberries or strawberry flavoring with the eggs,
+                                    cream, vanilla and sugar used to make ice cream. Most strawberry ice cream is colored pink or light red.
                                 </p>
                             </div>
                         </div>
@@ -263,16 +268,16 @@
                     <div class="col-sm-6 col-md-4 ">
                         <div class="box ">
                             <div class="img-box">
-                                <img src="images/cat5.png" alt="">
+                                @*<img src="images/cat5.png" alt="">*@
+                                <img src="~/Content/images/banana-ic-img.png" alt="" />
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                    Adventure
+                                    Banana
                                 </h5>
                                 <p>
-                                    fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                                    The
-                                    point of using
+                                    It is rich in vitamin B6, vitamin C, magnesium and potassium. The soaked dates added for sweetness are also good for health as also other dry fruits added for garnishing at the end. 
+                                    Overall, the Sugar-Free Banana Ice Cream can boost energy, boost immunity, improve digestion and protect the body
                                 </p>
                             </div>
                         </div>
@@ -280,20 +285,31 @@
                     <div class="col-sm-6 col-md-4 ">
                         <div class="box ">
                             <div class="img-box">
-                                <img src="images/cat6.png" alt="">
+                                @*<img src="images/cat6.png" alt="">*@
+                                <img src="~/Content/images/pineapple-ic-img.png" alt=""/>
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                    Fantasy
+                                    Pineapple
                                 </h5>
                                 <p>
-                                    fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                                    The
-                                    point of using
+                                    Homemade Pineapple Ice Cream is a delicious blend of creamy, sweet, and tart flavors. This ice cream recipe is made with simple ingredients, and traditionally churned using an ice cream maker. 
+                                    The sweet, tangy pineapple flavor is tropical and perfect for hot summer days
                                 </p>
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-sm-6 col-md-4 ">
+                        <div class="box ">                            
+                            <div class="detail-box">
+                                <a href="" style="color: red; text-decoration: none; text-transform: uppercase;">
+                                    and many more...
+                                </a>                                
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -307,20 +323,22 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="img-box">
-                        <img src="images/about-img.png" alt="">
+                        @*<img src="images/about-img.png" alt="">*@
+                        <img src="~/Content/images/Bookstore-ic-img.png" alt="" />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="detail-box">
                         <div class="heading_container">
                             <h2>
-                                About Our Bookstore
+                                About Our Ice-Cream Bookstore
                             </h2>
                         </div>
                         <p>
-                            At cumque tenetur iste molestiae, vel eum reiciendis assumenda! Numquam, repudiandae. Consequuntur obcaecati recusandae aliquam, amet doloribus eius dolores officiis cumque? Quibusdam praesentium pariatur sapiente mollitia, amet hic iusto voluptas! Iusto quo earum vitae excepturi, ipsam aliquid deleniti assumenda culpa deserunt.
+                            Young readers will fall in love all over again with Dennis Lee’s light-hearted verse, which embraces universal childhood experiences of every flavour, from digging holes to foreign lands to searching for the perfect pet. 
+                            David McPhail’s gorgeous watercolour paintings capture Lee’s subtle celebration of ulticulturalism and offer a colourful feast for the eye
                         </p>
-                        <a href="">
+                        <a href="" style="background-color:orange;border:orange">
                             Read More
                         </a>
                     </div>
@@ -345,7 +363,7 @@
                     <div class="client_container ">
                         <div class="detail-box">
                             <p>
-                                Editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
+                                I signed up and tried to make ice cream according to this store's recipe. The result did not live up to my expectations
                             </p>
                             <span>
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
@@ -357,10 +375,10 @@
                             </div>
                             <div class="client_name">
                                 <h5>
-                                    Jone Mark
+                                    Tuan Com
                                 </h5>
                                 <h6>
-                                    Student
+                                    Racer
                                 </h6>
                             </div>
                         </div>
@@ -370,7 +388,7 @@
                     <div class="client_container ">
                         <div class="detail-box">
                             <p>
-                                Editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
+                                I was very skeptical when this store's recipe was very different from other recipes I've tried, but you guys broke that doubt.
                             </p>
                             <span>
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
@@ -382,10 +400,10 @@
                             </div>
                             <div class="client_name">
                                 <h5>
-                                    Anna Crowe
+                                    Amber Heard
                                 </h5>
                                 <h6>
-                                    Student
+                                    Actor
                                 </h6>
                             </div>
                         </div>
@@ -395,7 +413,7 @@
                     <div class="client_container ">
                         <div class="detail-box">
                             <p>
-                                Editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
+                                This store's ice cream books are very good, it summarizes most of the ice cream on the market, and the prices of the books are also very cheap.
                             </p>
                             <span>
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
@@ -407,10 +425,10 @@
                             </div>
                             <div class="client_name">
                                 <h5>
-                                    Hilley James
+                                    Gordon Ramsey
                                 </h5>
                                 <h6>
-                                    Student
+                                    Chef
                                 </h6>
                             </div>
                         </div>
@@ -427,7 +445,7 @@
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                    From Our Blog
+                    Recipe FAQ's
                 </h2>
             </div>
             <div class="row">
@@ -437,16 +455,16 @@
                             <img src="images/b1.jpg" alt="">
                             <h4 class="blog_date">
                                 <span>
-                                    19 January 2021
+                                    #1 Ask
                                 </span>
                             </h4>
                         </div>
                         <div class="detail-box">
                             <h5>
-                                Eius, dolor? Vel velit sed doloremque
+                                Where do the store's ice cream recipes come from?
                             </h5>
                             <p>
-                                Incidunt magni explicabo ullam ipsa quo consequuntur eveniet illo? Aspernatur nam dolorem a neque? Esse eaque dolores hic debitis cupiditate, ad beatae voluptatem numquam dignissimos ab porro
+                                The ice cream recipes of the shop are all created by the owner from his own experience to create a unique flavor of the store.
                             </p>
                             <a href="">
                                 Read More
@@ -460,16 +478,16 @@
                             <img src="images/b2.jpg" alt="">
                             <h4 class="blog_date">
                                 <span>
-                                    19 January 2021
+                                    #2 Ask
                                 </span>
                             </h4>
                         </div>
                         <div class="detail-box">
                             <h5>
-                                Minus aliquid alias porro iure fuga
+                                How do I see the recipe?
                             </h5>
                             <p>
-                                Officiis veritatis id illo eligendi repellat facilis animi adipisci praesentium. Tempore ab provident porro illo ex obcaecati deleniti enim sequi voluptas at. Harum veniam eos nisi distinctio! Porro, reiciendis eius.
+                                Very simple, with only $15 a month, you can experience all of our store's recipes
                             </p>
                             <a href="">
                                 Read More
@@ -501,10 +519,10 @@
                             <input type="email" placeholder="Email" />
                         </div>
                         <div>
-                            <input type="text" placeholder="Pone Number" />
+                            <input type="text" placeholder="Phone Number" />
                         </div>
                         <div>
-                            <input type="text" class="message-box" placeholder="Message" />
+                            <input type="text" class="message-box" placeholder="What do you want to contact us" />
                         </div>
                         <div class="btn-box">
                             <button>
@@ -515,7 +533,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="img-box">
-                        <img src="images/contact-img.png" alt="">
+                        <img src="~/Content/images/contact-img.jpg" alt="" />
                     </div>
                 </div>
             </div>
@@ -534,7 +552,7 @@
                             About Us
                         </h4>
                         <p>
-                            Vitae aut explicabo fugit facere alias distinctio, exem commodi mollitia minusem dignissimos atque asperiores incidunt vel voluptate iste
+                            Why tell a story with words when you can tell it with plenty of images and compelling behind-the-scenes footage of your production process? That’s exactly what Ice-cream Parlour does as soon as you land on its colorful About Us page
                         </p>
                         <div class="info_social">
                             <a href="">
@@ -561,7 +579,7 @@
                             <a href="">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 <span>
-                                    Location
+                                    285 Doi Can Street,Ba Dinh, Hanoi
                                 </span>
                             </a>
                             <a href="">
@@ -573,13 +591,13 @@
                             <a href="">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                                 <span>
-                                    demo@gmail.com
+                                    abcd@gmail.com
                                 </span>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 info-col">
+                <@*div class="col-md-6 col-lg-3 info-col">
                     <div class="info_contact">
                         <h4>
                             Newsletter
@@ -591,11 +609,13 @@
                             </button>
                         </form>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3 info-col">
+                </div>*@
+                <div class="col-md-12 col-lg-5 info-col">
                     <div class="map_container">
                         <div class="map">
-                            <div id="googleMap"></div>
+                            <div id="googleMap">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.924278651609!2d105.81684051424541!3d21.035715592918297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab145bf89bd7%3A0xd94a869b494c04b6!2zMjg1IMSQ4buZaSBD4bqlbiwgVsSpbmggUGjDuiwgQmEgxJDDrG5oLCBIw6AgTuG7mWkgMTAwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1659923470378!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -608,8 +628,8 @@
     <footer class="footer_section">
         <div class="container">
             <p>
-                &copy; <span id="displayYear"></span> All Rights Reserved By
-                <a href="https://html.design/">Free Html Templates</a>
+                &copy; <span id="displayYear"></span>
+                <a href="#">Ice-cream Parlour</a>
             </p>
         </div>
     </footer>
@@ -621,7 +641,7 @@
     <!-- custom js -->
     <script src="~/Content/js/custom.js"></script>
     <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+    <script src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.924278651609!2d105.81684051424541!3d21.035715592918297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab145bf89bd7%3A0xd94a869b494c04b6!2zMjg1IMSQ4buZaSBD4bqlbiwgVsSpbmggUGjDuiwgQmEgxJDDrG5oLCBIw6AgTuG7mWkgMTAwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1659923470378!5m2!1svi!2s">
     </script>
     <!-- End Google Map -->
 
