@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="06be093e10ad484db9c73c13ef967800" Name="Diagram1">
+        <EntityTypeShape EntityType="DbIcecreamParlourModel.Admin" Width="1.5" PointX="7.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbIcecreamParlourModel.Book" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbIcecreamParlourModel.Feedback" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbIcecreamParlourModel.Flavor" Width="1.5" PointX="7.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbIcecreamParlourModel.Order_Detail" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbIcecreamParlourModel.Order" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbIcecreamParlourModel.Recipe" Width="1.5" PointX="10" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbIcecreamParlourModel.Subscription_Payment" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbIcecreamParlourModel.Subscription" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbIcecreamParlourModel.User" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="DbIcecreamParlourModel.FK_Recipes_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="DbIcecreamParlourModel.FK_Order_Detail_Books" ManuallyRouted="false" />
+        <AssociationConnector Association="DbIcecreamParlourModel.FK_Feedbacks_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DbIcecreamParlourModel.FK_Recipes_Flavors" ManuallyRouted="false" />
+        <AssociationConnector Association="DbIcecreamParlourModel.FK_Order_Detail_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="DbIcecreamParlourModel.FK_Orders_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DbIcecreamParlourModel.FK_Subscription_Payment_Subscriptions" ManuallyRouted="false" />
+        <AssociationConnector Association="DbIcecreamParlourModel.FK_Subscription_Payment_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
