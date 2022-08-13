@@ -1,0 +1,58 @@
+﻿@model IEnumerable<IceCreamParlour.Models.Flavor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Local/Views/Shared/_AdminView.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Flavor_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ingredients)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MakingProcess)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flavor_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ingredients)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MakingProcess)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Flavor_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Flavor_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Flavor_Id })
+        </td>
+    </tr>
+}
+
+</table>
