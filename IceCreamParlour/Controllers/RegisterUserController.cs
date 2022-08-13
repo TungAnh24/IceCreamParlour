@@ -42,7 +42,7 @@ namespace IceCreamParlour.Controllers
             if (ModelState.IsValid)
             {
                 var check = db.Users.FirstOrDefault(s => s.Email == _user.Email);
-                if (check != null)
+                if (check == null)
                 {
                     _user.Password = GetMD5(_user.Password);
                     _user.JoinDate = DateTime.Now;
