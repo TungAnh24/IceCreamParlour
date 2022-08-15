@@ -24,65 +24,65 @@
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Create_Date)
-        </th>
-        <th>
+        </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.AdminAdd_Id)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Author)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.AdminUpdate_Id)
-        </th>
-        <th>
+        </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.Update_Date)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.IsDelete)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @Html.DisplayFor(modelItem => item.TitleTrimmed)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @Html.DisplayFor(modelItem => item.DesTrimmed)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Image)
+            @Html.DisplayFor(modelItem => item.ImageTrimmed)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Create_Date)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.AdminAdd_Id)
-        </td>
+        </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.Author)
+            @Html.DisplayFor(modelItem => item.AuthorTrimmed)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.AdminUpdate_Id)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.Update_Date)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.IsActive)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.IsDelete)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Book_Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Book_Id }) |

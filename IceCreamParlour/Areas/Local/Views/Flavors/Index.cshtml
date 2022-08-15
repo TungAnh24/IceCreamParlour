@@ -33,24 +33,25 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Flavor_Name)
+            @Html.DisplayFor(modelItem => item.NameTrimmed)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Ingredients)
+            @Html.DisplayFor(modelItem => item.InTrimmed)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MakingProcess)
+            @Html.DisplayFor(modelItem => item.MkTrimmed)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @Html.DisplayFor(modelItem => item.DesTrimmed)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Image)
+            @Html.DisplayFor(modelItem => item.ImageTrimmed)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Flavor_Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Flavor_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Flavor_Id })
+            @Html.ActionLink("Delete", "Delete", new { id=item.Flavor_Id },
+            new { onclick = "return confirm('Are you sure you wish to delete this feedback?');" })
         </td>
     </tr>
 }

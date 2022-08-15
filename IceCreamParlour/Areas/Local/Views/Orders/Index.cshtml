@@ -24,21 +24,21 @@
         <th>
             @Html.DisplayNameFor(model => model.Contact)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Email)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Address)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Card_No)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Total_Amount)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.User.Name)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -56,21 +56,21 @@
         <td>
             @Html.DisplayFor(modelItem => item.Contact)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Email)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Address)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Card_No)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Total_Amount)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.User.Name)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Order_Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Order_Id }) |

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using IceCreamParlour.Models;
 
 namespace IceCreamParlour.Areas.Local.Controllers
@@ -49,10 +50,17 @@ namespace IceCreamParlour.Areas.Local.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Recipe_Id,Recipe_Name,Image,Ingredients,MakingProcess,AdminCreate_Id,Publist_Date,Flavor_Id,Update_Date,AdminUpdate_Id")] Recipe recipe)
+        public ActionResult Create([Bind(Include = "Recipe_Id,Recipe_Name,Image,Ingredients,MakingProcess,AdminCreate_Id,Publist_Date,Flavor_Id,Update_Date,AdminUpdate_Id")] Recipe recipe, HttpPostedFileBase fileUpLoad)
         {
             if (ModelState.IsValid)
             {
+                if (fileUpLoad.ContentLength >0)
+                {
+                    var fn = System.IO.Path.GetFileName(fileUpLoad.FileName);
+                    recipe.Image = fn;
+                    var fp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/RecipeImages"), recipe.Image);
+                    fileUpLoad.SaveAs(fp);
+                }
                 db.Recipes.Add(recipe);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -60,6 +68,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
 
             ViewBag.AdminCreate_Id = new SelectList(db.Admins, "Admin_Id", "Name", recipe.AdminCreate_Id);
             ViewBag.Flavor_Id = new SelectList(db.Flavors, "Flavor_Id", "Flavor_Name", recipe.Flavor_Id);
+
             return View(recipe);
         }
 
@@ -85,10 +94,17 @@ namespace IceCreamParlour.Areas.Local.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Recipe_Id,Recipe_Name,Image,Ingredients,MakingProcess,AdminCreate_Id,Publist_Date,Flavor_Id,Update_Date,AdminUpdate_Id")] Recipe recipe)
+        public ActionResult Edit([Bind(Include = "Recipe_Id,Recipe_Name,Image,Ingredients,MakingProcess,AdminCreate_Id,Publist_Date,Flavor_Id,Update_Date,AdminUpdate_Id")] Recipe recipe,HttpPostedFileBase fileEdit)
         {
             if (ModelState.IsValid)
             {
+                if (fileEdit.ContentLength > 0)
+                {
+                    var fn = System.IO.Path.GetFileName(fileEdit.FileName);
+                    recipe.Image = fn;
+                    var fp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/RecipeImages"), recipe.Image);
+                    fileEdit.SaveAs(fp);
+                }
                 db.Entry(recipe).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

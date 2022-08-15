@@ -16,32 +16,33 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Contact)
+            @*@Html.DisplayNameFor(model => model.Contact)*@
+            Phone
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
+        </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.Password)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.UserType)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Card_No)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.JoinDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.IsDelete)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -54,29 +55,29 @@
             @Html.DisplayFor(modelItem => item.Contact)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Email)
+            @Html.DisplayFor(modelItem => item.EmailTrimmed)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.Password)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.UserType)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Card_No)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.JoinDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsActive)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.IsDelete)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.User_Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.User_Id }) |

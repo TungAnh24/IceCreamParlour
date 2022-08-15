@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using IceCreamParlour.Models;
 
 namespace IceCreamParlour.Areas.Local.Controllers
@@ -46,10 +47,17 @@ namespace IceCreamParlour.Areas.Local.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Book_Id,Title,Description,Image,Price,Create_Date,AdminAdd_Id,Author,AdminUpdate_Id,Update_Date,IsActive,IsDelete")] Book book)
+        public ActionResult Create([Bind(Include = "Book_Id,Title,Description,Image,Price,Create_Date,AdminAdd_Id,Author,AdminUpdate_Id,Update_Date,IsActive,IsDelete")] Book book,HttpPostedFileBase fileUpload)
         {
             if (ModelState.IsValid)
             {
+                if (fileUpload.ContentLength > 0)
+                {
+                    var bn = System.IO.Path.GetFileName(fileUpload.FileName);
+                    book.Image = bn;
+                    var bp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/BookImages"), bn);
+                    fileUpload.SaveAs(bp);
+                }
                 db.Books.Add(book);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,10 +86,17 @@ namespace IceCreamParlour.Areas.Local.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Book_Id,Title,Description,Image,Price,Create_Date,AdminAdd_Id,Author,AdminUpdate_Id,Update_Date,IsActive,IsDelete")] Book book)
+        public ActionResult Edit([Bind(Include = "Book_Id,Title,Description,Image,Price,Create_Date,AdminAdd_Id,Author,AdminUpdate_Id,Update_Date,IsActive,IsDelete")] Book book, HttpPostedFileBase fileEdit)
         {
             if (ModelState.IsValid)
             {
+                if (fileEdit.ContentLength > 0)
+                {
+                    var bn = System.IO.Path.GetFileName(fileEdit.FileName);
+                    book.Image = bn;
+                    var bp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/BookImages"), bn);
+                    fileEdit.SaveAs(bp);
+                }
                 db.Entry(book).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

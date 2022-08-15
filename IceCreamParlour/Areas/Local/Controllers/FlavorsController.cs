@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using IceCreamParlour.Models;
 
 namespace IceCreamParlour.Areas.Local.Controllers
@@ -46,10 +47,17 @@ namespace IceCreamParlour.Areas.Local.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Flavor_Id,Flavor_Name,Ingredients,MakingProcess,Description,Image")] Flavor flavor)
+        public ActionResult Create([Bind(Include = "Flavor_Id,Flavor_Name,Ingredients,MakingProcess,Description,Image")] Flavor flavor, HttpPostedFileBase fileUpLoad)
         {
             if (ModelState.IsValid)
             {
+                if(fileUpLoad.ContentLength > 0)
+                {
+                    var fn = System.IO.Path.GetFileName(fileUpLoad.FileName);
+                    flavor.Image = fn;
+                    var fp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/FlavorImages"), flavor.Image);
+                    fileUpLoad.SaveAs(fp);
+                }
                 db.Flavors.Add(flavor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,10 +86,17 @@ namespace IceCreamParlour.Areas.Local.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Flavor_Id,Flavor_Name,Ingredients,MakingProcess,Description,Image")] Flavor flavor)
+        public ActionResult Edit([Bind(Include = "Flavor_Id,Flavor_Name,Ingredients,MakingProcess,Description,Image")] Flavor flavor,HttpPostedFileBase fileEdit)
         {
             if (ModelState.IsValid)
             {
+                if (fileEdit.ContentLength > 0)
+                {
+                    var fn = System.IO.Path.GetFileName(fileEdit.FileName);
+                    flavor.Image = fn;
+                    var fp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/FlavorImages"), flavor.Image);
+                    fileEdit.SaveAs(fp);
+                }
                 db.Entry(flavor).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
