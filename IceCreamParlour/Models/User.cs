@@ -35,6 +35,7 @@ namespace IceCreamParlour.Models
         public string Password { get; set; }
         public int UserType { get; set; }
         public string Card_No { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime JoinDate { get; set; }
         public int IsActive { get; set; }
         public int IsDelete { get; set; }
@@ -45,5 +46,17 @@ namespace IceCreamParlour.Models
         public virtual ICollection<Order> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subscription_Payment> Subscription_Payment { get; set; }
+
+        public int limit = 15;
+
+        [Display(Name = "Email")]
+        public string EmailTrimmed
+        {
+            get
+            {
+                if (this.Email.Length > this.limit) return this.Email.Substring(0, this.limit) + "...";
+                else return this.Email;
+            }
+        }
     }
 }
