@@ -46,7 +46,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav">
                             <li class="nav-item active">
-                                <a class="nav-link pl-lg-0" href="#">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link pl-lg-0" href="index.html">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="about.html"> About</a>
@@ -63,13 +63,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.html">Login</a>
                             </li>
-                            <li class="nav-item">
-                                @*<a class="nav-link" href="contact.html">Cart</a>*@
-                                @*<a class="nav-link" href="~/Views/Cart/Index.cshtml">Cart</a>*@
-                                @*@Html.ActionLink("Cart", "Index", "Cart")*@
-                                <a class="nav-link"> @Html.ActionLink("Cart", "Index", "Cart")</a>
-                                @*<a href="@Html.ActionLink("Cart","Index", "Cart")></a>*@
-                            </li>
                         </ul>
                         <from class="search_form">
                             <input type="text" class="form-control" placeholder="Search here...">
@@ -84,522 +77,526 @@
         @Html.ActionLink(" ", "Index", "Home")
         @RenderBody()
         @*end header section
-            slider section*@
+        slider section*@
         <!--<section class="slider_section ">
-            <div id="customCarousel1" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="container ">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-box">
-                                        <h5 style="color:orange">
-                                            Ice-cream Parlour Books
-                                        </h5>
+        <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container ">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="detail-box">
+                                    <h5 style="color:orange">
+                                        Ice-cream Parlour Books
+                                    </h5>
+                                    <h1>
+                                        For All Your <br>
+                                        Reading Needs
+                                    </h1>
+                                    <p>
+                                        When summer approaches and the temperatures start going up, we really start craving homemade ice cream.
+                                        That ice cream maker has been sitting in the cabinet for way too long, collecting dust, waiting for the opportunity to mix up some new and fun flavors
+                                    </p>
+                                    <a href="" style="background-color:orange;border:orange">
+                                        Read More
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="img-box">
+                                    <img src="~/Content/images/slider1-img.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="container ">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="detail-box">
+                                    <h5 style="color:orange">
+                                        Ice-cream Parlour Recipes
+                                        </h5style="color:orange">
                                         <h1>
-                                            For All Your <br>
-                                            Reading Needs
+                                            With every recipe<br /> you need
                                         </h1>
                                         <p>
-                                            When summer approaches and the temperatures start going up, we really start craving homemade ice cream.
-                                            That ice cream maker has been sitting in the cabinet for way too long, collecting dust, waiting for the opportunity to mix up some new and fun flavors
+                                            With these homemade ice cream recipes, you can churn up a new flavor every week, all summer long, any time the craving strikes.
+                                            Some don't even require an ice cream maker—just a little heavy cream and a dream. And maybe some sprinkles.
                                         </p>
                                         <a href="" style="background-color:orange;border:orange">
                                             Read More
                                         </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="img-box">
-                                        <img src="~/Content/images/slider1-img.png" alt="" />
-                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="container ">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-box">
-                                        <h5 style="color:orange">
-                                            Ice-cream Parlour Recipes
-                                            </h5style="color:orange">
-                                            <h1>
-                                                With every recipe<br /> you need
-                                            </h1>
-                                            <p>
-                                                With these homemade ice cream recipes, you can churn up a new flavor every week, all summer long, any time the craving strikes.
-                                                Some don't even require an ice cream maker—just a little heavy cream and a dream. And maybe some sprinkles.
-                                            </p>
-                                            <a href="" style="background-color:orange;border:orange">
-                                                Read More
-                                            </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="img-box">
-                                        <img src="~/Content/images/slider2-img.png" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="container ">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-box">
-                                        <h5>
-                                            Bostorek Bookstore
-                                        </h5>
-                                        <h1>
-                                            For All Your <br>
-                                            Reading Needs
-                                        </h1>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe dolorem deserunt quo quidem ad optio.
-                                        </p>
-                                        <a href="">
-                                            Read More
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="img-box">
-                                        <img src="images/slider-img.png" alt="">
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="img-box">
+                                    <img src="~/Content/images/slider2-img.png" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel_btn_box">
-                    <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
-                        <i class="fa fa-angle-left" aria-hidden="true"></i>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        <span class="sr-only">Next</span>
-                    </a>
+
+                <div class="carousel-item">
+                    <div class="container ">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="detail-box">
+                                    <h5>
+                                        Bostorek Bookstore
+                                    </h5>
+                                    <h1>
+                                        For All Your <br>
+                                        Reading Needs
+                                    </h1>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe dolorem deserunt quo quidem ad optio.
+                                    </p>
+                                    <a href="">
+                                        Read More
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="img-box">
+                                    <img src="images/slider-img.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>-->
+            <div class="carousel_btn_box">
+                <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </section>-->
         @*end slider section*@
         <!--</div>-->
         @*catagory section*@
 
         <!--<section class="catagory_section layout_padding">
-            <div class="catagory_container">
-                <div class="container ">
-                    <div class="heading_container heading_center">
-                        <h2>
-                            Some of our ice-cream flavors
-                        </h2>
-                        <p>
-                            Who wants an ice cream?
-                        </p>
+        <div class="catagory_container">
+            <div class="container ">
+                <div class="heading_container heading_center">
+                    <h2>
+                        Some of our ice-cream flavors
+                    </h2>
+                    <p>
+                        Who wants an ice cream?
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 ">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img src="~/Content/images/chocolate-ic-img.png" alt="" />
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    Chocolate
+                                </h5>
+                                <p>
+                                    Chocolate ice cream is a flavour of ice cream which is the second most common flavour of ice cream, after vanilla
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-4 ">
-                            <div class="box ">
-                                <div class="img-box">
-                                    <img src="~/Content/images/chocolate-ic-img.png" alt="" />
-                                </div>
-                                <div class="detail-box">
-                                    <h5>
-                                        Chocolate
-                                    </h5>
-                                    <p>
-                                        Chocolate ice cream is a flavour of ice cream which is the second most common flavour of ice cream, after vanilla
-                                    </p>
-                                </div>
+                    <div class="col-sm-6 col-md-4 ">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img src="~/Content/images/vanilla-ic-img.png" alt="" />
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    Vanilla
+                                </h5>
+                                <p>
+                                    Vanilla ice cream is a sweet frozen dessert made from milk, cream, sugar, and vanilla flavoring from vanilla seeds,
+                                    pure vanilla extract, vanilla seed paste, or a combination
+                                </p>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-4 ">
-                            <div class="box ">
-                                <div class="img-box">
-                                    <img src="~/Content/images/vanilla-ic-img.png" alt="" />
-                                </div>
-                                <div class="detail-box">
-                                    <h5>
-                                        Vanilla
-                                    </h5>
-                                    <p>
-                                        Vanilla ice cream is a sweet frozen dessert made from milk, cream, sugar, and vanilla flavoring from vanilla seeds,
-                                        pure vanilla extract, vanilla seed paste, or a combination
-                                    </p>
-                                </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 ">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img src="~/Content/images/mango-ic-img.png" alt="" />
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    Mango
+                                </h5>
+                                <p>
+                                    Ice-cream flavoured with the King of Fruits! Mangoes impart a luscious creamy texture and rich flavour to this delicious frozen dessert. This ice-cream
+                                    is available in the market but can also be made at home easily using fresh sweet mangoes or frozen mango pulp
+                                </p>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-4 ">
-                            <div class="box ">
-                                <div class="img-box">
-                                    <img src="~/Content/images/mango-ic-img.png" alt="" />
-                                </div>
-                                <div class="detail-box">
-                                    <h5>
-                                        Mango
-                                    </h5>
-                                    <p>
-                                        Ice-cream flavoured with the King of Fruits! Mangoes impart a luscious creamy texture and rich flavour to this delicious frozen dessert. This ice-cream
-                                        is available in the market but can also be made at home easily using fresh sweet mangoes or frozen mango pulp
-                                    </p>
-                                </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 ">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img src="~/Content/images/strawberry-ic-img.png" alt="" />
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    Strawberry
+                                </h5>
+                                <p>
+                                    Strawberry ice cream is a flavor of ice cream made with strawberry or strawberry flavoring. It is made by blending in fresh strawberries or strawberry flavoring with the eggs,
+                                    cream, vanilla and sugar used to make ice cream. Most strawberry ice cream is colored pink or light red.
+                                </p>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-4 ">
-                            <div class="box ">
-                                <div class="img-box">
-                                    <img src="~/Content/images/strawberry-ic-img.png" alt="" />
-                                </div>
-                                <div class="detail-box">
-                                    <h5>
-                                        Strawberry
-                                    </h5>
-                                    <p>
-                                        Strawberry ice cream is a flavor of ice cream made with strawberry or strawberry flavoring. It is made by blending in fresh strawberries or strawberry flavoring with the eggs,
-                                        cream, vanilla and sugar used to make ice cream. Most strawberry ice cream is colored pink or light red.
-                                    </p>
-                                </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 ">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img src="~/Content/images/banana-ic-img.png" alt="" />
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    Banana
+                                </h5>
+                                <p>
+                                    It is rich in vitamin B6, vitamin C, magnesium and potassium. The soaked dates added for sweetness are also good for health as also other dry fruits added for garnishing at the end.
+                                    Overall, the Sugar-Free Banana Ice Cream can boost energy, boost immunity, improve digestion and protect the body
+                                </p>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-4 ">
-                            <div class="box ">
-                                <div class="img-box">
-                                    <img src="~/Content/images/banana-ic-img.png" alt="" />
-                                </div>
-                                <div class="detail-box">
-                                    <h5>
-                                        Banana
-                                    </h5>
-                                    <p>
-                                        It is rich in vitamin B6, vitamin C, magnesium and potassium. The soaked dates added for sweetness are also good for health as also other dry fruits added for garnishing at the end.
-                                        Overall, the Sugar-Free Banana Ice Cream can boost energy, boost immunity, improve digestion and protect the body
-                                    </p>
-                                </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 ">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img src="~/Content/images/pineapple-ic-img.png" alt="" />
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    Pineapple
+                                </h5>
+                                <p>
+                                    Homemade Pineapple Ice Cream is a delicious blend of creamy, sweet, and tart flavors. This ice cream recipe is made with simple ingredients, and traditionally churned using an ice cream maker.
+                                    The sweet, tangy pineapple flavor is tropical and perfect for hot summer days
+                                </p>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-4 ">
-                            <div class="box ">
-                                <div class="img-box">
-                                    <img src="~/Content/images/pineapple-ic-img.png" alt="" />
-                                </div>
-                                <div class="detail-box">
-                                    <h5>
-                                        Pineapple
-                                    </h5>
-                                    <p>
-                                        Homemade Pineapple Ice Cream is a delicious blend of creamy, sweet, and tart flavors. This ice cream recipe is made with simple ingredients, and traditionally churned using an ice cream maker.
-                                        The sweet, tangy pineapple flavor is tropical and perfect for hot summer days
-                                    </p>
-                                </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 ">
+                        <div class="box ">
+                            <div class="detail-box">
+                                <a href="" style="color: red; text-decoration: none; text-transform: uppercase;">
+                                    and many more...
+                                </a>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-4 ">
-                            <div class="box ">
-                                <div class="detail-box">
-                                    <a href="" style="color: red; text-decoration: none; text-transform: uppercase;">
-                                        and many more...
-                                    </a>
-                                </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>-->
+        @*end catagory section
+        about section*@
+
+        <!--<section class="about_section layout_padding">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="img-box">
+                        <img src="images/about-img.png" alt="">
+                        <img src="~/Content/images/Bookstore-ic-img.png" alt="" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="detail-box">
+                        <div class="heading_container">
+                            <h2>
+                                About Our Ice-Cream Bookstore
+                            </h2>
+                        </div>
+                        <p>
+                            Young readers will fall in love all over again with Dennis Lee’s light-hearted verse, which embraces universal childhood experiences of every flavour, from digging holes to foreign lands to searching for the perfect pet.
+                            David McPhail’s gorgeous watercolour paintings capture Lee’s subtle celebration of ulticulturalism and offer a colourful feast for the eye
+                        </p>
+                        <a href="" style="background-color:orange;border:orange">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+        @*end about section
+        client section*@
+
+        <!--<section class="client_section layout_padding">
+        <div class="container ">
+            <div class="heading_container heading_center">
+                <h2>
+                    What Says Customers
+                </h2>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="client_container ">
+                        <div class="detail-box">
+                            <p>
+                                I signed up and tried to make ice cream according to this store's recipe. The result did not live up to my expectations
+                            </p>
+                            <span>
+                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="client_id">
+                            <div class="img-box">
+                                <img src="images/c1.jpg" alt="">
+                            </div>
+                            <div class="client_name">
+                                <h5>
+                                    Tuan Com
+                                </h5>
+                                <h6>
+                                    Racer
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mx-auto">
+                    <div class="client_container ">
+                        <div class="detail-box">
+                            <p>
+                                I was very skeptical when this store's recipe was very different from other recipes I've tried, but you guys broke that doubt.
+                            </p>
+                            <span>
+                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="client_id">
+                            <div class="img-box">
+                                <img src="images/c2.jpg" alt="">
+                            </div>
+                            <div class="client_name">
+                                <h5>
+                                    Amber Heard
+                                </h5>
+                                <h6>
+                                    Actor
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mx-auto">
+                    <div class="client_container ">
+                        <div class="detail-box">
+                            <p>
+                                This store's ice cream books are very good, it summarizes most of the ice cream on the market, and the prices of the books are also very cheap.
+                            </p>
+                            <span>
+                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="client_id">
+                            <div class="img-box">
+                                <img src="images/c3.jpg" alt="">
+                            </div>
+                            <div class="client_name">
+                                <h5>
+                                    Gordon Ramsey
+                                </h5>
+                                <h6>
+                                    Chef
+                                </h6>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>-->
-        @*end catagory section
-            about section*@
+        </div>
+    </section>-->
+        @*end client section
+        blog section*@
 
-        <!--<section class="about_section layout_padding">
-            <div class="container ">
-                <div class="row">
-                    <div class="col-md-6">
+        <!--<section class="blog_section layout_padding">
+        <div class="container">
+            <div class="heading_container heading_center">
+                <h2>
+                    Recipe FAQ's
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box">
                         <div class="img-box">
-                            <img src="images/about-img.png" alt="">
-                            <img src="~/Content/images/Bookstore-ic-img.png" alt="" />
+                            <img src="images/b1.jpg" alt="">
+                            <h4 class="blog_date">
+                                <span>
+                                    #1 Ask
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Where do the store's ice cream recipes come from?
+                            </h5>
+                            <p>
+                                The ice cream recipes of the shop are all created by the owner from his own experience to create a unique flavor of the store.
+                            </p>
+                            <a href="">
+                                Read More
+                            </a>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="images/b2.jpg" alt="">
+                            <h4 class="blog_date">
+                                <span>
+                                    #2 Ask
+                                </span>
+                            </h4>
+                        </div>
                         <div class="detail-box">
-                            <div class="heading_container">
-                                <h2>
-                                    About Our Ice-Cream Bookstore
-                                </h2>
-                            </div>
+                            <h5>
+                                How do I see the recipe?
+                            </h5>
                             <p>
-                                Young readers will fall in love all over again with Dennis Lee’s light-hearted verse, which embraces universal childhood experiences of every flavour, from digging holes to foreign lands to searching for the perfect pet.
-                                David McPhail’s gorgeous watercolour paintings capture Lee’s subtle celebration of ulticulturalism and offer a colourful feast for the eye
+                                Very simple, with only $15 a month, you can experience all of our store's recipes
                             </p>
-                            <a href="" style="background-color:orange;border:orange">
+                            <a href="">
                                 Read More
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>-->
-        @*end about section
-            client section*@
-
-        <!--<section class="client_section layout_padding">
-            <div class="container ">
-                <div class="heading_container heading_center">
-                    <h2>
-                        What Says Customers
-                    </h2>
-                    <hr>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mx-auto">
-                        <div class="client_container ">
-                            <div class="detail-box">
-                                <p>
-                                    I signed up and tried to make ice cream according to this store's recipe. The result did not live up to my expectations
-                                </p>
-                                <span>
-                                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <div class="client_id">
-                                <div class="img-box">
-                                    <img src="images/c1.jpg" alt="">
-                                </div>
-                                <div class="client_name">
-                                    <h5>
-                                        Tuan Com
-                                    </h5>
-                                    <h6>
-                                        Racer
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mx-auto">
-                        <div class="client_container ">
-                            <div class="detail-box">
-                                <p>
-                                    I was very skeptical when this store's recipe was very different from other recipes I've tried, but you guys broke that doubt.
-                                </p>
-                                <span>
-                                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <div class="client_id">
-                                <div class="img-box">
-                                    <img src="images/c2.jpg" alt="">
-                                </div>
-                                <div class="client_name">
-                                    <h5>
-                                        Amber Heard
-                                    </h5>
-                                    <h6>
-                                        Actor
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 mx-auto">
-                        <div class="client_container ">
-                            <div class="detail-box">
-                                <p>
-                                    This store's ice cream books are very good, it summarizes most of the ice cream on the market, and the prices of the books are also very cheap.
-                                </p>
-                                <span>
-                                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <div class="client_id">
-                                <div class="img-box">
-                                    <img src="images/c3.jpg" alt="">
-                                </div>
-                                <div class="client_name">
-                                    <h5>
-                                        Gordon Ramsey
-                                    </h5>
-                                    <h6>
-                                        Chef
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>-->
-        @*end client section
-            blog section*@
-
-        <!--<section class="blog_section layout_padding">
-            <div class="container">
-                <div class="heading_container heading_center">
-                    <h2>
-                        Recipe FAQ's
-                    </h2>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="images/b1.jpg" alt="">
-                                <h4 class="blog_date">
-                                    <span>
-                                        #1 Ask
-                                    </span>
-                                </h4>
-                            </div>
-                            <div class="detail-box">
-                                <h5>
-                                    Where do the store's ice cream recipes come from?
-                                </h5>
-                                <p>
-                                    The ice cream recipes of the shop are all created by the owner from his own experience to create a unique flavor of the store.
-                                </p>
-                                <a href="">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="images/b2.jpg" alt="">
-                                <h4 class="blog_date">
-                                    <span>
-                                        #2 Ask
-                                    </span>
-                                </h4>
-                            </div>
-                            <div class="detail-box">
-                                <h5>
-                                    How do I see the recipe?
-                                </h5>
-                                <p>
-                                    Very simple, with only $15 a month, you can experience all of our store's recipes
-                                </p>
-                                <a href="">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>-->
+        </div>
+    </section>-->
         @*end blog section
-            contact section*@
+        contact section*@
 
         <!--<section class="contact_section layout_padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 ">
-                        <div class="heading_container ">
-                            <h2 class="">
-                                Contact Us
-                            </h2>
-                        </div>
-                        <form action="#">
-                            <div>
-                                <input type="text" placeholder="Name" />
-                            </div>
-                            <div>
-                                <input type="email" placeholder="Email" />
-                            </div>
-                            <div>
-                                <input type="text" placeholder="Phone Number" />
-                            </div>
-                            <div>
-                                <input type="text" class="message-box" placeholder="What do you want to contact us" />
-                            </div>
-                            <div class="btn-box">
-                                <button>
-                                    SEND
-                                </button>
-                            </div>
-                        </form>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div class="heading_container ">
+                        <h2 class="">
+                            Contact Us
+                        </h2>
                     </div>
-                    <div class="col-md-6">
-                        <div class="img-box">
-                            <img src="~/Content/images/contact-img.jpg" alt="" />
+                    <form action="#">
+                        <div>
+                            <input type="text" placeholder="Name" />
                         </div>
+                        <div>
+                            <input type="email" placeholder="Email" />
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Phone Number" />
+                        </div>
+                        <div>
+                            <input type="text" class="message-box" placeholder="What do you want to contact us" />
+                        </div>
+                        <div class="btn-box">
+                            <button>
+                                SEND
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-box">
+                        <img src="~/Content/images/contact-img.jpg" alt="" />
                     </div>
                 </div>
             </div>
-        </section>-->
+        </div>
+    </section>-->
         @*end contact section
-            info section*@
+        info section*@
 
         <!--<section class="info_section layout_padding2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-lg-3 info-col">
-                        <div class="info_detail">
-                            <h4>
-                                About Us
-                            </h4>
-                            <p>
-                                Why tell a story with words when you can tell it with plenty of images and compelling behind-the-scenes footage of your production process? That’s exactly what Ice-cream Parlour does as soon as you land on its colorful About Us page
-                            </p>
-                            <div class="info_social">
-                                <a href="">
-                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                </a>
-                                <a href="">
-                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                </a>
-                                <a href="">
-                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
-                                </a>
-                                <a href="">
-                                    <i class="fa fa-instagram" aria-hidden="true"></i>
-                                </a>
-                            </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-3 info-col">
+                    <div class="info_detail">
+                        <h4>
+                            About Us
+                        </h4>
+                        <p>
+                            Why tell a story with words when you can tell it with plenty of images and compelling behind-the-scenes footage of your production process? That’s exactly what Ice-cream Parlour does as soon as you land on its colorful About Us page
+                        </p>
+                        <div class="info_social">
+                            <a href="">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 info-col">
-                        <div class="info_contact">
-                            <h4>
-                                Address
-                            </h4>
-                            <div class="contact_link_box">
-                                <a href="">
-                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    <span>
-                                        285 Doi Can Street,Ba Dinh, Hanoi
-                                    </span>
-                                </a>
-                                <a href="">
-                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <span>
-                                        Call +01 1234567890
-                                    </span>
-                                </a>
-                                <a href="">
-                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                    <span>
-                                        abcd@gmail.com
-                                    </span>
-                                </a>
-                            </div>
+                </div>
+                <div class="col-md-6 col-lg-3 info-col">
+                    <div class="info_contact">
+                        <h4>
+                            Address
+                        </h4>
+                        <div class="contact_link_box">
+                            <a href="">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <span>
+                                    285 Doi Can Street,Ba Dinh, Hanoi
+                                </span>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <span>
+                                    Call +01 1234567890
+                                </span>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <span>
+                                    abcd@gmail.com
+                                </span>
+                            </a>
                         </div>
                     </div>
-                    <div class="col-md-12 col-lg-5 info-col">
-                        <div class="map_container">
-                            <div class="map">
-                                <div id="googleMap">
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.924278651609!2d105.81684051424541!3d21.035715592918297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab145bf89bd7%3A0xd94a869b494c04b6!2zMjg1IMSQ4buZaSBD4bqlbiwgVsSpbmggUGjDuiwgQmEgxJDDrG5oLCBIw6AgTuG7mWkgMTAwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1659923470378!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                </div>
+                </div>
+                <div class="col-md-12 col-lg-5 info-col">
+                    <div class="map_container">
+                        <div class="map">
+                            <div id="googleMap">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.924278651609!2d105.81684051424541!3d21.035715592918297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab145bf89bd7%3A0xd94a869b494c04b6!2zMjg1IMSQ4buZaSBD4bqlbiwgVsSpbmggUGjDuiwgQmEgxJDDrG5oLCBIw6AgTuG7mWkgMTAwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1659923470378!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>-->
+        </div>
+    </section>-->
         <!-- end info section -->
         <!-- footer section -->
         <footer class="footer_section">
