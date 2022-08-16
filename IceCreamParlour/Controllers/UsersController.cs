@@ -12,7 +12,7 @@ namespace IceCreamParlour.Controllers
 {
     public class UsersController : Controller
     {
-        private DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
+        private DbIcecreamParlourEntities1 db = new DbIcecreamParlourEntities1();
 
         // GET: Users
         public ActionResult Index()
@@ -46,7 +46,7 @@ namespace IceCreamParlour.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "User_Id,Name,Contact,Email,Address,Password,UserType,Card_No,JoinDate,IsActive")] User user)
+        public ActionResult Create([Bind(Include = "User_Id,Name,Contact,Email,Address,Password,UserType,Card_No,JoinDate,IsActive,IsDelete")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace IceCreamParlour.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "User_Id,Name,Contact,Email,Address,Password,UserType,Card_No,JoinDate,IsActive")] User user)
+        public ActionResult Edit([Bind(Include = "User_Id,Name,Contact,Email,Address,Password,UserType,Card_No,JoinDate,IsActive,IsDelete")] User user)
         {
             if (ModelState.IsValid)
             {

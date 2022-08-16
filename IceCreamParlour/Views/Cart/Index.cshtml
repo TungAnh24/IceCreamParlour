@@ -9,19 +9,25 @@
         <tr>
             <td>Mã Sách</td>
             <td>Tên Sách</td>
+            <td>Ảnh SP</td>
             <td>Số lượng</td>
             <td>Đơn giá</td>
             <td>Thành tiền</td>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Mã Sách</td>
-            <td>Tên Sách</td>
-            <td>Số lượng</td>
-            <td>Đơn giá</td>
-            <td>Thành tiền</td>
-        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Book.Book_Id</td>
+                <td>@item.Book.Title</td>
+                <td><img src="@item.Book.Image" width="100" /></td>
+                <td><input type="text" class="quantity" value="@item.Quantity" /></td>
+                <td>@item.Book.Price</td>
+                <td>@(item.Book.Price * item.Quantity)</td>
+            </tr>
+        }
+
     </tbody>
 </table>
 

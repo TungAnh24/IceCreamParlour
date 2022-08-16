@@ -13,10 +13,10 @@ namespace IceCreamParlour.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DbIcecreamParlourEntities : DbContext
+    public partial class DbIcecreamParlourEntities1 : DbContext
     {
-        public DbIcecreamParlourEntities()
-            : base("name=DbIcecreamParlourEntities")
+        public DbIcecreamParlourEntities1()
+            : base("name=DbIcecreamParlourEntities1")
         {
         }
     
@@ -34,7 +34,6 @@ namespace IceCreamParlour.Models
         public virtual DbSet<Recipe> Recipes { get; set; }
         public virtual DbSet<Subscription_Payment> Subscription_Payment { get; set; }
         public virtual DbSet<Subscription> Subscriptions { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

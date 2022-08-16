@@ -5,10 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace IceCreamParlour.Content
+namespace IceCreamParlour.Controllers
 {
     public class CartController : Controller
     {
+        DbIcecreamParlourEntities1 db = new DbIcecreamParlourEntities1();
         // GET: Cart
         private const string CartSession = "CartSession";
         public ActionResult Index()
@@ -19,43 +20,52 @@ namespace IceCreamParlour.Content
             {
                 list = (List<CartItem>)cart;
             }
-            return View();
+            return View(list); 
         }
         public ActionResult AddItem(int book_Id, int quantity)
         {
+
+            var book = db.Books.Find(book_Id);
             var cart = Session[CartSession];
-            if(cart != null)
+            if (cart != null)
             {
                 var list = (List<CartItem>)cart;
-                if(list.Exists(x => x.Book_Id == book_Id))
+                if (list.Exists(x => x.Book.Book_Id == book_Id))
                 {
                     foreach (var item in list)
                     {
-                        if (item.Book_Id == book_Id)
+                        if (item.Book.Book_Id == book_Id)
                         {
                             item.Quantity += quantity;
                         }
                     }
-                }
-                else
+                }else 
                 {
                     var item = new CartItem();
-                    item.Book_Id = book_Id;
+                    item.Book = book; 
                     item.Quantity = quantity;
                     list.Add(item);
                 }
-                Session[CartSession] = list;
             }
             else
             {
-                //tạo mới đối tượng cart item
+                //tạo mới đối tượng cart Item
                 var item = new CartItem();
-                item.Book_Id = book_Id;
+                item.Book = book;
                 item.Quantity = quantity;
                 var list = new List<CartItem>();
-
+                
                 //Gán vào session
                 Session[CartSession] = list;
+
+                var cart1 = Session[CartSession];
+                var list1 = new List<CartItem>();
+                if (cart1 != null)
+                {
+                    list1 = (List<CartItem>)cart;
+                }
+               // return View(list);
+
             }
             return RedirectToAction("Index");
         }

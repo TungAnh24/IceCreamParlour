@@ -11,8 +11,7 @@ namespace IceCreamParlour.Models
 {
     using System;
     using System.Collections.Generic;
-
-    [Serializable]
+    
     public partial class Book
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +19,7 @@ namespace IceCreamParlour.Models
         {
             this.Order_Detail = new HashSet<Order_Detail>();
         }
-
+    
         public int Book_Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
