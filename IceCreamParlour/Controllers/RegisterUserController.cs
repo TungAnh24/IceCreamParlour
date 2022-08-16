@@ -16,11 +16,11 @@ namespace IceCreamParlour.Controllers
         public ActionResult Index()
         {
             var lstCategory = db.Books.ToList();
-           
+
             Book book = new Book();
 
 
-        
+
             return View(book);
         }
         // GET: RegisterUser
@@ -46,9 +46,9 @@ namespace IceCreamParlour.Controllers
                 {
                     _user.Password = GetMD5(_user.Password);
                     _user.JoinDate = DateTime.Now;
-                    //_user.IsActive = 1;
-                    //_user.IsDelete = 0;
-                    //_user.
+                    _user.IsActive = 1;
+                    _user.IsDelete = 0;
+
                     db.Configuration.ValidateOnSaveEnabled = false;
                     db.Users.Add(_user);
                     db.SaveChanges();
@@ -126,7 +126,7 @@ namespace IceCreamParlour.Controllers
         {
             Session.Clear();//remove session
             return RedirectToAction("Login");
-        }  
+        }
 
 
 
