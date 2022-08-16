@@ -133,6 +133,7 @@
     <Compile Include="Areas\Local\Controllers\BooksController.cs" />
     <Compile Include="Areas\Local\Controllers\FeedbacksController.cs" />
     <Compile Include="Areas\Local\Controllers\FlavorsController.cs" />
+    <Compile Include="Areas\Local\Controllers\LoginAdminController.cs" />
     <Compile Include="Areas\Local\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Local\Controllers\RecipesController.cs" />
     <Compile Include="Areas\Local\Controllers\Subscription_PaymentController.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Models\Book.cs">
       <DependentUpon>IceCreamParlour_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB_Entities.cs" />
     <Compile Include="Models\Feedback.cs">
       <DependentUpon>IceCreamParlour_DB.tt</DependentUpon>
     </Compile>
@@ -1696,6 +1698,10 @@
     <Content Include="Areas\Local\Views\Feedbacks\Details.cshtml" />
     <Content Include="Areas\Local\Views\Feedbacks\Edit.cshtml" />
     <Content Include="Areas\Local\Views\Feedbacks\Index.cshtml" />
+    <Content Include="Areas\Local\Views\LoginAdmin\Index.cshtml" />
+    <Content Include="Areas\Local\Views\LoginAdmin\Login.cshtml" />
+    <Content Include="Areas\Local\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Local\Views\LoginAdmin\Register.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

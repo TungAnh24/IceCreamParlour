@@ -76,7 +76,7 @@
                         <i class="link-icon" data-feather="calendar"></i>
                         <span class="link-title">@Html.ActionLink("Subscription", "Index", "Subscription_Payment")</span>
                     </li>
-                                        
+
                     <li class="nav-item nav-category">Other</li>
                     <li class="nav-item" style="padding-bottom:5px">
                         <i class="link-icon" data-feather="mail"></i>
@@ -106,19 +106,19 @@
                     </div>
                 </div>
                 @*<div class="theme-wrapper">
-                    <h6 class="text-muted mb-2">Light Theme:</h6>
-                    <a class="theme-item active" href="../demo_1/dashboard-one.html">
-                        <img src="~/Areas/Local/assets/images/screenshots/light.jpg" alt="light theme">
-                    </a>
-                    <h6 class="text-muted mb-2">Dark Theme:</h6>
-                    <a class="theme-item" href="../demo_2/dashboard-one.html">
-                        <img src="~/Areas/Local/assets/images/screenshots/dark.jpg" alt="light theme">
-                    </a>
-                </div>*@
+                        <h6 class="text-muted mb-2">Light Theme:</h6>
+                        <a class="theme-item active" href="../demo_1/dashboard-one.html">
+                            <img src="~/Areas/Local/assets/images/screenshots/light.jpg" alt="light theme">
+                        </a>
+                        <h6 class="text-muted mb-2">Dark Theme:</h6>
+                        <a class="theme-item" href="../demo_2/dashboard-one.html">
+                            <img src="~/Areas/Local/assets/images/screenshots/dark.jpg" alt="light theme">
+                        </a>
+                    </div>*@
             </div>
         </nav>
         <!-- partial -->
-        
+
         <div class="page-wrapper">
 
             <!-- partial:partials/_navbar.html -->
@@ -319,12 +319,12 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="profileDropdown">
                                 <div class="dropdown-header d-flex flex-column align-items-center">
-                                    <div class="figure mb-3">
-                                        <img src="https://via.placeholder.com/80x80" alt="">
-                                    </div>
                                     <div class="info text-center">
-                                        <p class="name font-weight-bold mb-0">Amiah Burton</p>
-                                        <p class="email text-muted mb-3">amiahburton@gmail.com</p>
+                                        @if (Session["Name"] != null)
+                                        {
+                                            <p>Name: @Session["Name"].ToString()</p>
+                                            <p>Email: @Session["Email"].ToString()</p>
+                                        }
                                     </div>
                                 </div>
                                 <div class="dropdown-body">
@@ -332,7 +332,8 @@
                                         <li class="nav-item">
                                             <a href="pages/general/profile.html" class="nav-link">
                                                 <i data-feather="user"></i>
-                                                <span>Profile</span>
+                                                @*<span>Profile</span>*@
+                                                <a href="@Url.Action("Details", "Admins", new {id = Session["Admin_Id"].ToString() })" class="btn btn-warning">Profile</a>
                                             </a>
                                         </li>
                                         <li class="nav-item">
@@ -350,7 +351,7 @@
                                         <li class="nav-item">
                                             <a href="javascript:;" class="nav-link">
                                                 <i data-feather="log-out"></i>
-                                                <span>Log Out</span>
+                                                <a href="@Url.Action("Logout","LoginAdmin")" class="btn btn-warning">Logout</a>
                                             </a>
                                         </li>
                                     </ul>

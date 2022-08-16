@@ -2,17 +2,17 @@
 
 namespace IceCreamParlour.Areas.Local
 {
-    public class LocalAreaRegistration : AreaRegistration 
+    public class LocalAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "Local";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "Local_default",
