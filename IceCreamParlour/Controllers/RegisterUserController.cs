@@ -51,15 +51,28 @@ namespace IceCreamParlour.Controllers
 
                     db.Configuration.ValidateOnSaveEnabled = false;
                     db.Users.Add(_user);
-                    db.SaveChanges();
+                    var Result = db.SaveChanges();
+                    if(Result > 0)
+                    {
+                        ViewBag.SuccessMsg  = "You have just registered your account successfully";
+
+                        //return RedirectToAction("Login");
+                    }
+                   
                     //return RedirectToAction("Index");
-                    return RedirectToAction("Login");
+                    
                 }
                 else
                 {
                     ViewBag.error = "Email already exists";
-                    return View();
+                   
+                    return RedirectToAction("Register");
                 }
+            }
+            else
+            {
+                ViewBag.error = "Oh noo";
+                return RedirectToAction("Register");
             }
 
             return View();
