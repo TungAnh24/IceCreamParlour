@@ -24,16 +24,23 @@ namespace IceCreamParlour.Models
         }
     
         public int User_Id { get; set; }
+
+        [Required]
+        
         public string Name { get; set; }
+        [Required]
         public string Contact { get; set; }
 
-        //[Required]
-        //[RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}")]
+        [Required]
+        
         public string Email { get; set; }
-
+        [Required]
         public string Address { get; set; }
+        [Required]
         public string Password { get; set; }
+       
         public int UserType { get; set; }
+        [Required]
         public string Card_No { get; set; }
         [DataType(DataType.Date)]
         public System.DateTime JoinDate { get; set; }
