@@ -10,11 +10,11 @@ namespace IceCreamParlour.Controllers
 {
     public class CartItemController : Controller
     {
-        DbIcecreamParlourEntities1 db = new DbIcecreamParlourEntities1();
+        DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
 
         public CartItemController()
         {
-            db = new DbIcecreamParlourEntities1();
+            db = new DbIcecreamParlourEntities();
         }
 
         public List<Book> ListNewProduct(int top)

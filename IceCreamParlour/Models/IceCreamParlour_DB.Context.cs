@@ -13,10 +13,10 @@ namespace IceCreamParlour.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DbIcecreamParlourEntities1 : DbContext
+    public partial class DbIcecreamParlourEntities : DbContext
     {
-        public DbIcecreamParlourEntities1()
-            : base("name=DbIcecreamParlourEntities1")
+        public DbIcecreamParlourEntities()
+            : base("name=DbIcecreamParlourEntities")
         {
         }
     

@@ -12,7 +12,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
 {
     public class UsersController : Controller
     {
-        private DbIcecreamParlourEntities1 db = new DbIcecreamParlourEntities1();
+        private DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
 
         // GET: Local/Users
         public ActionResult Index()

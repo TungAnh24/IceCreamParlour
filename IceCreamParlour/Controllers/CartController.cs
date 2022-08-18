@@ -4,16 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace IceCreamParlour.Controllers
 {
     public class CartController : Controller
     {
-        DbIcecreamParlourEntities1 db = new DbIcecreamParlourEntities1();
+
+        DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
         // GET: Cart
         private const string CartSession = "CartSession";
         public ActionResult Index()
         {
+
+            var book = db.Books.FirstOrDefault();
             var cart = Session[CartSession];
             var list = new List<CartItem>();
             if(cart != null)
@@ -22,11 +26,53 @@ namespace IceCreamParlour.Controllers
             }
             return View(list); 
         }
+
+        public JsonResult DeleteAll()
+        {
+            Session[CartSession] = null;
+            return Json(new
+            {
+                status = true
+            });
+        }
+
+
+        public JsonResult Delete(long id)
+        {
+            var sessionCart = (List<CartItem>)Session[CartSession];
+            sessionCart.RemoveAll(x => x.Book.Book_Id == id);
+            Session[CartSession] = sessionCart;
+            return Json(new
+            {
+                status = true
+            });
+        }
+
+        public JsonResult Update(string cartModel)
+        {
+            var jsonCart = new JavaScriptSerializer().Deserialize<List<CartItem>>(cartModel);
+            var sessionCart = (List<CartItem>)Session[CartSession];
+
+            foreach (var item in sessionCart)
+            {
+                var jsonItem = jsonCart.SingleOrDefault(x => x.Book.Book_Id == item.Book.Book_Id);
+                if (jsonItem != null)
+                {
+                    item.Quantity = jsonItem.Quantity;
+                }
+            }
+            Session[CartSession] = sessionCart;
+            return Json(new
+            {
+                status = true
+            });
+        }
         public ActionResult AddItem(int book_Id, int quantity)
         {
 
             var book = db.Books.Find(book_Id);
             var cart = Session[CartSession];
+
             if (cart != null)
             {
                 var list = (List<CartItem>)cart;
@@ -69,5 +115,19 @@ namespace IceCreamParlour.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult Payment()
+        {
+            var cart = Session[CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+            }
+            return View(list);
+        }
+
+
     }
 }
