@@ -1,12 +1,12 @@
 ﻿@model IceCreamParlour.Models.Admin
 
 @{
-    Layout = null;
+    Layout = "~/Areas/Local/Views/Shared/_AdminView.cshtml";
 }
 
 <div class="row justify-content-md-center">
     <div class="col-md-5">
-        @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+        @using (Html.BeginForm("Register", "LoginAdmin", FormMethod.Post))
         {
             //@Html.ValidationSummary()
             @Html.AntiForgeryToken()
@@ -16,14 +16,9 @@
                     <div class="card-title">Register</div>
                 </div>
                 <div class="card-body">
-                    @*<div class="form-group">
-                        @Html.LabelFor(m => m.FirstName)
-                        @Html.TextBoxFor(m => m.FirstName, "", new { @class = "form-control", @placeholder = "First Name" })
-                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "badge badge-danger" })
-                    </div>*@
                     <div class="form-group">
                         @Html.LabelFor(m => m.Name)
-                        @Html.TextBoxFor(m => m.Name, "", new { @class = "form-control", @placeholder = "Last Name" })
+                        @Html.TextBoxFor(m => m.Name, "", new { @class = "form-control", @placeholder = "Name" })
                         @Html.ValidationMessageFor(m => m.Name, "", new { @class = "badge badge-danger" })
 
                     </div>
@@ -35,6 +30,16 @@
                         {
                             <span class="badge badge-danger">@ViewBag.error</span>
                         }
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Roles)
+                        @Html.DropDownList("Roles", new List<SelectListItem>
+                   {
+                       new SelectListItem{Text="SuperAdmin",Value="1"},
+                       new SelectListItem{Text="Admin",Value="2"},
+                   }, "SelectRoles")
+                        @Html.ValidationMessageFor(m => m.Roles, "", new { @class = "badge badge-danger" })
+
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Password)
