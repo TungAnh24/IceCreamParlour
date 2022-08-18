@@ -112,9 +112,6 @@ namespace IceCreamParlour.Areas.Local.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ChangePass(string Password,string newPassword,string Confirmpwd)
         {
-            Password = "Minhthai1@";
-            newPassword = "Minhthai2@";
-            Confirmpwd = "Minhthai2@";
             Admin objadmin = new Admin();
             string ad = Session["Name"].ToString();
             int id = int.Parse(Session["Admin_Id"].ToString());
