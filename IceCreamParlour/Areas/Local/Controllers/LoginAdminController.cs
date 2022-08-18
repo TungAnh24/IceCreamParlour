@@ -112,6 +112,9 @@ namespace IceCreamParlour.Areas.Local.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ChangePass(string Password,string newPassword,string Confirmpwd)
         {
+            Password = "Minhthai1@";
+            newPassword = "Minhthai2@";
+            Confirmpwd = "Minhthai2@";
             Admin objadmin = new Admin();
             string ad = Session["Name"].ToString();
             int id = int.Parse(Session["Admin_Id"].ToString());
@@ -123,7 +126,8 @@ namespace IceCreamParlour.Areas.Local.Controllers
                 {
                     login.ConfirmPassword = GetMD5(Confirmpwd);
                     login.Password = GetMD5(newPassword);
-                    _db.Entry(login).State = EntityState.Modified;
+                    var str = GetMD5(newPassword);                                     
+                    //_db.Entry(login).State = EntityState.Modified;
                     _db.SaveChanges();
                     TempData["msg"] = "<script>alert('Password has been changed successfully !!!');</script>";
                 }
