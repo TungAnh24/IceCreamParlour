@@ -201,6 +201,7 @@
     <Content Include="Areas\Local\assets\css\demo_2\style.min.css" />
     <Content Include="Areas\Local\assets\css\demo_5\style.css" />
     <Content Include="Areas\Local\assets\css\demo_5\style.min.css" />
+    <Content Include="Areas\Local\assets\css\Login\style.css" />
     <Content Include="Areas\Local\assets\fonts\feather-font\.gitignore" />
     <Content Include="Areas\Local\assets\fonts\feather-font\css\iconfont.css" />
     <Content Include="Areas\Local\assets\fonts\feather-font\examples\index.css" />
@@ -1702,6 +1703,7 @@
     <Content Include="Areas\Local\Views\LoginAdmin\Login.cshtml" />
     <Content Include="Areas\Local\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Local\Views\LoginAdmin\Register.cshtml" />
+    <Content Include="Areas\Local\Views\LoginAdmin\ChangePass.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

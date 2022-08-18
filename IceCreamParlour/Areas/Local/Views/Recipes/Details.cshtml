@@ -24,7 +24,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Image)
+            @*@Html.DisplayFor(model => model.Image)*@
+            <img src="~/Areas/Local/RecipeImages/@Url.Content(Model.Image)" style="height:50px;width:50px;" />
         </dd>
 
         <dt>

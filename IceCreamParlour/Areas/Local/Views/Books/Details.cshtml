@@ -32,7 +32,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Image)
+            @*@Html.DisplayFor(model => model.Image)*@
+            <img src="~/Areas/Local/BookImages/@Url.Content(Model.Image)" style="height:50px;width:50px;" />
         </dd>
 
         <dt>
@@ -52,12 +53,12 @@
         </dd>
 
         @*<dt>
-            @Html.DisplayNameFor(model => model.AdminAdd_Id)
-        </dt>
+                @Html.DisplayNameFor(model => model.AdminAdd_Id)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AdminAdd_Id)
-        </dd>*@
+            <dd>
+                @Html.DisplayFor(model => model.AdminAdd_Id)
+            </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Author)
@@ -68,12 +69,12 @@
         </dd>
 
         @*<dt>
-            @Html.DisplayNameFor(model => model.AdminUpdate_Id)
-        </dt>
+                @Html.DisplayNameFor(model => model.AdminUpdate_Id)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AdminUpdate_Id)
-        </dd>*@
+            <dd>
+                @Html.DisplayFor(model => model.AdminUpdate_Id)
+            </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Update_Date)
