@@ -5,79 +5,102 @@
     Layout = "~/Areas/Local/Views/Shared/_AdminView.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Recipe</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Recipe_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageTrimmed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ingredients)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MakingProcess)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Publist_Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Update_Date)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.AdminUpdate_Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Admin.Name)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Flavor.Flavor_Name)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NameTrimmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InTrimmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MkTrimmed)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Publist_Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Update_Date)
-        </td>*@
-        @*<td>
-            @Html.DisplayFor(modelItem => item.AdminUpdate_Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Admin.Name)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Flavor.Flavor_Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Recipe_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Recipe_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Recipe_Id },
-            new { onclick = "return confirm('Are you sure you wish to delete this feedback?');" })
-        </td>
-    </tr>
-}
+<center>
+    <input type="text" id="txtSearch" placeholder="Enter Recipe Name..." />
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageTrimmed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ingredients)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MakingProcess)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Publist_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Update_Date)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.AdminUpdate_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Admin.Name)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Flavor.Flavor_Name)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameTrimmed)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Image)*@
+                    <img src="~/Areas/Local/RecipeImages/@Url.Content(item.Image)" style="height:50px;width:50px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InTrimmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MkTrimmed)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Publist_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Update_Date)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.AdminUpdate_Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Admin.Name)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Flavor.Flavor_Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Recipe_Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Recipe_Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Recipe_Id },
+                    new { onclick = "return confirm('Are you sure you wish to delete this feedback?');" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $("#txtSearch").on("keyup", function () {
+            var txtEnter = $(this).val();
+            $("table tr").each(function (result) {
+                if (result !== 0) {
+                    var id = $(this).find("td:nth-child(1)").text();
+                    if (id.indexOf(txtEnter) !== 0 && id.toLowerCase().indexOf(txtEnter.toLowerCase()) < 0) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                }
+            });
+        });
+    </script>
+</center>

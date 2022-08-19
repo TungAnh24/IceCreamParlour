@@ -32,7 +32,7 @@ namespace IceCreamParlour.Models
         public string Email { get; set; }
         public Nullable<int> Roles { get; set; }
         [Required]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$")]
+    
         public string Password { get; set; }
         public Nullable<int> IsActive { get; set; }
         public Nullable<int> IsDelete { get; set; }

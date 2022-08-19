@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using IceCreamParlour.Models;
 using System.Security.Cryptography;
 using System.Text;
+using System.Data.Entity;
 
 namespace IceCreamParlour.Areas.Local.Controllers
 {
@@ -44,6 +45,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
                 if (check == null)
                 {
                     _user.Password = GetMD5(_user.Password);
+                    _user.IsActive = 1;
                     _db.Configuration.ValidateOnSaveEnabled = false;
                     _db.Admins.Add(_user);
                     _db.SaveChanges();
@@ -54,20 +56,14 @@ namespace IceCreamParlour.Areas.Local.Controllers
                     ViewBag.error = "Email already exists";
                     return View();
                 }
-
-
             }
             return View();
-
-
         }
 
         public ActionResult Login()
         {
             return View();
         }
-
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -103,6 +99,47 @@ namespace IceCreamParlour.Areas.Local.Controllers
             return RedirectToAction("Login");
         }
 
+        public ActionResult ChangePass()
+        {
+            //if (Session["Name"] == null)
+            //{
+            //    return RedirectToAction("Login");
+            //}
+            //else 
+                return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePass(string Password,string newPassword,string Confirmpwd)
+        {
+            Admin objadmin = new Admin();
+            string ad = Session["Name"].ToString();
+            int id = int.Parse(Session["Admin_Id"].ToString());
+            var login = _db.Admins.Where(u => u.Name.Equals(ad) && u.Admin_Id.Equals(id)).FirstOrDefault();
+            var f_pass = GetMD5(Password);
+            if(login.Password == f_pass)
+            {
+                if (Confirmpwd == newPassword)
+                {
+                    login.ConfirmPassword = GetMD5(Confirmpwd);
+                    login.Password = GetMD5(newPassword);
+                    var str = GetMD5(newPassword);                                     
+                    //_db.Entry(login).State = EntityState.Modified;
+                    _db.SaveChanges();
+                    TempData["msg"] = "<script>alert('Password has been changed successfully !!!');</script>";
+                }
+                else
+                {
+                    TempData["msg"] = "<script>alert('New password match !!! Please check');</script>";
+                }
+            }
+            else
+            {
+                TempData["msg"] = "<script>alert('Old password not match !!! Please check entered old password');</script>";
+            }
+            return View();
+        }
 
 
         //create a string MD5

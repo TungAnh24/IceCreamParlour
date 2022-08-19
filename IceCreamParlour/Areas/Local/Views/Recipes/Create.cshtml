@@ -48,20 +48,21 @@
             </div>
         </div>
 
-        @*<div class="form-group">
+        <div class="form-group">
             @Html.LabelFor(model => model.AdminCreate_Id, "AdminCreate_Id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("AdminCreate_Id", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownList("AdminCreate_Id", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.TextBox("AdminCreate_Id", Session["Admin_Id"], new { @readonly = "read-only" })
                 @Html.ValidationMessageFor(model => model.AdminCreate_Id, "", new { @class = "text-danger" })
             </div>
-        </div>*@
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Publist_Date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Publist_Date, new { htmlAttributes = new { @class = "form-control" } })
-                @*@DateTime.Now.ToString("dd/MM/yyyy")*@
-                @*@Html.Label(DateTime.UtcNow.ToString("dd/MM/yyyy"))*@
+                @*@Html.EditorFor(model => model.Publist_Date, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.TextBox("Publist_Date", DateTime.Now.ToString("dd-MMM-yyyy"), new { @readonly = "read-only" })
+
                 @Html.ValidationMessageFor(model => model.Publist_Date, "", new { @class = "text-danger" })
             </div>
         </div>

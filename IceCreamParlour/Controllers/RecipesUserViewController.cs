@@ -17,8 +17,8 @@ namespace IceCreamParlour.Controllers
         // GET: RecipesUserView
         public ActionResult Index()
         {
-            var recipes = db.Recipes.Include(r => r.Admin).Include(r => r.Flavor);
-            return View(recipes.ToList());
+            var recipes = db.Recipes.ToList();
+            return View(recipes);
         }
 
         // GET: RecipesUserView/Details/5

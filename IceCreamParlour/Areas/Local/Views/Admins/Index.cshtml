@@ -5,60 +5,90 @@
     Layout = "~/Areas/Local/Views/Shared/_AdminView.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Admin</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Register", "Register","LoginAdmin")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Roles)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDelete)
-        </th>
-        <th></th>
-    </tr>
+<center>
+    <input type="text" id="txtSearch" placeholder="Enter Admin Name..." />
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Roles)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDelete)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Roles)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDelete)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Admin_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Admin_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Admin_Id })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Roles)*@
+                    @if (item.Roles == 1)
+                    {
+                        <span>SuperAdmin</span>
+                    }
+                    else
+                    {
+                        <span>Admin</span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsDelete)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Admin_Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Admin_Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Admin_Id },
+                    new { onclick = "return confirm('Are you sure you wish to delete this admin?');" })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $("#txtSearch").on("keyup", function () {
+            var txtEnter = $(this).val();
+            $("table tr").each(function (result) {
+                if (result !== 0) {
+                    var id = $(this).find("td:nth-child(1)").text();
+                    if (id.indexOf(txtEnter) !== 0 && id.toLowerCase().indexOf(txtEnter.toLowerCase()) < 0) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                }
+            });
+        });
+    </script>
+</center>
