@@ -1,0 +1,90 @@
+﻿@model IceCreamParlour.Models.Recipe
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Recipe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Recipe_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recipe_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ingredients)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ingredients)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MakingProcess)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MakingProcess)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Publist_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Publist_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Update_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Update_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdminUpdate_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminUpdate_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Flavor.Flavor_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Flavor.Flavor_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Recipe_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
