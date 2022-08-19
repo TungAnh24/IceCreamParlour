@@ -60,9 +60,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Publist_Date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Publist_Date, new { htmlAttributes = new { @class = "form-control" } })
-                @*@DateTime.Now.ToString("dd/MM/yyyy")*@
-                @*@Html.Label(DateTime.UtcNow.ToString("dd/MM/yyyy"))*@
+                @*@Html.EditorFor(model => model.Publist_Date, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.TextBox("Publist_Date", DateTime.Now.ToString("dd-MMM-yyyy"), new { @readonly = "read-only" })
+
                 @Html.ValidationMessageFor(model => model.Publist_Date, "", new { @class = "text-danger" })
             </div>
         </div>
