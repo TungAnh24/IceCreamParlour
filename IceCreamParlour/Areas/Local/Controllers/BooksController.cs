@@ -126,7 +126,8 @@ namespace IceCreamParlour.Areas.Local.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Book book = db.Books.Find(id);
-            db.Books.Remove(book);
+            //db.Books.Remove(book);
+            book.IsDelete = 0;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -68,7 +68,8 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Admin_Id }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Admin_Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Admin_Id })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Admin_Id },
+                    new { onclick = "return confirm('Are you sure you wish to delete this admin?');" })
                 </td>
             </tr>
         }

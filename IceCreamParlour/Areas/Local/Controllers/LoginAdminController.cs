@@ -45,6 +45,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
                 if (check == null)
                 {
                     _user.Password = GetMD5(_user.Password);
+                    _user.IsActive = 1;
                     _db.Configuration.ValidateOnSaveEnabled = false;
                     _db.Admins.Add(_user);
                     _db.SaveChanges();
