@@ -145,6 +145,7 @@
     <Compile Include="Areas\Local\Controllers\Subscription_PaymentController.cs" />
     <Compile Include="Areas\Local\Controllers\UsersController.cs" />
     <Compile Include="Areas\Local\LocalAreaRegistration.cs" />
+    <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CartItemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1669,11 +1670,11 @@
     <Content Include="Areas\Local\Views\Admins\Details.cshtml" />
     <Content Include="Areas\Local\Views\Admins\Edit.cshtml" />
     <Content Include="Areas\Local\Views\Admins\Index.cshtml" />
-    <Content Include="Areas\Local\Views\Books\Create.cshtml" />
-    <Content Include="Areas\Local\Views\Books\Delete.cshtml" />
-    <Content Include="Areas\Local\Views\Books\Details.cshtml" />
-    <Content Include="Areas\Local\Views\Books\Edit.cshtml" />
-    <Content Include="Areas\Local\Views\Books\Index.cshtml" />
+    <Content Include="Areas\Local\Views\Book\Create.cshtml" />
+    <Content Include="Areas\Local\Views\Book\Delete.cshtml" />
+    <Content Include="Areas\Local\Views\Book\Details.cshtml" />
+    <Content Include="Areas\Local\Views\Book\Edit.cshtml" />
+    <Content Include="Areas\Local\Views\Book\Index.cshtml" />
     <Content Include="Areas\Local\Views\Flavors\Create.cshtml" />
     <Content Include="Areas\Local\Views\Flavors\Delete.cshtml" />
     <Content Include="Areas\Local\Views\Flavors\Details.cshtml" />
@@ -1740,6 +1741,11 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Book\Create.cshtml" />
+    <Content Include="Views\Book\Delete.cshtml" />
+    <Content Include="Views\Book\Details.cshtml" />
+    <Content Include="Views\Book\Edit.cshtml" />
+    <Content Include="Views\Book\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
