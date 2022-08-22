@@ -27,12 +27,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Password)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.IsActive)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsDelete)
-            </th>
+            </th>*@
             <th></th>
         </tr>
 
@@ -59,12 +59,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Password)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.IsActive)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.IsDelete)
-                </td>
+                </td>*@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Admin_Id }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Admin_Id }) |

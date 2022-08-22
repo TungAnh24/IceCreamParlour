@@ -19,7 +19,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
         // GET: Local/Admins
         public ActionResult Index()
         {
-            return View(db.Admins.ToList());
+            return View(db.Admins.Where(a=>a.IsDelete==0).ToList());
         }
 
         // GET: Local/Admins/Details/5
@@ -123,6 +123,14 @@ namespace IceCreamParlour.Areas.Local.Controllers
             {
                 return HttpNotFound();
             }
+
+            admin.IsDelete = 1;
+            if (admin != null)
+            {
+                /*db.Entry(book).State = EntityState.Modified;*/
+                RedirectToAction("Index");
+            }
+            db.SaveChanges();
             return View(admin);
         }
 
@@ -134,16 +142,16 @@ namespace IceCreamParlour.Areas.Local.Controllers
         //}
 
         // POST: Local/Admins/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(long id)
-        {
-            Admin admin = db.Admins.Find(id);
-            //db.Admins.Remove(admin);
-            admin.IsDelete = 0;
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(long id)
+        //{
+        //    Admin admin = db.Admins.Find(id);
+        //    //db.Admins.Remove(admin);
+        //    admin.IsDelete = 1;
+        //    //db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {

@@ -532,51 +532,50 @@ a:focus {
 
 // contact section
 .contact_section {
-  h2 {
-    margin-bottom: 45px;
-  }
-
-  form {
-    padding-right: 35px;
-  }
-
-  input {
-    width: 100%;
-    border: 0;
-    height: 50px;
-    border-radius: 25px;
-    margin-bottom: 25px;
-    padding-left: 25px;
-    outline: none;
-    color: #101010;
-    background: #f1f1f1;
-
-    &::placeholder {
-      color: #131313;
+    h2 {
+        margin-bottom: 45px;
     }
 
-    &.message-box {
-      height: 120px;
-      border-radius: 15px;
+    form {
+        padding-right: 35px;
     }
-  }
 
-  .btn-box {
-    display: flex;
-    margin-top: 10px;
-  }
+    input {
+        width: 100%;
+        border: 0;
+        height: 50px;
+        border-radius: 25px;
+        margin-bottom: 25px;
+        padding-left: 25px;
+        outline: none;
+        color: #101010;
+        background: #f1f1f1;
 
-  button {
-    @include hero_btn($primary1, $white, 12px, 45px, 45px);
-    width: 100%;
-  }
+        &::placeholder {
+            color: #131313;
+        }
 
-  .img-box {
-    img {
-      width: 100%;
+        &.message-box {
+            height: 120px;
+            border-radius: 15px;
+        }
     }
-  }
 
+    .btn-box {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    button {
+        @include hero_btn($primary1, $white, 12px, 45px, 45px);
+        width: 100%;
+    }
+
+    .img-box {
+        img {
+            width: 100%;
+        }
+    }
 }
 
 // end contact section
