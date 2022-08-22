@@ -1,0 +1,188 @@
+﻿@model IceCreamParlour.Models.Feedback
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client Contact Form Flat Responsive Widget Template :: w3layouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Custom Theme files -->
+    <link href="~/Content/css/styleFeedback.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <!-- font awesome style -->
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="~/Content/css/responsive.css" rel="stylesheet" />
+    <!-- //Custom Theme files -->
+    <!-- web font -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'><!--web font-->
+    <link href="//fonts.googleapis.com/css?family=Amita:400,700" rel="stylesheet">
+    <!-- //web font -->
+</head>
+<body>
+    <!-- main -->
+    <div class="main">
+        <h1>Client Contact Form</h1>
+        <div class="main-row">
+            <h3>SEND A QUICK CONTACT TO US</h3>
+            <div class="contact-wthree">
+                @using (Html.BeginForm("Create", "CustomerFeedback", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.TextBoxFor(m => m.Name, new { @placeholder = "Your Name" })
+                    @Html.ValidationMessageFor(m => m.Name)
+                    @Html.TextBoxFor(m => m.Email, new { @placeholder = "Your Email" })
+                    @Html.ValidationMessageFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Feedback_Detail, new { @placeholder = "Your feedback Detail (Website,book,recipe,...)?" })
+                    @Html.ValidationMessageFor(m => m.Feedback_Detail)
+                    @Html.TextBoxFor(m => m.Contact, new { @placeholder = "Your Contact with us" })
+                    @Html.ValidationMessageFor(m => m.Contact)
+                    <input type="submit" value="SUBMIT" />
+                }
+            </div>
+        </div>
+        @Html.Raw(TempData["msg"])
+    </div>
+    <section class="blog_section layout_padding" id="cfaq">
+        <div class="container">
+            <div class="heading_container heading_center">
+                <h2>
+                    Customer FAQ's
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="images/b1.jpg" alt="">
+                            <h4 class="blog_date">
+                                <span>
+                                    #1 Ask
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Where do the store's ice cream recipes come from?
+                            </h5>
+                            <p>
+                                The ice cream recipes of the shop are all created by the owner from his own experience to create a unique flavor of the store.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="images/b2.jpg" alt="">
+                            <h4 class="blog_date">
+                                <span>
+                                    #2 Ask
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                How do I see the recipe?
+                            </h5>
+                            <p>
+                                Very simple, with only $15 a month, you can experience all of our store's recipes
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="images/b2.jpg" alt="">
+                            <h4 class="blog_date">
+                                <span>
+                                    #3 Ask
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Where do the store's books come from?
+                            </h5>
+                            <p>
+                                We cooperate with reputable domestic publishers and deliver genuine books to customers at cheaper prices than the market.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="images/b2.jpg" alt="">
+                            <h4 class="blog_date">
+                                <span>
+                                    #4 Ask
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Where is the store's location?
+                            </h5>
+                            <p>
+                                Our store address is at 285 Doi Can Street, Ba Dinh, Hanoi. We always welcome customers to our store
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="images/b2.jpg" alt="">
+                            <h4 class="blog_date">
+                                <span>
+                                    #5 Ask
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                How long will it take for me to receive my order?
+                            </h5>
+                            <p>
+                                Just provide complete information about your address, we promise you will receive the goods within 1 week from the time of ordering.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="images/b2.jpg" alt="">
+                            <h4 class="blog_date">
+                                <span>
+                                    #6 Ask
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Does the store have any promotions?
+                            </h5>
+                            <p>
+                                Every month we will randomly draw, lucky customers will receive 1 book of their choice from our store
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>
