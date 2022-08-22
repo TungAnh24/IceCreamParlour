@@ -30,7 +30,8 @@ namespace IceCreamParlour.Models
     
         public virtual Admin Admin { get; set; }
         public virtual Flavor Flavor { get; set; }
-
+   
+        public List<int> RecipeIds { get; set; }
         public int limit = 15;
 
         [Display(Name = "Ingredients")]

@@ -7,12 +7,16 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using IceCreamParlour.Models;
+using PagedList;
 
 namespace IceCreamParlour.Controllers
 {
     public class RecipesUserViewController : Controller
     {
         private DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
+
+       
+
 
         // GET: RecipesUserView
         public ActionResult Index()

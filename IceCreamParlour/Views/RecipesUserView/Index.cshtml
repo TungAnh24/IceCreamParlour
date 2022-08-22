@@ -2,86 +2,106 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Recipe_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <th>
-            @Html.DisplayNameFor(model => model.Ingredients)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MakingProcess)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Publist_Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Update_Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AdminUpdate_Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Admin.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Flavor.Flavor_Name)
-        </th>
-        <th></th>
-    </tr>
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Recipe_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-                    @*@Html.DisplayFor(modelItem => item.ImageTrimmed)*@
-                    @*<img src="@Url.Content(item.Image)" width="50" height="50" />*@
-                    <img src="~/Areas/Local/RecipeImages/@Url.Content(item.Image)" style="height:50px;width:50px;" />
-                </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ingredients)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MakingProcess)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Publist_Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Update_Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AdminUpdate_Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Admin.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Flavor.Flavor_Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Recipe_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Recipe_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Recipe_Id })
-        </td>
-    </tr>
-}
 
-</table>
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+
+    <link href="~/Content/Recipes/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Content/Recipes/css/bootstrap-icons.css" rel="stylesheet" />
+
+    <link href="~/Content/Recipes/css/tooplate-crispy-kitchen.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+
+
+    <main>
+
+
+        <section class="menu section-padding">
+            <div class="container">
+                <div class="row">
+
+                    <div  class="col-12">
+                        <h2 class="text-center mb-lg-5 mb-4">Special Recipes</h2>
+                    </div>
+                    <select id="RecipeIds" name="RecipeIds">
+                        @foreach (var item in Model)
+                        {
+                        <option>    @Html.DisplayFor(modelItem => item.Flavor_Id)</option>
+                        }
+                        @*<option selected="selected" value="1">The Godfather</option>
+                        <option value="2">Forrest Gump</option>
+                        <option value="3">Fight Club</option>*@
+                    </select>
+              
+                    @foreach (var item in Model) 
+                    {
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="menu-thumb">
+                                <div class="menu-image-wrap">
+                                    @*<img src="~/Content/Recipes/images/breakfast/brett-jordan-8xt8-HIFqc8-unsplash.jpg" />*@
+                                    <img src="~/Areas/Local/RecipeImages/@Url.Content(item.Image)" style="height:300px;width:300px;" />
+
+                                    <span class="menu-tag bg-warning">delicious!</span>
+                                </div>
+                          
+                                <div class="menu-info d-flex flex-wrap align-items-center">
+                                    <h5 class="mb-0">@Html.DisplayFor(modelItem => item.Recipe_Name)</h5>
+
+
+                                    <div class="d-flex flex-wrap align-items-center w-100 mt-2">
+                                              @Html.DisplayFor(modelItem => item.NameTrimmed)
+                                        
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    }
+                  
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+    </main>
+
+
+
+
+    <!-- Modal -->
+    <!-- JAVASCRIPT FILES -->
+
+    <script src="~/Content/Recipes/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/Recipes/js/custom.js"></script>
+    <script src="~/Content/Recipes/js/jquery.min.js"></script>
+</body>
+</html>

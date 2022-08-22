@@ -53,6 +53,12 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -1492,6 +1498,49 @@
     <Content Include="Content\Login\js\main.js" />
     <Content Include="Content\Login\js\owl.carousel.min.js" />
     <Content Include="Content\Login\js\popper.min.js" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Recipes\css\bootstrap-icons.css" />
+    <Content Include="Content\Recipes\css\bootstrap.min.css" />
+    <Content Include="Content\Recipes\css\tooplate-crispy-kitchen.css" />
+    <Content Include="Content\Recipes\images\alex-haney-CAhjZmVk5H4-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\author\alexander-hipp-iEEBWgY_6lA-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\author\shoeib-abolhassani-ojl7T2Ah93U-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\breakfast\brett-jordan-8xt8-HIFqc8-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\breakfast\louis-hansel-dphM2U1xq0U-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\breakfast\lucas-swennen-1W_MyJSRLuQ-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\charles-deluvio-FdDkfYFHqe4-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\daan-evers-tKN1WXrzQ3s-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\dinner\farhad-ibrahimzade-isHUj3N0194-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\dinner\farhad-ibrahimzade-ZipYER3NLhY-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\dinner\keriliwi-c3mFafsFz2w-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\header\briana-tozour-V_Nkf1E-vYA-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\header\luisa-brimble-aFzg83dvnAI-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\header\priscilla-du-preez-W3SEyZODn8U-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\header\rod-long-I79Pgmhmy5M-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\lunch\farhad-ibrahimzade-D5c9ZciQy_I-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\lunch\farhad-ibrahimzade-MGKqxm6u2bc-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\lunch\louis-hansel-cH5IPjaAYyo-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\lunch\louis-hansel-rheOvfxOlOA-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\news\caroline-attwood-bpPTlXWTOvg-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\news\ella-olsson-mmnKI8kMxpc-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\news\gilles-lambert-S_LhjpfIdm4-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\news\louis-hansel-GiIiRV0FjwU-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\news\news-detail-header.jpg" />
+    <Content Include="Content\Recipes\images\news\pablo-merchan-montes-Orz90t6o0e4-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\news\priscilla-du-preez-W3SEyZODn8U-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\news\stefan-johnson-xIFbDeGcy44-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\sincerely-media-HoEYgBL_Gcs-unsplash-mobile.jpg" />
+    <Content Include="Content\Recipes\images\sincerely-media-HoEYgBL_Gcs-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\slide\ivan-torres-MQUqbmszGGM-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\slide\jason-leung-O67LZfeyYBk-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\slide\jay-wennington-N_Y88TWmGwA-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\team\matthew-hamilton-tNCH0sKSZbA-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\team\nicolas-horn-MTZTGvDsHFY-unsplash.jpg" />
+    <Content Include="Content\Recipes\images\team\rc-cf-FMh5o5m5N9E-unsplash.jpg" />
+    <Content Include="Content\Recipes\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\Recipes\js\custom.js" />
+    <Content Include="Content\Recipes\js\jquery.min.js" />
+    <Content Include="Content\Recipes\video\production_ID_3769033.mp4" />
     <Content Include="Content\Register\css\main.css" />
     <Content Include="Content\Register\js\global.js" />
     <Content Include="Content\Register\vendor\datepicker\daterangepicker.css" />
@@ -1848,6 +1897,8 @@
     <Content Include="Content\Register\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff" />
     <Content Include="Content\Register\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
     <Content Include="Areas\Local\Views\LoginAdmin\ChangePass.cshtml" />
+    <Content Include="Content\Recipes\fonts\bootstrap-icons.woff" />
+    <Content Include="Content\Recipes\fonts\bootstrap-icons.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1884,11 +1935,8 @@
     <Content Include="Views\RegisterUser\Login.cshtml" />
     <Content Include="Views\RegisterUser\Register.cshtml" />
     <Content Include="Views\RegisterUser\UserPannel.cshtml" />
-    <Content Include="Views\RecipesUserView\Create.cshtml" />
-    <Content Include="Views\RecipesUserView\Delete.cshtml" />
-    <Content Include="Views\RecipesUserView\Details.cshtml" />
-    <Content Include="Views\RecipesUserView\Edit.cshtml" />
     <Content Include="Views\RecipesUserView\Index.cshtml" />
+    <Content Include="Views\RecipesUserView\view.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1896,6 +1944,7 @@
     <Folder Include="Areas\Local\Data\" />
     <Folder Include="Areas\Local\FlavorImages\" />
     <Folder Include="Areas\Local\RecipeImages\" />
+    <Folder Include="Content\Recipes\img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

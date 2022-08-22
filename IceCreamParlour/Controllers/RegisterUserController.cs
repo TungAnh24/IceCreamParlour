@@ -46,8 +46,8 @@ namespace IceCreamParlour.Controllers
                 {
                     _user.Password = GetMD5(_user.Password);
                     _user.JoinDate = DateTime.Now;
-                    _user.IsActive = 1;
-                    _user.IsDelete = 0;
+                    _user.IsActive = 0;
+                    _user.IsDelete = 1;
 
                     db.Configuration.ValidateOnSaveEnabled = false;
                     db.Users.Add(_user);
