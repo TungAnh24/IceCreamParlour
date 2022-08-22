@@ -1952,7 +1952,7 @@
     <Content Include="Views\RegisterUser\Register.cshtml" />
     <Content Include="Views\RegisterUser\UserPannel.cshtml" />
     <Content Include="Views\RecipesUserView\Index.cshtml" />
-    <Content Include="Views\RecipesUserView\view.cshtml" />
+    <Content Include="Views\RecipesUserView\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

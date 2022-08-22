@@ -1,0 +1,131 @@
+﻿@model IceCreamParlour.Models.Recipe
+
+<div class="col-12 col-lg-5">
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Recipe_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recipe_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Image)*@
+            <img src="~/Areas/Local/RecipeImages/@Url.Content(Model.Image)" style="height:50px;width:50px;" />
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ingredients)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ingredients)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MakingProcess)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MakingProcess)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Publist_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Publist_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Update_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Update_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdminUpdate_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminUpdate_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Flavor.Flavor_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Flavor.Flavor_Name)
+        </dd>
+
+    </dl>
+</div>
+
+<div class="col-12 col-lg-5">
+    <div class="product-detail-container">
+        <div class="detail-header show-desktop">
+            <h5 class="product-name">Bánh Trung Thu Dân Gian</h5>
+            <span>(Hộp Quà Bánh Trung Thu Dân Gian)</span>
+        </div>
+        <div class="detail-body">
+            <span class="option-result"></span>
+            <div class="button-zone">
+                <div class="row">
+                    <b class="col-5">Tình trạng:</b>
+                    <span class="col-7">Còn hàng</span>
+                </div>
+                <div class="row">
+                    <b class="col-5">Mã sản phẩm:</b>
+                    <span class="col-7"></span>
+                </div>
+                <div class="row">
+                    <b class="col-5">Thành phần:</b>
+                    <span class="col-7">hạt sen, đậu xanh, thập cẩm, đậu đỏ, sữa dừa, trà xanh, cốm xanh, mè đen</span>
+                </div>
+                <div class="row">
+                    <b class="col-5">Bảo quản:</b>
+                    <span class="col-7">15°C - 25°C</span>
+                </div>
+                <div class="row">
+                    <b class="col-md-4">
+                        Giá bán:
+                    </b>
+                    <div class="col-md-7">
+                        <span class="product-price">
+                            <span class="price text-price">680,000₫</span>
+                        </span>
+                    </div>
+                </div>
+                <b> Giá có thể thay đổi theo kích cỡ:</b> <span class="text-yellow">Liên hệ</span>
+                <input class="quantity-input" type="hidden" min="1" value="1" autocomplete="off">
+                <button class="add-to-cart js-add-to-cart">
+                    <img src="https://thuhuongbakery.com.vn/public/frontend/assets/img/icons/shopping-bag.svg" alt="">
+                    Thêm vào giỏ
+                </button>
+                <button class="add-to-cart mt-3 contact-card">
+                    Đặt hàng nhanh nhất <br> 090 754 6668 | 096 938 6611
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
