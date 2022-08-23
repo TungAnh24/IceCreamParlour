@@ -18,6 +18,12 @@ namespace IceCreamParlour
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            //routes.MapRoute(
+            // name: "Product Detail",
+            // url: "chi-tiet/{title}-{id}",
+            // defaults: new { controller = "Book", action = "Index", id = UrlParameter.Optional },
+            // namespaces: new[] { "IceCreamParlour.Controllers" }
+            //);
         }
 
     }

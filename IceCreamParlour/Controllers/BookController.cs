@@ -114,6 +114,27 @@ namespace IceCreamParlour.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult AddToCart()
+        {
+            return View();
+        }
+
+        // POST: Books/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddToCart([Bind(Include = "Book_Id,Title,Description,Image,Price,Create_Date,AdminAdd_Id,Author,AdminUpdate_Id,Update_Date,IsActive,IsDelete")] Book book)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Books.Add(book);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(book);
+        }
 
         protected override void Dispose(bool disposing)
         {
