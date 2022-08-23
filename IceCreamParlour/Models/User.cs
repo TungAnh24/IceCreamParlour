@@ -39,7 +39,7 @@ namespace IceCreamParlour.Models
         [Required]
         public string Password { get; set; }
        
-        public int UserType { get; set; }
+        public Nullable<int> UserType { get; set; }
         [Required]
         public string Card_No { get; set; }
         [DataType(DataType.Date)]

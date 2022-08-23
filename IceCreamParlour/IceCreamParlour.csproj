@@ -1516,6 +1516,7 @@
     <Content Include="Content\Recipes\css\bootstrap-icons.css" />
     <Content Include="Content\Recipes\css\bootstrap.min.css" />
     <Content Include="Content\Recipes\css\tooplate-crispy-kitchen.css" />
+    <Content Include="Content\Recipes\Detail\detail.css" />
     <Content Include="Content\Recipes\images\alex-haney-CAhjZmVk5H4-unsplash.jpg" />
     <Content Include="Content\Recipes\images\author\alexander-hipp-iEEBWgY_6lA-unsplash.jpg" />
     <Content Include="Content\Recipes\images\author\shoeib-abolhassani-ojl7T2Ah93U-unsplash.jpg" />

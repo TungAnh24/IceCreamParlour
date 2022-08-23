@@ -1,5 +1,6 @@
 ﻿@model IceCreamParlour.Models.User
 
+
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -25,7 +26,7 @@
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
-                <div class="card-body">
+                <v class="card-body">
                     <h2 class="title">Registration Form</h2>
                     @using (Html.BeginForm("Register", "RegisterUser", FormMethod.Post))
                     {
@@ -99,21 +100,36 @@
 
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.UserType, htmlAttributes: new { @class = "control-label col-md-5" })
-                            <div class="col-md-10">
-                                @Html.ValidationMessageFor(model => model.UserType, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="UserType" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
-                                    <option disabled="disabled" selected="selected">Choose option</option>
-                                    <option>0</option>  @*Monthly*@
-                                    <option>1</option>  @* Yearly*@
+                            @*@Html.LabelFor(model => model.UserType, htmlAttributes: new { @class = "control-label col-md-5" })*@
+                            @*<div class="col-md-10">
+            @Html.ValidationMessageFor(model => model.UserType, "", new { @class = "text-danger" })
+        </div>*@
 
-                                </select>
-                                <div class="select-dropdown"></div>
+                            @*<div class="rs-select2 js-select-simple select--no-search">*@
+                            <!--<select name="UserType" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
+    <option disabled="disabled" selected="selected">Choose option</option>
+    <option value="0" selected>Monthly</option>-->
+                            @*Monthly*@
+                            <!--<option value="1">Yearly</option>-->  @* Yearly*@
+
+                            <!--</select>-->
+                            @*<select class="form-control" id="UserType" name="UserType">
+            <option>Select Gender</option>
+            <option>Monthly</option>
+            <option>Yearly</option>
+        </select>*@
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.UserType)
+                                @Html.DropDownList("UserType", new List<SelectListItem>
+                           {
+                               new SelectListItem{Text="Monthly",Value="0"},
+                               new SelectListItem{Text="Yearly",Value="1"},
+                           }, "SelectRoles")
+                                @Html.ValidationMessageFor(m => m.UserType, "", new { @class = "badge badge-danger" })
+
                             </div>
                         </div>
-
+                        
                         <div class="form-group">
                             @Html.LabelFor(model => model.Card_No, htmlAttributes: new { @class = "control-label col-md-5" })
                             <div class="col-md-10">
