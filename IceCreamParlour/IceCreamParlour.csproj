@@ -1444,6 +1444,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cssBook\BookDetail.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\ion.rangeSlider.min.css" />

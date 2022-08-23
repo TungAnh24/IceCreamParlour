@@ -2,157 +2,88 @@
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Areas/Local/Views/Shared/_AdminView.cshtml";
-    ////var category = (Model.EF.ProductCategory)ViewBag.Category;
-    var relatedProducts = (List<IceCreamParlour.Models.Book>)ViewBag.RelatedProducts;
+    //var category = (Model.EF.ProductCategory)ViewBag.Category;
+    var relatedBooks = (List<IceCreamParlour.Models.Book>)ViewBag.RelatedBooks;
 }
 
-<div class="content">
-    <!--<div class="content_top">
-        <div class="back-links">-->
-    @*<p><a href="/">Trang chủ</a> >>>> <a href="/san-pham/@book.MetaTitle-@category.ID">@category.Name</a></p>*@
-    <!--</div>
-        <div class="clear"></div>
-    </div>-->
-    <div class="section group">
-        <div class="cont-desc span_1_of_2">
-            <div class="product-details">
-                <div class="grid images_3_of_2">
-                    <div id="container">
-                        <div id="products_example">
-                            <div id="products">
-                                <div class="slides_container">
-                                    <a href="#" target="_blank"><img src="@Model.Image" alt=" " /></a>
-                                </div>
-                                @*<ul class="pagination">
-                                        <li><a href="#"><img src="images/thumbnailslide-1.jpg" alt=" " /></a></li>
-                                        <li><a href="#"><img src="images/thumbnailslide-2.jpg" alt=" " /></a></li>
-                                        <li><a href="#"><img src="images/thumbnailslide-3.jpg" alt=" " /></a></li>
-                                        <li><a href="#"><img src="images/thumbnailslide-4.jpg" alt=" " /></a></li>
-                                        <li><a href="#"><img src="images/thumbnailslide-5.jpg" alt=" " /></a></li>
-                                        <li><a href="#"><img src="images/thumbnailslide-6.jpg" alt=" " /></a></li>
-                                    </ul>*@
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="desc span_3_of_2">
-                    <h2>@Model.Title </h2>
-                    <p>@Model.Description</p>
-                    <div class="price">
-                        <p>Giá: <span>@Model.Price</span></p>
-                    </div>
-                    <div class="share-desc">
-                        @*<div class="share">
-                                <p>Chia sẻ :</p>
-                                <ul>
-                                    <li><a href="#"><img src="images/facebook.png" alt="" /></a></li>
-                                    <li><a href="#"><img src="images/twitter.png" alt="" /></a></li>
-                                </ul>
-                            </div>*@
-                        <div class="button"><span><a href="#">Thêm vào giỏ</a></span></div>
-                        <div class="clear"></div>
-                    </div>
-                    @*<div class="wish-list">
-                            <ul>
-                                <li class="wish"><a href="#">Thêm vào yêu thích</a></li>
-                                <li class="compare"><a href="#">So sánh</a></li>
-                            </ul>
-                        </div>*@
-                </div>
-                <div class="clear"></div>
-            </div>
-            <div class="product_desc">
-                <div id="horizontalTab">
-                    <ul class="resp-tabs-list">
-                        <li>Chi tiết</li>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-                        <div class="clear"></div>
-                    </ul>
-                    <div class="resp-tabs-container">
-                        <div class="product-desc">
-                            @Html.Raw(Model.Description)
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <script type="text/javascript">$(document).ready(function () {
-                        $('#horizontalTab').easyResponsiveTabs({
-                            type: 'default', //Types: default, vertical, accordion
-                            width: 'auto', //auto or any width like 600px
-                            fit: true   // 100% fit in a container
-                        });
-                    });</script>
-            <div class="content_bottom">
-                <div class="heading">
-                    <h3>Sản phẩm liên quan</h3>
-                </div>
-                <div class="see">
-                    <p><a href="/san-pham">Xem tất cả</a></p>
-                </div>
-                <div class="clear"></div>
-            </div>
-            <div class="section group">
-                @foreach (var item in relatedProducts)
-                {
-                    var url = "/chi-tiet/" + item.Title + "-" + item.Book_Id;
-                    <div class="grid_1_of_4 images_1_of_4">
-                        <a href="@url"><img src="@item.Image" alt=""></a>
-                        <div class="price" style="border:none">
-                            <div class="add-cart" style="float:none">
-                                <h4><a href="@url">Add to Cart</a></h4>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                    </div>
-                }
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-            </div>
-        </div>
-        <div class="rightsidebar span_3_of_1">
-            @{ Html.RenderAction("ProductCategory", "Product");}
-            <div class="subscribe">
-                <h2>Newsletters Signup</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.......</p>
-                <div class="signup">
-                    <form>
-                        <input type="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';"><input type="submit" value="Sign up">
-                    </form>
-                </div>
-            </div>
-            <div class="community-poll">
-                <h2>Community POll</h2>
-                <p>What is the main reason for you to purchase products online?</p>
-                <div class="poll">
-                    <form>
-                        <ul>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="1">
-                                <span class="label"><label>More convenient shipping and delivery </label></span>
-                            </li>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="2">
-                                <span class="label"><label for="vote_2">Lower price</label></span>
-                            </li>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="3">
-                                <span class="label"><label for="vote_3">Bigger choice</label></span>
-                            </li>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="5">
-                                <span class="label"><label for="vote_5">Payments security </label></span>
-                            </li>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="6">
-                                <span class="label"><label for="vote_6">30-day Money Back Guarantee </label></span>
-                            </li>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="7">
-                                <span class="label"><label for="vote_7">Other.</label></span>
-                            </li>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>eCommerce Product Detail</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+
+                        <div class="preview-pic tab-content">
+                            <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/400/252" /></div>
+                            <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
+                            <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
+                            <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
+                            <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+                        </div>
+                        <ul class="preview-thumbnail nav nav-tabs">
+                            <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+                            <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+                            <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+                            <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+                            <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
                         </ul>
-                    </form>
+
+                    </div>
+                    <div class="details col-md-6">
+                        <h3 class="product-title">men's shoes fashion</h3>
+                        <div class="rating">
+                            <div class="stars">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                            <span class="review-no">41 reviews</span>
+                        </div>
+                        <p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
+                        <h4 class="price">current price: <span>$180</span></h4>
+                        <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+                        <h5 class="sizes">
+                            sizes:
+                            <span class="size" data-toggle="tooltip" title="small">s</span>
+                            <span class="size" data-toggle="tooltip" title="medium">m</span>
+                            <span class="size" data-toggle="tooltip" title="large">l</span>
+                            <span class="size" data-toggle="tooltip" title="xtra large">xl</span>
+                        </h5>
+                        <h5 class="colors">
+                            colors:
+                            <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+                            <span class="color green"></span>
+                            <span class="color blue"></span>
+                        </h5>
+                        <div class="action">
+                            <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+                            <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</body>
+</html>
+
