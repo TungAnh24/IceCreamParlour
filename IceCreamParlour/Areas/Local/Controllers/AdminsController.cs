@@ -123,7 +123,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
             {
                 return HttpNotFound();
             }
-
+            admin.ConfirmPassword = admin.Password;
             admin.IsDelete = 1;
             if (admin != null)
             {

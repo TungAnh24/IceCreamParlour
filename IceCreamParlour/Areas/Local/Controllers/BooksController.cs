@@ -59,6 +59,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
                     var bp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/BookImages"), bn);
                     fileUpload.SaveAs(bp);
                 }
+                book.IsDelete = 0;
                 db.Books.Add(book);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -98,6 +99,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
                     var bp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/BookImages"), bn);
                     fileEdit.SaveAs(bp);
                 }
+                book.IsDelete = 0;
                 db.Entry(book).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

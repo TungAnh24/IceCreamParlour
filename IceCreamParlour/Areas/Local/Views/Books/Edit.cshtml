@@ -95,7 +95,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("IsActive", new List<SelectListItem>
+                   {
+                       new SelectListItem{Text="Active",Value="0"},
+                       new SelectListItem{Text="Not Active",Value="1"},
+                   }, "SelectActive")
                 @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
             </div>
         </div>

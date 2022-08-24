@@ -29,5 +29,62 @@ namespace IceCreamParlour.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Recipe> Recipes { get; set; }
+
+        public int limit = 15;
+        public int imageLimit = 10;
+
+        [Display(Name = "Ingredients")]
+        public string NameTrimmed
+        {
+            get
+            {
+                if (this.Flavor_Name.Length > this.limit)
+                    return this.Flavor_Name.Substring(0, this.limit) + "...";
+                else
+                    return this.Flavor_Name;
+            }
+        }
+
+        [Display(Name = "Ingredients")]
+        public string InTrimmed
+        {
+            get
+            {
+                if (this.Ingredients.Length > this.limit)
+                    return this.Ingredients.Substring(0, this.limit) + "...";
+                else
+                    return this.Ingredients;
+            }
+        }
+
+        [Display(Name = "MakingProcess")]
+        public string MkTrimmed
+        {
+            get
+            {
+                if (this.MakingProcess.Length > this.limit) return this.MakingProcess.Substring(0, this.limit) + "...";
+                else return this.MakingProcess;
+            }
+        }
+
+        [Display(Name = "Description")]
+        public string DesTrimmed
+        {
+            get
+            {
+                if (this.Description.Length > this.limit) return this.Description.Substring(0, this.limit) + "...";
+                else return this.Description;
+            }
+        }
+
+        [Display(Name = "Image")]
+        public string ImageTrimmed
+        {
+            get
+            {
+                if (this.Image.Length > this.imageLimit) return this.Image.Substring(0, this.imageLimit) + "...";
+                else return this.Image;
+            }
+        }
     }
 }
