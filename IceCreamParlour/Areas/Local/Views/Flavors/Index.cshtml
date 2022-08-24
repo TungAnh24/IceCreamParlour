@@ -1,4 +1,6 @@
-﻿@model IEnumerable<IceCreamParlour.Models.Flavor>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<IceCreamParlour.Models.Flavor>
 
 @{
     ViewBag.Title = "Index";
@@ -10,25 +12,37 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm("Index", "Flavors", FormMethod.Get))
+{
+    <p>
+        Search by Name: @Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "form-control" })
+        <input type="submit" value="Find" />
+    </p>
+}
 <center>
-    <input type="text" id="txtSearch" placeholder="Enter Flavor Name..." />
+    <input type="text" id="txtSearch" placeholder="Enter Flavor Name..." class="txtSearch" />
     <hr />
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Flavor_Name)
+                @*@Html.DisplayNameFor(model => model.Flavor_Name)*@
+                @Html.ActionLink("Flavor_Name", "Index", new { Sort_Order = ViewBag.SortName })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ingredients)
+                @*@Html.DisplayNameFor(model => model.Ingredients)*@
+                @Html.ActionLink("Ingredients", "Index", new { Sort_Order = ViewBag.SortIn })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MakingProcess)
+                @Html.DisplayNameFor(model => model.First().MakingProcess)
+                @*MakingProcess*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.First().Description)
+                @*Description*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Image)
+                @Html.DisplayNameFor(model => model.First().Image)
+                @*Image*@
             </th>
             <th></th>
         </tr>
@@ -79,3 +93,5 @@
         });
     </script>
 </center>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index", new { Page_No, Sort_Order = ViewBag.CurrentSort }))

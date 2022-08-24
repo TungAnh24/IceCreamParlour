@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 using System.Web.UI.WebControls;
 using IceCreamParlour.Models;
+using PagedList;
 
 namespace IceCreamParlour.Areas.Local.Controllers
 {
@@ -15,11 +18,103 @@ namespace IceCreamParlour.Areas.Local.Controllers
     {
         private DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
 
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
+
         // GET: Local/Flavors
-        public ActionResult Index()
+        public ActionResult Index(string Sort_Order, string Search_Data, int? Page_No)
         {
-            return View(db.Flavors.ToList());
+            ViewBag.CurrentSort = Sort_Order;
+            ViewBag.SortName = String.IsNullOrEmpty(Sort_Order) ? "Flavor_Name_desc" : "";
+            ViewBag.SortIn = Sort_Order == "Ingredients" ? "Ingredients_desc" : "Ingredients";
+            var flavors = from f in db.Flavors select f;
+            switch (Sort_Order)
+            {
+                case "Flavor_Name_desc":
+                    flavors = flavors.OrderByDescending(f => f.Flavor_Name);
+                    break;
+                case "Ingredients":
+                    flavors = flavors.OrderBy(f => f.Ingredients);
+                    break;
+                case "Ingredients_desc":
+                    flavors = flavors.OrderByDescending(f => f.Ingredients);
+                    break;
+                default:
+                    flavors = flavors.OrderBy(f => f.Flavor_Name);
+                    break;
+            }
+            var fla = flavors.Include(r => r.Recipes).Where(f => f.Flavor_Name.Contains(Search_Data) || Search_Data == null).ToList().ToPagedList(Page_No ?? 1, 5);
+            return View(fla);
         }
+        //public int pageSize = 2;
+        //public ActionResult Index(string txtSearch, int? page)
+        //{
+
+        //    var data = (from s in db.Flavors select s);
+        //    if (!String.IsNullOrEmpty(txtSearch))
+        //    {
+        //        ViewBag.txtSearch = txtSearch;
+        //        data = data.Where(s => s.Flavor_Name.Contains(txtSearch));
+        //    }
+
+        //    if (page > 0)
+        //    {
+        //        page = page;
+        //    }
+        //    else
+        //    {
+        //        page = 1;
+        //    }
+        //    int start = (int)(page - 1) * pageSize;
+
+        //    ViewBag.pageCurrent = page;
+        //    int totalPage = data.Count();
+        //    float totalNumsize = (totalPage / (float)pageSize);
+        //    int numSize = (int)Math.Ceiling(totalNumsize);
+        //    ViewBag.numSize = numSize;
+        //    ViewBag.posts = data.OrderByDescending(x => x.Flavor_Id).Skip(start).Take(pageSize);
+        //    return View();
+        //}
+
+        //public ActionResult Lists()
+        //{
+        //    return View();
+        //}
+
+        //[HttpGet]
+        //public JsonResult getAllPost(string txtSearch, int? page)
+        //{
+        //    var data = (from s in db.Flavors select s);
+        //    if (!String.IsNullOrEmpty(txtSearch))
+        //    {
+        //        ViewBag.txtSearch = txtSearch;
+        //        data = data.Where(s => s.Flavor_Name.Contains(txtSearch));
+        //    }
+
+        //    if (page > 0)
+        //    {
+        //        page = page;
+        //    }
+        //    else
+        //    {
+        //        page = 1;
+        //    }
+        //    int start = (int)(page - 1) * pageSize;
+
+        //    ViewBag.pageCurrent = page;
+        //    int totalPage = data.Count();
+        //    float totalNumsize = (totalPage / (float)pageSize);
+        //    int numSize = (int)Math.Ceiling(totalNumsize);
+        //    ViewBag.numSize = numSize;
+        //    var dataPost = data.OrderByDescending(x => x.Flavor_Id).Skip(start).Take(pageSize);
+        //    List<Flavor> listPost = new List<Flavor>();
+        //    listPost = dataPost.ToList();
+        //    // return Json(listPost);
+        //    return Json(new { data = listPost, pageCurrent = page, numSize = numSize }, JsonRequestBehavior.AllowGet);
+        //}
+
 
         // GET: Local/Flavors/Details/5
         public ActionResult Details(int? id)
