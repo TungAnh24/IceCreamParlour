@@ -11,29 +11,15 @@ namespace IceCreamParlour.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Feedback
     {
         public int Feedback_Id { get; set; }
-
-        [Required]
-        [StringLength(100)]
         public string Feedback_Detail { get; set; }
         public Nullable<int> User_Id { get; set; }
-
-        [Required]
-        [StringLength(100)]
         public string Name { get; set; }
         public System.DateTime Date { get; set; }
-
-        [Required]
-        [StringLength(1000)]
         public string Contact { get; set; }
-
-        [Required]
-        [StringLength(100)]
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}")]
         public string Email { get; set; }
     
         public virtual User User { get; set; }

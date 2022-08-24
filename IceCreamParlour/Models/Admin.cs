@@ -11,9 +11,7 @@ namespace IceCreamParlour.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Admin
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,28 +19,16 @@ namespace IceCreamParlour.Models
         {
             this.Recipes = new HashSet<Recipe>();
         }
-
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+    
         public long Admin_Id { get; set; }
-        [Required]
-        [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
-        [Required]
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}")]
         public string Email { get; set; }
         public Nullable<int> Roles { get; set; }
-        [Required]
         public string Password { get; set; }
         public Nullable<int> IsActive { get; set; }
         public Nullable<int> IsDelete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Recipe> Recipes { get; set; }
-
-        [NotMapped]
-        [Required]
-        [System.ComponentModel.DataAnnotations.Compare("Password")]
-        public string ConfirmPassword { get; set; }
-
     }
 }
