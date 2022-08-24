@@ -1513,6 +1513,7 @@
     <Content Include="Content\Login\js\owl.carousel.min.js" />
     <Content Include="Content\Login\js\popper.min.js" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Recipes\css\background.css" />
     <Content Include="Content\Recipes\css\bootstrap-icons.css" />
     <Content Include="Content\Recipes\css\bootstrap.min.css" />
     <Content Include="Content\Recipes\css\tooplate-crispy-kitchen.css" />
@@ -1914,11 +1915,13 @@
     <Content Include="Areas\Local\Views\LoginAdmin\ChangePass.cshtml" />
     <Content Include="Content\Recipes\fonts\bootstrap-icons.woff" />
     <Content Include="Content\Recipes\fonts\bootstrap-icons.woff2" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery-3.6.0.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.6.0.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -1973,8 +1976,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

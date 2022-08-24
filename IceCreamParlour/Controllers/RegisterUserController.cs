@@ -15,13 +15,8 @@ namespace IceCreamParlour.Controllers
 
         public ActionResult Index()
         {
-            var lstCategory = db.Books.ToList();
-
-            Book book = new Book();
-
-
-
-            return View(book);
+       
+            return null;
         }
         // GET: RegisterUser
 
@@ -48,7 +43,7 @@ namespace IceCreamParlour.Controllers
                     _user.JoinDate = DateTime.Now;
                     _user.IsActive = 0;
                     _user.IsDelete = 1;
-
+                    
                     db.Configuration.ValidateOnSaveEnabled = false;
                     db.Users.Add(_user);
                     var Result = db.SaveChanges();

@@ -8,4 +8,6 @@
         $(".navbar-collapse").collapse('hide');
     });
     
-  })(window.jQuery);
+  
+})(window.jQuery);
+

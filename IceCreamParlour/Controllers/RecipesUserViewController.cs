@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using IceCreamParlour.Models;
-using PagedList;
+
 
 namespace IceCreamParlour.Controllers
 {
@@ -19,11 +19,14 @@ namespace IceCreamParlour.Controllers
 
 
         // GET: RecipesUserView
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var recipes = db.Recipes.ToList();
             return View(recipes);
+
+
         }
+
 
         // GET: RecipesUserView/Details/5
         public ActionResult Details(int? id)
