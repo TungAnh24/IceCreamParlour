@@ -6,7 +6,7 @@
 
 }
 
-@if (Session["FullName"] != null)
+@if (Session["FullName"] !=null)
 {
 
 <html lang="en">
@@ -97,7 +97,8 @@
                         <option value="" disabled selected>Choose your flavor</option>
                         @foreach (var item in Model)
                         {
-                            <option value=@item>    @Html.DisplayFor(modelItem => item.Flavor.Flavor_Name)</option>
+                            <option value=@item>    
+                            @Html.DisplayFor(modelItem => item.Flavor.Flavor_Name)</option>
                         }
 
                         @*<option selected="selected" value="1">The Godfather</option>

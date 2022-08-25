@@ -1925,6 +1925,22 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Book\Create.cshtml" />
+    <Content Include="Views\Book\Delete.cshtml" />
+    <Content Include="Views\Book\Details.cshtml" />
+    <Content Include="Views\Book\Edit.cshtml" />
+    <Content Include="Views\Book\Index.cshtml" />
+    <Content Include="Views\CustomerFeedBack\Create.cshtml" />
+    <Content Include="Views\CustomerFeedBack\Index.cshtml" />
+    <Content Include="Views\RecipesUserView\Details.cshtml" />
+    <Content Include="Views\RecipesUserView\Index.cshtml" />
+    <Content Include="Views\RegisterUser\AfterSignup.cshtml" />
+    <Content Include="Views\RegisterUser\Errorpage.cshtml" />
+    <Content Include="Views\RegisterUser\Index.cshtml" />
+    <Content Include="Views\RegisterUser\Login.cshtml" />
+    <Content Include="Views\RegisterUser\Register.cshtml" />
+    <Content Include="Views\RegisterUser\UserPannel.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
