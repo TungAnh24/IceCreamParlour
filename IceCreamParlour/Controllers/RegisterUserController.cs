@@ -46,6 +46,19 @@ namespace IceCreamParlour.Controllers
                     
                     db.Configuration.ValidateOnSaveEnabled = false;
                     db.Users.Add(_user);
+                    var sub = db.Subscriptions.Where(x => x.Subscription_Id == _user.UserType).FirstOrDefault();
+                    if (sub != null)
+                    {
+                        var subPayment = new Subscription_Payment()
+                        {
+                            User_Id = _user.User_Id,
+                            Date = DateTime.Now,
+                            Subscription_Id = sub.Subscription_Id,
+                            Subscription = sub,
+                            User = _user
+                        };
+                        db.Subscription_Payment.Add(subPayment);
+                    }
                     var Result = db.SaveChanges();
                     if(Result > 0)
                     {

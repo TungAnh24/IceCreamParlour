@@ -122,8 +122,8 @@
                                 @Html.LabelFor(m => m.UserType)
                                 @Html.DropDownList("UserType", new List<SelectListItem>
                            {
-                               new SelectListItem{Text="Monthly",Value="0"},
-                               new SelectListItem{Text="Yearly",Value="1"},
+                               new SelectListItem{Text="Monthly",Value="1"},
+                               new SelectListItem{Text="Yearly",Value="2"},
                            }, "SelectRoles")
                                 @Html.ValidationMessageFor(m => m.UserType, "", new { @class = "badge badge-danger" })
 
