@@ -32,6 +32,7 @@ namespace IceCreamParlour.Models
         public virtual ICollection<Recipe> Recipes { get; set; }
 
         public int limit = 15;
+        public int imageLimit = 10;
 
         [Display(Name = "Ingredients")]
         public string NameTrimmed
@@ -82,7 +83,7 @@ namespace IceCreamParlour.Models
         {
             get
             {
-                if (this.Image.Length > this.limit) return this.Image.Substring(0, this.limit) + "...";
+                if (this.Image.Length > this.imageLimit) return this.Image.Substring(0, this.imageLimit) + "...";
                 else return this.Image;
             }
         }

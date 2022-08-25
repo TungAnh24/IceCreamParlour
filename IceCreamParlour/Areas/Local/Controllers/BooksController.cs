@@ -19,7 +19,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
         // GET: Local/Books
         public ActionResult Index()
         {
-            return View(db.Books.ToList());
+            return View(db.Books.Where(b=>b.IsDelete==0).ToList());
         }
 
         // GET: Local/Books/Details/5
@@ -59,6 +59,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
                     var bp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/BookImages"), bn);
                     fileUpload.SaveAs(bp);
                 }
+                book.IsDelete = 0;
                 db.Books.Add(book);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -98,6 +99,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
                     var bp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/BookImages"), bn);
                     fileEdit.SaveAs(bp);
                 }
+                book.IsDelete = 0;
                 db.Entry(book).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -106,6 +108,8 @@ namespace IceCreamParlour.Areas.Local.Controllers
         }
 
         // GET: Local/Books/Delete/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -117,19 +121,32 @@ namespace IceCreamParlour.Areas.Local.Controllers
             {
                 return HttpNotFound();
             }
+            book.IsDelete = 1;
+            if (book != null)
+            {
+                /*db.Entry(book).State = EntityState.Modified;*/
+                RedirectToAction("Index");
+            }
+            db.SaveChanges();
             return View(book);
         }
 
         // POST: Local/Books/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Book book = db.Books.Find(id);
-            db.Books.Remove(book);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Book book = db.Books.Find(id);
+        //    //db.Books.Remove(book);
+        //    book.IsDelete = 1;
+        //    if (book != null)
+        //    {
+        //        /*db.Entry(book).State = EntityState.Modified;*/
+        //        RedirectToAction("Index");
+        //    }
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
