@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using IceCreamParlour.Models;
+using PagedList;
 
 namespace IceCreamParlour.Areas.Local.Controllers
 {
@@ -15,9 +16,27 @@ namespace IceCreamParlour.Areas.Local.Controllers
         private DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
 
         // GET: Local/Users
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    return View(db.Users.ToList());
+        //}
+
+        public ActionResult Index(string Sort_Order, string Search_Data, int? Page_No)
         {
-            return View(db.Users.ToList());
+            ViewBag.CurrentSort = Sort_Order;
+            ViewBag.SortName = String.IsNullOrEmpty(Sort_Order) ? "Name_desc" : "";
+            var users = from u in db.Users select u;
+            switch (Sort_Order)
+            {
+                case "Name_desc":
+                    users = users.OrderByDescending(u => u.Name);
+                    break;
+                default:
+                    users = users.OrderBy(u => u.Name);
+                    break;
+            }
+            var use = users.Where(u=>u.IsDelete==0 && (u.Name.Contains(Search_Data) || Search_Data == null)).ToList().ToPagedList(Page_No ?? 1, 5);
+            return View(use);
         }
 
         // GET: Local/Users/Details/5
@@ -101,19 +120,25 @@ namespace IceCreamParlour.Areas.Local.Controllers
             {
                 return HttpNotFound();
             }
+            user.IsDelete = 1;
+            if(user != null)
+            {
+                RedirectToAction("Index");
+            }
+            db.SaveChanges();
             return View(user);
         }
 
         // POST: Local/Users/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    User user = db.Users.Find(id);
+        //    db.Users.Remove(user);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {

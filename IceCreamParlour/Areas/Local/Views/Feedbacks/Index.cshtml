@@ -1,4 +1,6 @@
-﻿@model IEnumerable<IceCreamParlour.Models.Feedback>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<IceCreamParlour.Models.Feedback>
 
 @{
     ViewBag.Title = "Index";
@@ -6,26 +8,34 @@
 }
 
 <h2>Customer Feedback</h2>
-
+@using (Html.BeginForm("Index", "Feedbacks", FormMethod.Get))
+{
+    <p>
+        <br />
+        Search by Name:
+        @Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "form-control", @placeholder = "Enter Feedback Detail..." })
+        <input type="submit" class="btn btn-outline-google" value="Find" />
+    </p>
+}
 <center>
     <input type="text" id="txtSearch" placeholder="Enter Feedback Detail..." />
     <hr />
-    <table class="table">
+    <table class="table table-striped table-bordered">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Feedback_Detail)
+                @Html.ActionLink("Feedback_Detail", "Index", new { Sort_Order = ViewBag.SortName })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.First().Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                @Html.DisplayNameFor(model => model.First().Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Contact)
+                @Html.DisplayNameFor(model => model.First().Contact)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.First().Email)
             </th>
             @*<th>
                     @Html.DisplayNameFor(model => model.User.Name)
@@ -37,28 +47,29 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Feedback_Detail)
+                    @Html.DisplayFor(modelItem => item.FdTrimmed)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.NameTrimmed)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Contact)
+                    @Html.DisplayFor(modelItem => item.ctTrimmed)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Email)
+                    @Html.DisplayFor(modelItem => item.EmailTrimmed)
                 </td>
                 @*<td>
                         @Html.DisplayFor(modelItem => item.User.Name)
                     </td>*@
                 <td>
-                    @*@Html.ActionLink("Edit", "Edit", new { id=item.Feedback_Id }) |*@
-                    @Html.ActionLink("Details", "Details", new { id = item.Feedback_Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Feedback_Id },
-                    new { onclick = "return confirm('Are you sure you wish to delete this feedback?');" })
+                    @*<a href="@Url.Action("Edit", "Feedbacks", new { id = item.Feedback_id })" class="btn btn-inverse-warning">Edit</a>*@
+                    <a href="@Url.Action("Details", "Feedbacks", new { id = item.Feedback_Id })" class="btn btn-inverse-secondary">Details</a>
+                    @*<a href="@Url.Action("Delete", "Feedbacks", new { id = item.Feedback_Id })" class="btn btn-inverse-danger" onclick="return confirm('Are you sure you wish to delete this feedback?');">
+                        Delete
+                    </a>*@
                 </td>
             </tr>
         }
@@ -81,3 +92,5 @@
         });
     </script>
 </center>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index", new { Page_No, Sort_Order = ViewBag.CurrentSort }))

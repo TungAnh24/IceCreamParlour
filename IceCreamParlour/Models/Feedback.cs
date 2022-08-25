@@ -23,5 +23,47 @@ namespace IceCreamParlour.Models
         public string Email { get; set; }
     
         public virtual User User { get; set; }
+
+        public int limit = 15;
+
+        [Display(Name = "Feedback_Detail")]
+        public string FdTrimmed
+        {
+            get
+            {
+                if (this.Feedback_Detail.Length > this.limit) return this.Feedback_Detail.Substring(0, this.limit) + "...";
+                else return this.Feedback_Detail;
+            }
+        }
+
+        [Display(Name = "Name")]
+        public string NameTrimmed
+        {
+            get
+            {
+                if (this.Name.Length > this.limit) return this.Name.Substring(0, this.limit) + "...";
+                else return this.Name;
+            }
+        }
+
+        [Display(Name = "Contact")]
+        public string ctTrimmed
+        {
+            get
+            {
+                if (this.Contact.Length > this.limit) return this.Contact.Substring(0, this.limit) + "...";
+                else return this.Contact;
+            }
+        }
+
+        [Display(Name = "Email")]
+        public string EmailTrimmed
+        {
+            get
+            {
+                if (this.Email.Length > this.limit) return this.Email.Substring(0, this.limit) + "...";
+                else return this.Email;
+            }
+        }
     }
 }

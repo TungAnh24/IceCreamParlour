@@ -1,4 +1,6 @@
-﻿@model IEnumerable<IceCreamParlour.Models.User>
+﻿@using PagedList
+@using PagedList.Mvc;
+@model IPagedList<IceCreamParlour.Models.User>
 
 @{
     ViewBag.Title = "Index";
@@ -7,23 +9,30 @@
 
 <h2>Customer Account</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+@using (Html.BeginForm("Index", "Users", FormMethod.Get))
+{
+    <p>
+        <br />
+        Search by Customer's Name':
+        @Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "form-control", @placeholder = "Enter Customer's Name..." })
+        <input type="submit" class="btn btn-outline-google" value="Find" />
+    </p>
+}
 <center>
     <input type="text" id="txtSearch" placeholder="Enter Customer Name..." />
     <hr />
-    <table class="table">
+    <table class="table table-striped table-bordered">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.ActionLink("Name", "Index", new { Sort_Order = ViewBag.SortName })
             </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.Contact)*@
                 Phone
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.First().Email)
             </th>
             @*<th>
                     @Html.DisplayNameFor(model => model.Address)
@@ -32,16 +41,16 @@
                     @Html.DisplayNameFor(model => model.Password)
                 </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.UserType)
+                @Html.DisplayNameFor(model => model.First().UserType)
             </th>
             @*<th>
                     @Html.DisplayNameFor(model => model.Card_No)
                 </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.JoinDate)
+                @Html.DisplayNameFor(model => model.First().JoinDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsActive)
+                @Html.DisplayNameFor(model => model.First().IsActive)
             </th>
             @*<th>
                     @Html.DisplayNameFor(model => model.IsDelete)
@@ -83,9 +92,11 @@
                         @Html.DisplayFor(modelItem => item.IsDelete)
                     </td>*@
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.User_Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.User_Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.User_Id })
+                    @*<a href="@Url.Action("Edit", "Admins", new { id = item.Admin_Id })" class="btn btn-inverse-warning">Edit</a>*@
+                    <a href="@Url.Action("Details", "Users", new { id = item.User_Id})" class="btn btn-inverse-secondary">Details</a>
+                    <a href="@Url.Action("Delete", "Users", new { id = item.User_Id})" class="btn btn-inverse-danger" onclick="return confirm('Are you sure you wish to delete this user?');">
+                        Delete
+                    </a>
                 </td>
             </tr>
         }
@@ -108,3 +119,5 @@
         });
     </script>
 </center>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index", new { Page_No, Sort_Order = ViewBag.CurrentSort }))
