@@ -11,7 +11,8 @@ namespace IceCreamParlour.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -40,5 +41,17 @@ namespace IceCreamParlour.Models
         public virtual ICollection<Order> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subscription_Payment> Subscription_Payment { get; set; }
+
+        public int limit = 15;
+
+        [Display(Name = "Email")]
+        public string EmailTrimmed
+        {
+            get
+            {
+                if (this.Email.Length > this.limit) return this.Email.Substring(0, this.limit) + "...";
+                else return this.Email;
+            }
+        }
     }
 }
