@@ -66,7 +66,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.AdminCreate_Id = new SelectList(db.Admins, "Admin_Id", "Name", recipe.AdminCreate_Id);
+            ViewBag.AdminCreate_Id = new SelectList(db.Admins, "Admin_Id", "Name", recipe.AdminCreate_Id);
             ViewBag.Flavor_Id = new SelectList(db.Flavors, "Flavor_Id", "Flavor_Name", recipe.Flavor_Id);
 
             return View(recipe);
