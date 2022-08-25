@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using IceCreamParlour.Models;
+using PagedList;
 
 namespace IceCreamParlour.Areas.Local.Controllers
 {
@@ -17,9 +18,34 @@ namespace IceCreamParlour.Areas.Local.Controllers
         private DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
 
         // GET: Local/Books
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    return View(db.Books.Where(b=>b.IsDelete==0).ToList());
+        //}
+
+        public ActionResult Index(string Sort_Order, string Search_Data, int? Page_No)
         {
-            return View(db.Books.Where(b=>b.IsDelete==0).ToList());
+            ViewBag.CurrentSort = Sort_Order;
+            ViewBag.SortName = String.IsNullOrEmpty(Sort_Order) ? "Title_desc" : "";
+            ViewBag.SortDes = Sort_Order == "Description" ? "Description_desc" : "Description";
+            var books = from b in db.Books select b;
+            switch (Sort_Order)
+            {
+                case "Title_desc":
+                    books = books.OrderByDescending(b=>b.Title);
+                    break;
+                case "Description":
+                    books = books.OrderBy(b => b.Description);
+                    break;
+                case "Description_desc":
+                    books = books.OrderByDescending(b => b.Description);
+                    break;
+                default:
+                    books = books.OrderBy(b=>b.Title);
+                    break;
+            }
+            var boo = books.Where(b=>b.IsDelete==0 && (b.Title.Contains(Search_Data) || b.Author.Contains(Search_Data) || Search_Data == null)).ToList().ToPagedList(Page_No ?? 1, 5);
+            return View(boo);
         }
 
         // GET: Local/Books/Details/5

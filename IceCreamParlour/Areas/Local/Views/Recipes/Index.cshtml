@@ -1,4 +1,6 @@
-﻿@model IEnumerable<IceCreamParlour.Models.Recipe>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<IceCreamParlour.Models.Recipe>
 
 @{
     ViewBag.Title = "Index";
@@ -8,25 +10,36 @@
 <h2>Recipe</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create", "Recipes")" class="btn btn-outline-reddit">Add Recipes</a>
 </p>
+
+@using (Html.BeginForm("Index", "Recipes", FormMethod.Get))
+{
+    <p>
+        <br />
+        Search by Recipe's Name or Flavor:
+        @Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "form-control", @placeholder = "Enter recipe's name or Flavor..." })
+        <input type="submit" class="btn btn-outline-google" value="Find" />
+    </p>
+}
 
 <center>
     <input type="text" id="txtSearch" placeholder="Enter Recipe Name..." />
     <hr />
-    <table class="table">
+    <table class="table table-striped table-bordered">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Recipe_Name)
+                @*@Html.DisplayNameFor(model => model.Recipe_Name)*@
+                @Html.ActionLink("Recipe_Name", "Index", new { Sort_Order = ViewBag.SortName })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImageTrimmed)
+                @Html.DisplayNameFor(model => model.First().ImageTrimmed)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ingredients)
+                @Html.DisplayNameFor(model => model.First().Ingredients)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MakingProcess)
+                @Html.DisplayNameFor(model => model.First().MakingProcess)
             </th>
             @*<th>
                     @Html.DisplayNameFor(model => model.Publist_Date)
@@ -41,7 +54,7 @@
                     @Html.DisplayNameFor(model => model.Admin.Name)
                 </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.Flavor.Flavor_Name)
+                @Html.DisplayNameFor(model => model.First().Flavor.Flavor_Name)
             </th>
             <th></th>
         </tr>
@@ -53,7 +66,6 @@
                     @Html.DisplayFor(modelItem => item.NameTrimmed)
                 </td>
                 <td>
-                    @*@Html.DisplayFor(modelItem => item.Image)*@
                     <img src="~/Areas/Local/RecipeImages/@Url.Content(item.Image)" style="height:50px;width:50px;" />
                 </td>
                 <td>
@@ -78,10 +90,11 @@
                     @Html.DisplayFor(modelItem => item.Flavor.Flavor_Name)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Recipe_Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Recipe_Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Recipe_Id },
-                    new { onclick = "return confirm('Are you sure you wish to delete this feedback?');" })
+                    <a href="@Url.Action("Edit", "Recipes", new { id = item.Recipe_Id })" class="btn btn-inverse-warning">Edit</a>
+                    <a href="@Url.Action("Details", "Recipes", new { id = item.Recipe_Id})" class="btn btn-inverse-secondary">Details</a>
+                    <a href="@Url.Action("Delete", "Recipes", new { id = item.Recipe_Id})" class="btn btn-inverse-danger" onclick="return confirm('Are you sure you wish to delete this recipe?');">
+                        Delete
+                    </a>
                 </td>
             </tr>
         }
@@ -104,3 +117,5 @@
         });
     </script>
 </center>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index", new { Page_No, Sort_Order = ViewBag.CurrentSort }))

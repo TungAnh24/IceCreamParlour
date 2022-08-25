@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using IceCreamParlour.Models;
+using PagedList;
 
 namespace IceCreamParlour.Areas.Local.Controllers
 {
@@ -16,10 +17,29 @@ namespace IceCreamParlour.Areas.Local.Controllers
         private DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
 
         // GET: Local/Recipes
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var recipes = db.Recipes.Include(r => r.Admin).Include(r => r.Flavor);
+        //    return View(recipes.ToList());
+        //}
+
+        public ActionResult Index(string Sort_Order, string Search_Data, int? Page_No)
         {
-            var recipes = db.Recipes.Include(r => r.Admin).Include(r => r.Flavor);
-            return View(recipes.ToList());
+            ViewBag.CurrentSort = Sort_Order;
+            ViewBag.SortName = String.IsNullOrEmpty(Sort_Order) ? "Recipe_Name_desc" : "";
+            var recipes = from r in db.Recipes select r;
+            switch (Sort_Order)
+            {
+                case "Recipe_Name_desc":
+                    recipes = recipes.OrderByDescending(r => r.Recipe_Name);
+                    break;
+                default:
+                    recipes = recipes.OrderBy(r => r.Recipe_Name);
+                    break;
+            }
+            var rep = recipes.Include(r => r.Admin).Include(r => r.Flavor)
+                .Where(r => r.Recipe_Name.Contains(Search_Data) || r.Flavor.Flavor_Name.Contains(Search_Data) || Search_Data == null).ToList().ToPagedList(Page_No ?? 1, 5);
+            return View(rep);
         }
 
         // GET: Local/Recipes/Details/5

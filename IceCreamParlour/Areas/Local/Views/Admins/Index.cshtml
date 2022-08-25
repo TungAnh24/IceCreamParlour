@@ -1,4 +1,6 @@
-﻿@model IEnumerable<IceCreamParlour.Models.Admin>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<IceCreamParlour.Models.Admin>
 
 @{
     ViewBag.Title = "Index";
@@ -8,31 +10,41 @@
 <h2>Admin</h2>
 
 <p>
-    @Html.ActionLink("Register", "Register","LoginAdmin")
+    <a href="@Url.Action("Register", "LoginAdmin")" class="btn btn-outline-reddit">Register Admin</a>
 </p>
+@using (Html.BeginForm("Index", "Admind", FormMethod.Get))
+{
+    <p>
+        <br />
+        Search by Admin's Name:
+        @Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "form-control", @placeholder = "Enter Admin's Name..." })
+        <input type="submit" class="btn btn-outline-google" value="Find" />
+    </p>
+}
 <center>
     <input type="text" id="txtSearch" placeholder="Enter Admin Name..." />
     <hr />
-    <table class="table">
+    <table class="table table-bordered table-striped" >
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @*@Html.DisplayNameFor(model => model.Name)*@
+                @Html.ActionLink("Name", "Index", new { Sort_Order = ViewBag.SortName })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.First().Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Roles)
+                @Html.DisplayNameFor(model => model.First().Roles)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Password)
+                @Html.DisplayNameFor(model => model.First().Password)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsDelete)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsDelete)
+                </th>*@
             <th></th>
         </tr>
 
@@ -60,16 +72,17 @@
                     @Html.DisplayFor(modelItem => item.Password)
                 </td>
                 @*<td>
-                    @Html.DisplayFor(modelItem => item.IsActive)
-                </td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsDelete)
+                    </td>*@
                 <td>
-                    @Html.DisplayFor(modelItem => item.IsDelete)
-                </td>*@
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Admin_Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Admin_Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Admin_Id },
-                    new { onclick = "return confirm('Are you sure you wish to delete this admin?');" })
+                    @*<a href="@Url.Action("Edit", "Admins", new { id = item.Admin_Id })" class="btn btn-inverse-warning">Edit</a>*@
+                    <a href="@Url.Action("Details", "Admins", new { id = item.Admin_Id})" class="btn btn-inverse-secondary">Details</a>
+                    <a href="@Url.Action("Delete", "Admins", new { id = item.Admin_Id})" class="btn btn-inverse-danger" onclick="return confirm('Are you sure you wish to delete this admin?');">
+                        Delete
+                    </a>
                 </td>
             </tr>
         }
@@ -82,6 +95,7 @@
             $("table tr").each(function (result) {
                 if (result !== 0) {
                     var id = $(this).find("td:nth-child(1)").text();
+                    //var id = $(this).getElementById().text();
                     if (id.indexOf(txtEnter) !== 0 && id.toLowerCase().indexOf(txtEnter.toLowerCase()) < 0) {
                         $(this).hide();
                     } else {
@@ -92,3 +106,5 @@
         });
     </script>
 </center>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index", new { Page_No, Sort_Order = ViewBag.CurrentSort }))
