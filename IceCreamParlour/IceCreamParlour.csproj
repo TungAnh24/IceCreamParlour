@@ -147,6 +147,7 @@
     <Compile Include="Areas\Local\LocalAreaRegistration.cs" />
     <Compile Include="Controllers\CustomerFeedBackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\BookViewController.cs" />
     <Compile Include="Controllers\RecipesUserViewController.cs" />
     <Compile Include="Controllers\RegisterUserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1957,6 +1958,8 @@
     <Content Include="Views\RegisterUser\UserPannel.cshtml" />
     <Content Include="Views\RecipesUserView\Index.cshtml" />
     <Content Include="Views\RecipesUserView\Details.cshtml" />
+    <Content Include="Views\bookView\Details.cshtml" />
+    <Content Include="Views\bookView\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
