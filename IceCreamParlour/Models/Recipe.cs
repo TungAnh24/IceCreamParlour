@@ -11,7 +11,8 @@ namespace IceCreamParlour.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Recipe
     {
         public int Recipe_Id { get; set; }
@@ -27,5 +28,51 @@ namespace IceCreamParlour.Models
     
         public virtual Admin Admin { get; set; }
         public virtual Flavor Flavor { get; set; }
+
+        public int limit = 15;
+
+        [Display(Name = "Ingredients")]
+        public string NameTrimmed
+        {
+            get
+            {
+                if (this.Recipe_Name.Length > this.limit)
+                    return this.Recipe_Name.Substring(0, this.limit) + "...";
+                else
+                    return this.Recipe_Name;
+            }
+        }
+
+        [Display(Name = "Ingredients")]
+        public string InTrimmed
+        {
+            get
+            {
+                if (this.Ingredients.Length > this.limit)
+                    return this.Ingredients.Substring(0, this.limit) + "...";
+                else
+                    return this.Ingredients;
+            }
+        }
+
+        [Display(Name = "MakingProcess")]
+        public string MkTrimmed
+        {
+            get
+            {
+                if (this.MakingProcess.Length > this.limit) return this.MakingProcess.Substring(0, this.limit) + "...";
+                else return this.MakingProcess;
+            }
+        }
+
+        [Display(Name = "Image")]
+        public string ImageTrimmed
+        {
+            get
+            {
+                if (this.Image.Length > this.limit) return this.Image.Substring(0, this.limit) + "...";
+                else return this.Image;
+            }
+        }
     }
 }

@@ -10,19 +10,22 @@
 <h2>Flavor</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
+    <a href="@Url.Action("Create", "Flavors")" class="btn btn-outline-reddit">Add Flavors</a>
 </p>
 @using (Html.BeginForm("Index", "Flavors", FormMethod.Get))
 {
     <p>
-        Search by Name: @Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "form-control" })
-        <input type="submit" value="Find" />
+        <br />
+        Search by Name: 
+        @Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "form-control", @placeholder = "Enter Flavor Name..." })
+        <input type="submit" class="btn btn-outline-google" value="Find" />
     </p>
 }
 <center>
     <input type="text" id="txtSearch" placeholder="Enter Flavor Name..." class="txtSearch" />
     <hr />
-    <table class="table">
+    <table class="table table-bordered table-striped">
         <tr>
             <th>
                 @*@Html.DisplayNameFor(model => model.Flavor_Name)*@
@@ -67,10 +70,11 @@
                     <img src="~/Areas/Local/FlavorImages/@Url.Content(item.Image)" style="height:50px;width:50px;" />
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Flavor_Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Flavor_Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Flavor_Id },
-                    new { onclick = "return confirm('Are you sure you wish to delete this feedback?');" })
+                    <a href="@Url.Action("Edit", "Flavors", new { id = item.Flavor_Id })" class="btn btn-inverse-warning">Edit</a>
+                    <a href="@Url.Action("Details", "Flavors", new { id = item.Flavor_Id })" class="btn btn-inverse-secondary">Details</a>
+                    <a href="@Url.Action("Delete", "Flavors", new { id = item.Flavor_Id })" class="btn btn-inverse-danger" onclick="return confirm('Are you sure you wish to delete this flavor?');">
+                        Delete
+                    </a>
                 </td>
             </tr>
         }

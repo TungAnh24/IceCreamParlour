@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using IceCreamParlour.Models;
+using PagedList;
 
 namespace IceCreamParlour.Areas.Local.Controllers
 {
@@ -15,10 +16,29 @@ namespace IceCreamParlour.Areas.Local.Controllers
         private DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
 
         // GET: Local/Subscription_Payment
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var subscription_Payment = db.Subscription_Payment.Include(s => s.Subscription).Include(s => s.User);
+        //    return View(subscription_Payment.ToList());
+        //}
+
+        public ActionResult Index(string Sort_Order, string Search_Data, int? Page_No)
         {
-            var subscription_Payment = db.Subscription_Payment.Include(s => s.Subscription).Include(s => s.User);
-            return View(subscription_Payment.ToList());
+            ViewBag.CurrentSort = Sort_Order;
+            ViewBag.SortName = String.IsNullOrEmpty(Sort_Order) ? "Name_desc" : "";
+            var subpay = from s in db.Subscription_Payment select s;
+            switch (Sort_Order)
+            {
+                case "Name_desc":
+                    subpay = subpay.OrderByDescending(s => s.User.Name);
+                    break;
+                default:
+                    subpay = subpay.OrderBy(s => s.User.Name);
+                    break;
+            }
+            var sb = subpay.Include(s => s.Subscription).Include(s => s.User)
+                .Where(s => s.User.Name.Contains(Search_Data) || Search_Data == null).ToList().ToPagedList(Page_No ?? 1, 5);
+            return View(sb);
         }
 
         // GET: Local/Subscription_Payment/Details/5
