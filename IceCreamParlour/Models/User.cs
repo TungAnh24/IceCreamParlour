@@ -10,8 +10,8 @@
 namespace IceCreamParlour.Models
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     public partial class User
     {
@@ -23,6 +23,7 @@ namespace IceCreamParlour.Models
             this.Subscription_Payment = new HashSet<Subscription_Payment>();
         }
 
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int User_Id { get; set; }
         [Required(ErrorMessage ="Please input your name")]
 
