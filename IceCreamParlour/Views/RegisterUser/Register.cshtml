@@ -100,24 +100,6 @@
 
 
                         <div class="form-group">
-                            @*@Html.LabelFor(model => model.UserType, htmlAttributes: new { @class = "control-label col-md-5" })*@
-                            @*<div class="col-md-10">
-            @Html.ValidationMessageFor(model => model.UserType, "", new { @class = "text-danger" })
-        </div>*@
-
-                            @*<div class="rs-select2 js-select-simple select--no-search">*@
-                            <!--<select name="UserType" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
-    <option disabled="disabled" selected="selected">Choose option</option>
-    <option value="0" selected>Monthly</option>-->
-                            @*Monthly*@
-                            <!--<option value="1">Yearly</option>-->  @* Yearly*@
-
-                            <!--</select>-->
-                            @*<select class="form-control" id="UserType" name="UserType">
-            <option>Select Gender</option>
-            <option>Monthly</option>
-            <option>Yearly</option>
-        </select>*@
                             <div class="form-group">
                                 @Html.LabelFor(m => m.UserType)
                                 @Html.DropDownList("UserType", new List<SelectListItem>

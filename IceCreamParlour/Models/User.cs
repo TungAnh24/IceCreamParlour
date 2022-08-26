@@ -10,9 +10,9 @@
 namespace IceCreamParlour.Models
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,14 +22,34 @@ namespace IceCreamParlour.Models
             this.Orders = new HashSet<Order>();
             this.Subscription_Payment = new HashSet<Subscription_Payment>();
         }
-    
+
         public int User_Id { get; set; }
+        [Required(ErrorMessage ="Please input your name")]
+
         public string Name { get; set; }
+
+        [Required(ErrorMessage ="Please input your contact")]
+        [DataType(DataType.PhoneNumber, ErrorMessage ="Phone number invalid")]
+        [Display(Name ="Phone number")]
         public string Contact { get; set; }
+
+        [Required(ErrorMessage ="Please input your email")]
+        [DataType(DataType.EmailAddress, ErrorMessage ="Email invalid")]
+
         public string Email { get; set; }
+
+        [Required]
         public string Address { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
-        public int UserType { get; set; }
+
+        [Display(Name ="Registration time")]
+        public int UserType { get; set; }   
+
+        [Required]
+        [StringLength(14, ErrorMessage ="chua du do dai")]
         public string Card_No { get; set; }
         public System.DateTime JoinDate { get; set; }
         public int IsActive { get; set; }
