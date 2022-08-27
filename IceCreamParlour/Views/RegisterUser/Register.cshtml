@@ -28,12 +28,12 @@
             <div class="card card-4">
                 <v class="card-body">
                     <h2 class="title">Registration Form</h2>
-                    @using (Html.BeginForm("Register", "RegisterUser", FormMethod.Post))
-                   
-                    {
-                        @Html.AntiForgeryToken()
+                    @using (Html.BeginForm())
+                                //"Register", "RegisterUser", FormMethod.Post
+                                {
+                                    @Html.AntiForgeryToken()
 
-                        <div class="row">
+                                    <div class="row">
                             @if (ViewBag.SuccessMsg != null)
                             {
                                 <div id=msgAlerts class="alert alert-success" role="alert">

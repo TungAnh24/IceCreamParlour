@@ -1915,6 +1915,9 @@
     <Content Include="Content\Register\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
     <Content Include="Areas\Local\Views\LoginAdmin\ChangePass.cshtml" />
     <Content Include="Areas\Local\Views\Admins\Lock.cshtml" />
+    <Content Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
