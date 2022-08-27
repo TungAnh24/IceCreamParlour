@@ -1495,7 +1495,6 @@
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\ion.rangeSlider.min.js" />
     <Content Include="Content\js\jquery-3.4.1.min.js" />
-    <Content Include="Content\js\showMenuOnScroll.js" />
     <Content Include="Content\Login\css\bootstrap.min.css" />
     <Content Include="Content\Login\css\bootstrap\bootstrap-grid.css" />
     <Content Include="Content\Login\css\bootstrap\bootstrap-reboot.css" />
@@ -1919,7 +1918,6 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Content\Recipes\fonts\bootstrap-icons.woff" />
     <Content Include="Content\Recipes\fonts\bootstrap-icons.woff2" />
