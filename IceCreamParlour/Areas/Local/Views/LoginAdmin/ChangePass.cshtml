@@ -6,7 +6,6 @@
 
 <div style="text-align: center; padding-top: 50px;">
     <h3>Welcome @Session["Name"]</h3>
-    @*@using (Html.BeginForm())*@
     @using (Html.BeginForm("ChangePass", "LoginAdmin", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
@@ -31,21 +30,5 @@
                     </tr>
                 </table>
             </fieldset>
-
-        @*<div class="form-group">
-            @Html.LabelFor(m => m.Password)
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
-            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "badge badge-danger" })
-        </div>
-        <div class="form-group">
-            @Html.Label("New Password", new { @for = "newPassword" }) :
-            @Html.Password("newPassword")
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.ConfirmPassword)
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confim Password" })
-            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "badge badge-danger" })
-        </div>
-        <input type="submit" value="Change Password" />*@
     }
 </div>@Html.Raw(TempData["msg"])

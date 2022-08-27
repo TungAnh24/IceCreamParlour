@@ -37,7 +37,7 @@
             @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })*@
-                <input type="file" name="fileEdit" id="update-image" />
+                <input type="file" name="fileEdit" id="update-image" /><span id="resumeMsg"></span>
                 @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -59,12 +59,12 @@
         </div>
 
         <div class="form-group">
-                @Html.LabelFor(model => model.AdminAdd_Id, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AdminAdd_Id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBox("AdminAdd_Id", null, htmlAttributes: new { @class = "form-control", @readonly = "read-only" })
                 @Html.ValidationMessageFor(model => model.AdminAdd_Id, "", new { @class = "text-danger" })
             </div>
-            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -75,13 +75,13 @@
         </div>
 
         <div class="form-group">
-                @Html.LabelFor(model => model.AdminUpdate_Id, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AdminUpdate_Id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.AdminUpdate_Id, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.TextBox("AdminUpdate_Id", Session["Admin_Id"], new { @readonly = "read-only" })
                 @Html.ValidationMessageFor(model => model.AdminUpdate_Id, "", new { @class = "text-danger" })
             </div>
-            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Update_Date, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -105,21 +105,37 @@
         </div>
 
         @*<div class="form-group">
-            @Html.LabelFor(model => model.IsDelete, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IsDelete, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IsDelete, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                @Html.LabelFor(model => model.IsDelete, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IsDelete, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IsDelete, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-inverse-primary" />
+                <input type="submit" id="submit" value="Save" class="btn btn-inverse-primary" />
             </div>
         </div>
-    </div>
+    </div>@Html.Raw(TempData["msg"])
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+<script>
+    window.addEventListener("load", function () {
+        this.document.getElementById("submit").addEventListener("click", function (event) {
+            var error = false;
+            var filename = document.getElementById("fileEdit").value;
+            if (filename == "") {
+                error = true;
+                document.getElementById("resumeMsg").innerHTML = "Must upload a resume file"
+            }
+            alert("You has submit a book");
+            if (error) {
+                event.preventDefault();
+            }
+        })
+    })
+</script>
