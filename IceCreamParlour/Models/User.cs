@@ -25,8 +25,9 @@ namespace IceCreamParlour.Models
 
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int User_Id { get; set; }
-        [Required(ErrorMessage ="Please input your name")]
 
+        [Required(ErrorMessage ="Please input your name")]
+        [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
 
         [Required(ErrorMessage ="Please input your contact")]

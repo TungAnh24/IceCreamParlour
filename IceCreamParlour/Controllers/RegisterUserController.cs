@@ -31,8 +31,7 @@ namespace IceCreamParlour.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
-        public ActionResult Register(User _user)
+        public ActionResult Register([Bind(Include = "User_Id,Name,Contact,Email,Address,Password,UserType,Card_No,JoinDate,IsActive,IsDelete")] User _user)
         {
             if (ModelState.IsValid)
             {

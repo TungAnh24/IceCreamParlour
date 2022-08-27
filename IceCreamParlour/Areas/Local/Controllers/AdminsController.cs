@@ -69,14 +69,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Admin_Id,Name,Email,Roles,Password,IsActive,IsDelete")] Admin admin)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    db.Admins.Add(admin);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
-            //return View(admin);
+           
             if (ModelState.IsValid)
             {
                 var check = db.Admins.FirstOrDefault(s => s.Email == admin.Email);
