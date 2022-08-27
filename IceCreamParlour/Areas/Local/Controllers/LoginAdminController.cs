@@ -7,6 +7,7 @@ using IceCreamParlour.Models;
 using System.Security.Cryptography;
 using System.Text;
 using System.Data.Entity;
+using System.Web.Helpers;
 
 namespace IceCreamParlour.Areas.Local.Controllers
 {
@@ -74,18 +75,20 @@ namespace IceCreamParlour.Areas.Local.Controllers
             {
 
                 var f_password = GetMD5(password);
-                var data = _db.Admins.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
+                var data = _db.Admins.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) && s.IsActive ==0).ToList();
                 if (data.Count() > 0)
                 {
                     //add session
                     Session["Name"] = data.FirstOrDefault().Name;
                     Session["Email"] = data.FirstOrDefault().Email;
-                    Session["Admin_Id"] = data.FirstOrDefault().Admin_Id;
+                    Session["Admin_Id"] = data.SingleOrDefault().Admin_Id;
+                    Session["Roles"] = data.FirstOrDefault().Roles;
                     return RedirectToAction("Index","Books");
                 }
                 else
                 {
                     ViewBag.error = "Login failed";
+                    TempData["msg"] = "<script>alert('Your account does not exist or has been locked !!!');</script>";
                     return RedirectToAction("Login");
                 }
             }

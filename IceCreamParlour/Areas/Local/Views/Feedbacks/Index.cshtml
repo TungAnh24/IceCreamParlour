@@ -6,6 +6,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Local/Views/Shared/_AdminView.cshtml";
 }
+<link href="~/Areas/Local/assets/css/PagedList.css" rel="stylesheet" />
 
 <h2>Customer Feedback</h2>
 @using (Html.BeginForm("Index", "Feedbacks", FormMethod.Get))
@@ -68,8 +69,8 @@
                     @*<a href="@Url.Action("Edit", "Feedbacks", new { id = item.Feedback_id })" class="btn btn-inverse-warning">Edit</a>*@
                     <a href="@Url.Action("Details", "Feedbacks", new { id = item.Feedback_Id })" class="btn btn-inverse-secondary">Details</a>
                     @*<a href="@Url.Action("Delete", "Feedbacks", new { id = item.Feedback_Id })" class="btn btn-inverse-danger" onclick="return confirm('Are you sure you wish to delete this feedback?');">
-                        Delete
-                    </a>*@
+                            Delete
+                        </a>*@
                 </td>
             </tr>
         }

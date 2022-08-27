@@ -153,6 +153,29 @@ namespace IceCreamParlour.Areas.Local.Controllers
             return View(admin);
         }
 
+        public ActionResult Lock(long? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Admin admin = db.Admins.Find(id);
+            if (admin == null)
+            {
+                return HttpNotFound();
+            }
+            admin.ConfirmPassword = admin.Password;
+            if (admin.IsActive == 0) admin.IsActive = 1;
+            else admin.IsActive = 0;
+            if (admin != null)
+            {
+                /*db.Entry(book).State = EntityState.Modified;*/
+                RedirectToAction("Index");
+            }
+            db.SaveChanges();
+            return View(admin);
+        }
+
         //[HttpPost]
         //public ActionResult Delete(int? id)
         //{
