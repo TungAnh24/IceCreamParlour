@@ -87,7 +87,6 @@
                     @*<a href="@Url.Action("Details", "Admins", new { id = item.Admin_Id})" class="btn btn-inverse-secondary">Details</a>*@
                     @if (role == 1)
                     {
-
                         if (item.IsActive == 0)
                         {
                             if (item.Roles != 1)
@@ -102,7 +101,7 @@
                         }
                         else
                         {
-                            <a href="@Url.Action("Lock", "Admins", new { id = item.Admin_Id})" class="btn btn-inverse-dark" onclick="return confirm('Are you sure you wish to unlock this admin?');">
+                            <a href="@Url.Action("Lock", "Admins", new { id = item.Admin_Id })" class="btn btn-inverse-dark" onclick="return confirm('Are you sure you wish to unlock this admin?');">
                                 Unlock
                             </a>
                         }
@@ -111,8 +110,6 @@
                     {
                         if (item.IsActive == 0)
                         {
-
-
                             <a class="btn btn-primary text-white" onclick="return alert('You dont have permission to perform this function.')">Lock</a>
                         }
                         else

@@ -25,6 +25,8 @@ namespace IceCreamParlour.Models
         [Required]
         public string Title { get; set; }
         public string Description { get; set; }
+
+        [Required]
         public string Image { get; set; }
         public double Price { get; set; }
         [DataType(DataType.Date)]

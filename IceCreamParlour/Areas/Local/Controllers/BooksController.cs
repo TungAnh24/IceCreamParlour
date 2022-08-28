@@ -78,7 +78,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
         {
             if (ModelState.IsValid)
             {
-                    if (fileUpload.ContentLength > 0)
+                    if (fileUpload.ContentLength >0)
                     {
                         var bn = System.IO.Path.GetFileName(fileUpload.FileName);
                         book.Image = bn;
