@@ -145,6 +145,7 @@
     <Compile Include="Areas\Local\Controllers\Subscription_PaymentController.cs" />
     <Compile Include="Areas\Local\Controllers\UsersController.cs" />
     <Compile Include="Areas\Local\LocalAreaRegistration.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CustomerFeedBackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1754,6 +1755,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\CustomerFeedBack\Index.cshtml" />
     <Content Include="Views\CustomerFeedBack\Create.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

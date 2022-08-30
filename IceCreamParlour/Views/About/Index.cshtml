@@ -1,0 +1,87 @@
+﻿@model IEnumerable<IceCreamParlour.Models.Flavor>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+<!-- font awesome style -->
+<link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+
+<!-- Custom styles for this template -->
+<link href="~/Content/css/style.css" rel="stylesheet" />
+<!-- responsive style -->
+<link href="~/Content/css/responsive.css" rel="stylesheet" />
+
+<section class="about_section layout_padding">
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="img-box">
+                    <img src="~/Content/images/Bookstore-ic-img.png" alt="" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="detail-box">
+                    <div class="heading_container">
+                        <h2>
+                            About Our Ice-Cream Bookstore And Recipe
+                        </h2>
+                    </div>
+                    <p>
+                        Young readers will fall in love all over again with Dennis Lee’s light-hearted verse, which embraces universal childhood experiences of every flavour, from digging holes to foreign lands to searching for the perfect pet.
+                        David McPhail’s gorgeous watercolour paintings capture Lee’s subtle celebration of ulticulturalism and offer a colourful feast for the eye
+                    </p>
+                    <p>
+                        We hitchhiked and ate lots of frozen ice cream. We would happily have a dessert for breakfast, lunch and dinner if we could.
+
+                        The owner's family has been in the ice cream business for many years, but it's believable that we imagine our own position: a shop where we can make original ice cream with only quality ingredients. the most important.
+
+                        We've invested years in testing and tweaking recipes as we've drawn from dessert experts from far-flung terrains, such as Reading and Nottinghamshire. Luckily, our family and companions readily fed guinea pigs with all the experimental flavors we tried.
+
+                        We officially opened 'Ice-Cream Parlor' in October 2013 on Upper Street in Islington.
+
+                        Required Section: Our book and recipe are both carefully crafted. Our desserts are refined, whipped, poured, whipped and solidified with love and care. Each recipe is submitted to our extremely strict quality control test. Really, we mean that we sneak a taste every time.
+                    </p>
+                    <p>
+                        To ensure the taste of each customer of all ages, we focus on using the best fixes. It's a combination of unicorn tears, giggling clouds and vanilla... that's not much of a proof, vanilla is the proudest flavor in our recipe.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="catagory_section layout_padding">
+    <div class="catagory_container">
+        <div class="container ">
+            <div class="heading_container heading_center">
+                <h2>
+                    Our ice-cream flavors
+                </h2>
+                <p>
+                    Who wants an ice cream?
+                </p>
+            </div>
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-6 col-md-4 ">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img class="" src="~/Areas/Local/FlavorImages/@Url.Content(item.Image)" />
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    @item.Flavor_Name
+                                </h5>
+                                <p>
+                                    @item.Description
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }                
+            </div>
+        </div>
+    </div>
+</section>
