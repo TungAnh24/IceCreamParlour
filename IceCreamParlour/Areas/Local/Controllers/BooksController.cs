@@ -85,10 +85,19 @@ namespace IceCreamParlour.Areas.Local.Controllers
                         var bp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/BookImages"), bn);
                         fileUpload.SaveAs(bp);
                     }
+                var check = db.Books.FirstOrDefault(b => b.Title == book.Title);
+                if (check == null)
+                {
                     book.IsDelete = 0;
                     db.Books.Add(book);
                     db.SaveChanges();
                     return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.error = "Title is already exits!";
+                    return View();
+                }
             }
             return View(book);
         }
@@ -124,10 +133,10 @@ namespace IceCreamParlour.Areas.Local.Controllers
                     var bp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/BookImages"), bn);
                     fileEdit.SaveAs(bp);
                 }
-                book.IsDelete = 0;
-                db.Entry(book).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    book.IsDelete = 0;
+                    db.Entry(book).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
             }
             return View(book);
         }
