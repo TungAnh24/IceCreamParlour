@@ -65,8 +65,11 @@
                             @Html.DisplayFor(model => model.Ingredients)
                         </div>
                         <div style="padding-bottom: 20px">
-                            <h4>MakingProcess</h4 >
+                            <h4>MakingProcess</h4>
                             @Html.DisplayFor(model => model.MakingProcess)
+                        </div>
+                        <div class="add-cart">
+                            <h4><a href="/them-gio-hang?book_Id=@Model.Recipe_Id&quantity=1">Thêm vào giỏ</a></h4>
                         </div>
                         <div>
                             @Html.ActionLink("Back to Recipe", "Index", "RecipesUserView")
