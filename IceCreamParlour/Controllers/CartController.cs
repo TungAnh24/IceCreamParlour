@@ -101,7 +101,7 @@ namespace IceCreamParlour.Controllers
                 item.Book = book;
                 item.Quantity = quantity;
                 var list = new List<CartItem>();
-                
+                list.Add(item);
                 //Gán vào session
                 Session[CartSession] = list;
 
@@ -126,6 +126,28 @@ namespace IceCreamParlour.Controllers
             {
                 list = (List<CartItem>)cart;
             }
+            
+                var order = new Order()
+                {
+
+                };
+            
+            db.Orders.Add(order);
+            db.SaveChanges();
+            foreach (var item in list)
+            {
+
+                var orderDetail = new Order_Detail()
+                {
+                    Order_Id = order.Order_Id,
+                    Book_Id = item.Book.Book_Id,
+                    Quantity = item.Quantity,
+                    Price = item.Book.Price,
+                    
+                };
+                db.Order_Detail.Add(orderDetail);
+            }
+            db.SaveChanges();
             return View(list);
         }
 

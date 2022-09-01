@@ -7,16 +7,16 @@
             window.location.href = "/";
         });
         $('#btnPayment').off('click').on('click', function () {
-            window.location.href = "/thanh-toan";
+            window.location.href = "/Cart/Payment";
         });
         $('#btnUpdate').off('click').on('click', function () {
-            var listProduct = $('.txtQuantity');
+            var listBook = $('.txtQuantity');
             var cartList = [];
-            $.each(listProduct, function (i, item) {
+            $.each(listBook, function (i, item) {
                 cartList.push({
                     Quantity: $(item).val(),
-                    Product: {
-                        ID: $(item).data('id')
+                    Book: {
+                        Book_Id: $(item).data('id')
                     }
                 });
             });
@@ -28,7 +28,7 @@
                 type: 'POST',
                 success: function (res) {
                     if (res.status == true) {
-                        window.location.href = "/gio-hang";
+                        window.location.href = "/Cart";
                     }
                 }
             })
@@ -43,7 +43,7 @@
                 type: 'POST',
                 success: function (res) {
                     if (res.status == true) {
-                        window.location.href = "/gio-hang";
+                        window.location.href = "/Cart";
                     }
                 }
             })
