@@ -6,6 +6,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Local/Views/Shared/_AdminView.cshtml";
 }
+<link href="~/Areas/Local/assets/css/PagedList.css" rel="stylesheet" />
 
 <h2>Flavor</h2>
 
@@ -17,7 +18,7 @@
 {
     <p>
         <br />
-        Search by Name: 
+        Search by Name:
         @Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "form-control", @placeholder = "Enter Flavor Name..." })
         <input type="submit" class="btn btn-outline-google" value="Find" />
     </p>

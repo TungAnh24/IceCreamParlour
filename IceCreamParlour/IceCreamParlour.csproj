@@ -145,6 +145,7 @@
     <Compile Include="Areas\Local\Controllers\Subscription_PaymentController.cs" />
     <Compile Include="Areas\Local\Controllers\UsersController.cs" />
     <Compile Include="Areas\Local\LocalAreaRegistration.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CustomerFeedBackController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -213,6 +214,7 @@
     <Content Include="Areas\Local\assets\css\demo_5\style.css" />
     <Content Include="Areas\Local\assets\css\demo_5\style.min.css" />
     <Content Include="Areas\Local\assets\css\Login\style.css" />
+    <Content Include="Areas\Local\assets\css\PagedList.css" />
     <Content Include="Areas\Local\assets\fonts\feather-font\.gitignore" />
     <Content Include="Areas\Local\assets\fonts\feather-font\css\iconfont.css" />
     <Content Include="Areas\Local\assets\fonts\feather-font\examples\index.css" />
@@ -1907,6 +1909,12 @@
     <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <Content Include="Areas\Local\Views\Admins\Lock.cshtml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -1934,15 +1942,7 @@
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\CustomerFeedBack\Create.cshtml" />
     <Content Include="Views\CustomerFeedBack\Index.cshtml" />
-    <Content Include="Views\RegisterUser\AfterSignup.cshtml" />
-    <Content Include="Views\RegisterUser\Errorpage.cshtml" />
-    <Content Include="Views\RegisterUser\Index.cshtml" />
-    <Content Include="Views\RegisterUser\Login.cshtml" />
-    <Content Include="Views\RegisterUser\Register.cshtml" />
-    <Content Include="Views\RegisterUser\UserPannel.cshtml" />
-    <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\RecipesUserView\Index.cshtml" />
-    <Content Include="Views\RecipesUserView\Details.cshtml" />
+    <Content Include="Views\CustomerFeedBack\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

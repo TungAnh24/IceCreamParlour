@@ -1,11 +1,18 @@
 ﻿@using PagedList
 @using PagedList.Mvc;
+@using IceCreamParlour.Models
 @model IPagedList<IceCreamParlour.Models.User>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Local/Views/Shared/_AdminView.cshtml";
 }
+@{
+    Admin admin = new Admin();
+    string ob = Convert.ToString(Session["Roles"]);
+    int role = int.Parse(ob);
+}
+<link href="~/Areas/Local/assets/css/PagedList.css" rel="stylesheet" />
 
 <h2>Customer Account</h2>
 
@@ -91,13 +98,23 @@
                 @*<td>
                         @Html.DisplayFor(modelItem => item.IsDelete)
                     </td>*@
-                <td>
-                    @*<a href="@Url.Action("Edit", "Admins", new { id = item.Admin_Id })" class="btn btn-inverse-warning">Edit</a>*@
-                    <a href="@Url.Action("Details", "Users", new { id = item.User_Id})" class="btn btn-inverse-secondary">Details</a>
-                    <a href="@Url.Action("Delete", "Users", new { id = item.User_Id})" class="btn btn-inverse-danger" onclick="return confirm('Are you sure you wish to delete this user?');">
-                        Delete
-                    </a>
-                </td>
+            <td>
+                @*<a href="@Url.Action("Edit", "Admins", new { id = item.Admin_Id })" class="btn btn-inverse-warning">Edit</a>*@
+                <a href="@Url.Action("Details", "Users", new { id = item.User_Id})" class="btn btn-inverse-secondary">Details</a>
+                @*<a href="@Url.Action("Delete", "Users", new { id = item.User_Id})" class="btn btn-inverse-danger" onclick="return confirm('Are you sure you wish to delete this user?');">
+            Delete
+        </a>*@
+                @if (role == 1)
+                {
+                        <a href="@Url.Action("Delete", "Users", new { id = item.User_Id})" class="btn btn-inverse-danger" onclick="return confirm('Are you sure you wish to delete this user?');">
+                            Delete
+                        </a>
+                }
+                else
+                {
+                    <a class="btn btn-primary text-white" onclick="return alert('You dont have permission to perform this function.')">Delete</a>
+                }
+            </td>
             </tr>
         }
 

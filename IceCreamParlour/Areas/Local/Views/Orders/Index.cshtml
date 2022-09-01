@@ -6,6 +6,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Local/Views/Shared/_AdminView.cshtml";
 }
+<link href="~/Areas/Local/assets/css/PagedList.css" rel="stylesheet" />
 
 <h2>Customer Order</h2>
 
@@ -111,6 +112,6 @@
             });
         });
     </script>
-    </center>
+</center>
     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
     @Html.PagedListPager(Model, Page_No => Url.Action("Index", new { Page_No, Sort_Order = ViewBag.CurrentSort }))
