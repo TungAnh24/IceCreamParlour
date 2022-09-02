@@ -126,30 +126,61 @@ namespace IceCreamParlour.Controllers
             {
                 list = (List<CartItem>)cart;
             }
-            
-                var order = new Order()
-                {
-
-                };
-            
-            db.Orders.Add(order);
-            db.SaveChanges();
-            foreach (var item in list)
-            {
-
-                var orderDetail = new Order_Detail()
-                {
-                    Order_Id = order.Order_Id,
-                    Book_Id = item.Book.Book_Id,
-                    Quantity = item.Quantity,
-                    Price = item.Book.Price,
-                    
-                };
-                db.Order_Detail.Add(orderDetail);
-            }
-            db.SaveChanges();
             return View(list);
         }
+        [HttpPost]
+        public ActionResult Payment(string name, string address, string email, string contact)
+        {
+            var cart = Session[CartSession];
+            var order = new Order();
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+            }
+            var userEmail = Session["Email"];
+            var user = db.Users.FirstOrDefault(x => x.Email == userEmail);
+            if (user != null)
+            {
+                order = new Order()
+                {
+                    Name = user.Name,
+                    Address = user.Address,
+                    Email = user.Email,
+                    Contact = user.Contact,
+                };
+            }
+            else
+            {
+                order = new Order()
+                {
+                    Address = user.Address,
+                    Name = user.Name,
+                    Email = user.Email,
+                    Card_No = user.Card_No,
+                    Date = DateTime.Now
+                };
+                return Redirect("/payment error");
+            }
+                db.Orders.Add(order);
+                db.SaveChanges();
+                foreach (var item in list)
+                {
+
+                    var orderDetail = new Order_Detail()
+                    {
+                        Order_Id = order.Order_Id,
+                        Book_Id = item.Book.Book_Id,
+                        Quantity = item.Quantity,
+                        Price = item.Book.Price,
+
+                    };
+                    db.Order_Detail.Add(orderDetail);
+                }
+                db.SaveChanges();
+                return Redirect("/complete");
+        }
+        
 
         public ActionResult Details(int book_Id)
         {
@@ -163,6 +194,10 @@ namespace IceCreamParlour.Controllers
                 return HttpNotFound();
             }
             return View(book);
+        }
+        public ActionResult Success()
+        {
+            return View();
         }
     }
 }

@@ -4,7 +4,7 @@
     },
     regEvents: function () {
         $('#btnContinue').off('click').on('click', function () {
-            window.location.href = "/";
+            window.location.href = "/Book/Index";
         });
         $('#btnPayment').off('click').on('click', function () {
             window.location.href = "/Cart/Payment";

@@ -6,7 +6,6 @@
 }
 @if (Session["FullName"] != null)
 {
-
     <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -98,6 +97,125 @@
                                                 <figure> <img class="" src="~/Areas/Local/BookImages/@Url.Content(item.Image)" style="height:300px;width:300px;" /></figure>
                                             </a>
 
+                                        </div>
+                                    </div>
+
+                                    <div style="padding-bottom: 30px;" class="menu-info d-flex flex-wrap align-items-center">
+                                        <h5 class="mb-0">@Html.DisplayFor(modelItem => item.Title)</h5>
+                                        <div class="d-flex flex-wrap align-items-center w-100 mt-2">
+                                            @*@Html.DisplayFor(modelItem => item.NameTrimmed)*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Modal -->
+        <!-- JAVASCRIPT FILES -->
+
+        <script src="~/Content/Recipes/js/bootstrap.bundle.min.js"></script>
+        <script src="~/Content/Recipes/js/custom.js"></script>
+        <script src="~/Content/Recipes/js/jquery.min.js"></script>
+    </body>
+</html>
+}
+@if (Session["FullName"] == null)
+{
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+
+        <!-- CSS FILES -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+        <link href="~/Content/Recipes/css/SelectBOx.css" rel="stylesheet" />
+        <link href="~/Content/Recipes/css/background.css" rel="stylesheet" />
+        <style>
+            .hover01 figure img {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                -webkit-transition: .3s ease-in-out;
+                transition: .3s ease-in-out;
+            }
+
+            .hover01 figure:hover img {
+                -webkit-transform: scale(1.3);
+                transform: scale(1.3);
+            }
+
+            figure {
+                width: 300px;
+                height: 300px;
+                margin: 0;
+                padding: 0;
+                background: #fff;
+                overflow: hidden;
+            }
+        </style>
+        <div class="view">
+
+            <!-- Mask & flexbox options-->
+            <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
+                <!-- Content -->
+                <div class="container px-md-3 px-sm-0">
+                    <!--Grid row-->
+                    <div class="row wow fadeIn">
+                        <!--Grid column-->
+                        <div class="col-md-12 mb-4 white-text text-center wow fadeIn">
+                            <h3 class="display-3 font-weight-bold white-text mb-0 pt-md-5 pt-5">SPECIAL RECIPES</h3>
+                            <hr class="hr-light my-4 w-75">
+                            <h4 class="subtext-header mt-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit deleniti consequuntur nihil.</h4>
+                            <p>Welcome </p>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                </div>
+                <!-- Content -->
+            </div>
+            <!-- Mask & flexbox options-->
+        </div>
+    </head>
+
+    <body>
+        <main class="">
+            <section>
+                <div class="container">
+                    <div style="padding-top: 30px; padding-bottom: 30px;">
+                        <select style="color: #FF3399; border-color: #FF3399; border-block-end: #FF3399; ">
+                            <option value="" disabled selected>Choose your book</option>
+                            @foreach (var item in Model)
+                            {
+                                <option value=@item>
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </option>
+                            }
+                        </select>
+
+                    </div>
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-lg-4 col-md-6 col-12">
+                                <div class="menu-thumb">
+                                    <div class="menu-image-wrap">
+                                        <div class="hover01 column">
+                                            <a href="~/Book/Details/@item.Book_Id">
+                                                <figure> <img class="" src="~/Areas/Local/BookImages/@Url.Content(item.Image)" style="height:300px;width:300px;" /></figure>
+                                            </a>
                                         </div>
                                     </div>
 

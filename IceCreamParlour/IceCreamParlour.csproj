@@ -1953,6 +1953,7 @@
     <Content Include="Views\RegisterUser\UserPannel.cshtml" />
     <Content Include="Views\RecipesUserView\Details.cshtml" />
     <Content Include="Views\RecipesUserView\Index.cshtml" />
+    <Content Include="Views\Cart\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

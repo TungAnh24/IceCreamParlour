@@ -129,6 +129,7 @@ namespace IceCreamParlour.Controllers
                     //add session
                     Session["FullName"] = data.FirstOrDefault().Name;
                     Session["Email"] = data.FirstOrDefault().Email;
+                    Session["UserId"] = data.FirstOrDefault().User_Id;
 
                     return RedirectToAction("Index","Home");
                 }
