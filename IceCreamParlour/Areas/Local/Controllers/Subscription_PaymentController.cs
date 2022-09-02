@@ -24,6 +24,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
 
         public ActionResult Index(string Sort_Order, string Search_Data, int? Page_No)
         {
+            ModelState.Clear();
             ViewBag.CurrentSort = Sort_Order;
             ViewBag.SortName = String.IsNullOrEmpty(Sort_Order) ? "Name_desc" : "";
             var subpay = from s in db.Subscription_Payment select s;
