@@ -81,6 +81,33 @@ body {
   background-color: #f24353;
 }
 
+article {
+    /*background: linear-gradient( to right, hsl(98 100% 62%), hsl(204 100% 59%) );*/
+    background: linear-gradient( to right, hsl(229 100% 62%), hsl(303 100% 58%) );
+    /*background: linear-gradient(to right, #30CFD0 0%, #330867 100%);*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+h1 {
+    font-size: 5vmin;
+    line-height: 1.1;
+}
+
+h1, p {
+    margin: 0;
+}
+
+p {
+    font-family: "Dank Mono", ui-monospace, monospace;
+}
+
+html {
+    block-size: 100%;
+    inline-size: 100%;
+}
+
 @-webkit-keyframes wawes {
   from {
     -webkit-transform: rotate(0);

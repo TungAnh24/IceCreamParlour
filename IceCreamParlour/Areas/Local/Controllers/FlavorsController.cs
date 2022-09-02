@@ -26,6 +26,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
         // GET: Local/Flavors
         public ActionResult Index(string Sort_Order, string Search_Data, int? Page_No)
         {
+            ModelState.Clear();
             ViewBag.CurrentSort = Sort_Order;
             ViewBag.SortName = String.IsNullOrEmpty(Sort_Order) ? "Flavor_Name_desc" : "";
             ViewBag.SortIn = Sort_Order == "Ingredients" ? "Ingredients_desc" : "Ingredients";

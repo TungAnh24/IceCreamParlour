@@ -25,6 +25,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
 
         public ActionResult Index(string Sort_Order, string Search_Data, int? Page_No)
         {
+            ModelState.Clear();
             ViewBag.CurrentSort = Sort_Order;
             ViewBag.SortName = String.IsNullOrEmpty(Sort_Order) ? "Recipe_Name_desc" : "";
             var recipes = from r in db.Recipes select r;
