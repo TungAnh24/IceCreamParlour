@@ -75,7 +75,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (fileUpLoad.ContentLength >0)
+                if (fileUpLoad.ContentLength > 0)
                 {
                     var fn = System.IO.Path.GetFileName(fileUpLoad.FileName);
                     recipe.Image = fn;
@@ -115,7 +115,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Recipe_Id,Recipe_Name,Image,Ingredients,MakingProcess,AdminCreate_Id,Publist_Date,Flavor_Id,Update_Date,AdminUpdate_Id")] Recipe recipe,HttpPostedFileBase fileEdit)
+        public ActionResult Edit([Bind(Include = "Recipe_Id,Recipe_Name,Image,Ingredients,MakingProcess,AdminCreate_Id,Publist_Date,Flavor_Id,Update_Date,AdminUpdate_Id")] Recipe recipe, HttpPostedFileBase fileEdit)
         {
             if (ModelState.IsValid)
             {

@@ -77,28 +77,34 @@ namespace IceCreamParlour.Areas.Local.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Book_Id,Title,Description,Image,Price,Create_Date,AdminAdd_Id,Author,AdminUpdate_Id,Update_Date,IsActive,IsDelete")] Book book,HttpPostedFileBase fileUpload)
         {
-            if (ModelState.IsValid)
+            try
             {
-                    if (fileUpload.ContentLength >0)
+                if (ModelState.IsValid)
+                {
+                    if (fileUpload.ContentLength > 0)
                     {
                         var bn = System.IO.Path.GetFileName(fileUpload.FileName);
                         book.Image = bn;
                         var bp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/BookImages"), bn);
                         fileUpload.SaveAs(bp);
                     }
-                var check = db.Books.FirstOrDefault(b => b.Title == book.Title);
-                if (check == null)
-                {
-                    book.IsDelete = 0;
-                    db.Books.Add(book);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                    var check = db.Books.FirstOrDefault(b => b.Title == book.Title);
+                    if (check == null)
+                    {
+                        book.IsDelete = 0;
+                        db.Books.Add(book);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ViewBag.error = "Title is already exits!";
+                        return View();
+                    }
                 }
-                else
-                {
-                    ViewBag.error = "Title is already exits!";
-                    return View();
-                }
+            }catch(Exception)
+            {
+                ModelState.AddModelError(string.Empty, "Please upload images");
             }
             return View(book);
         }
@@ -125,6 +131,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Book_Id,Title,Description,Image,Price,Create_Date,AdminAdd_Id,Author,AdminUpdate_Id,Update_Date,IsActive,IsDelete")] Book book, HttpPostedFileBase fileEdit)
         {
+            try { 
             if (ModelState.IsValid)
             {
                 if (fileEdit.ContentLength > 0)
@@ -138,6 +145,11 @@ namespace IceCreamParlour.Areas.Local.Controllers
                     db.Entry(book).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
+                }
+            }
+            catch(Exception)
+            {
+                ModelState.AddModelError(string.Empty, "Please upload images");
             }
             return View(book);
         }

@@ -18,7 +18,6 @@ namespace IceCreamParlour.Models
         public int Recipe_Id { get; set; }
         [Required]
         public string Recipe_Name { get; set; }
-        //[Required]
         public string Image { get; set; }
         [Required]
         public string Ingredients { get; set; }
