@@ -95,12 +95,10 @@
                     <div class="row">
                         @foreach (var item in Model)
                         {
-                            <div class="col-lg-4 col-md-6 col-12">
-                                <div class="menu-thumb">
+                            <div class="col-lg-4 col-md-6 col-12" style="padding-top: 20px">
+                                <div class="menu-thumb" border:double">
                                     <div class="menu-image-wrap">
-                                        @*<img src="~/Content/Recipes/images/breakfast/brett-jordan-8xt8-HIFqc8-unsplash.jpg" />*@
-                                        @*@Url.Content(item.Recipe_Id)*@
-                                        <div class="hover01 column">
+                                        <div class="hover01 column" style="padding-left: 30px">
                                             <a href="~/RecipesUserView/Details/@item.Recipe_Id">
                                                 <figure> <img class="" src="~/Areas/Local/RecipeImages/@Url.Content(item.Image)" style="height:300px;width:300px;" /></figure>
                                             </a>

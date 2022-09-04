@@ -87,10 +87,10 @@
                     <div class="row">
                         @foreach (var item in Model)
                         {
-                            <div class="col-lg-4 col-md-6 col-12">
-                                <div class="menu-thumb">
+                            <div class="col-lg-4 col-md-6 col-12" style="padding-top: 20px">
+                                <div class="menu-thumb" style=" border:double">
                                     <div class="menu-image-wrap">
-                                        <div class="hover01 column">
+                                        <div class="hover01 column" style="padding-left: 30px">
                                             <a href="~/Book/Details/@item.Book_Id">
                                                 <figure> <img class="" src="~/Areas/Local/BookImages/@Url.Content(item.Image)" style="height:300px;width:300px;" /></figure>
                                             </a>
@@ -219,7 +219,7 @@
                         @foreach (var item in Model)
                         {
                             <div class="col-lg-4 col-md-6 col-12" style="padding-top: 20px">
-                                <div class="menu-thumb" style=" border:double ">
+                                <div class="menu-thumb" style=" border:double">
                                     <div class="menu-image-wrap">
                                         <div class="hover01 column" style="padding-left: 30px">
                                             <a href="~/Book/Details/@item.Book_Id" >
