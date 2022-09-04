@@ -22,8 +22,8 @@ namespace IceCreamParlour.Controllers
         {
             var res = db.Recipes.Where(r => r.Recipe_Name.Contains(searchData) || searchData == null).ToList();
             return View(res);
-            var recipes = db.Recipes.ToList();
-            return View(recipes);
+            //var recipes = db.Recipes.ToList();
+            //return View(recipes);
         }
 
 
