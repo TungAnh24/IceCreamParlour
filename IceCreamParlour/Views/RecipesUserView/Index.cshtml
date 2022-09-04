@@ -65,7 +65,7 @@
                         <div class="col-md-12 mb-4 white-text text-center wow fadeIn">
                             <h3 class="display-3 font-weight-bold white-text mb-0 pt-md-5 pt-5">SPECIAL RECIPES</h3>
                             <hr class="hr-light my-4 w-75">
-                            <h4 class="subtext-header mt-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit deleniti consequuntur nihil.</h4>
+                            <h4 class="subtext-header mt-2 mb-4">It is important to take care of the patient, the outcome of the patient's outcome will be negative.</h4>
                             <p>Welcome @Session["FullName"].ToString()</p>
                         </div>
                         <!--Grid column-->
@@ -77,26 +77,21 @@
             <!-- Mask & flexbox options-->
         </div>
     </head>
-
+    
     <body>
         <main class="">
             <section>
                 <div class="container">
-                    <div style="padding-top: 30px; padding-bottom: 30px;">
-                        @*<select id="RecipeIds" name="RecipeIds" class="form-select" aria-label="Default select example">*@
-                        <select style="color: #FF3399; border-color: #FF3399; border-block-end: #FF3399; ">
-                            <option value="" disabled selected>Choose your flavor</option>
-                            @foreach (var item in Model)
-                            {
-                                <option value=@item>
-                                    @Html.DisplayFor(modelItem => item.Flavor.Flavor_Name)
-                                </option>
-                            }
-                            @*<option selected="selected" value="1">The Godfather</option>
-                                <option value="2">Forrest Gump</option>
-                                <option value="3">Fight Club</option>*@
-                        </select>
-                    </div>
+                    @using (Html.BeginForm("Index", "RecipesUserView", FormMethod.Get))
+                    {
+                        <p>
+                            <br />
+                            Search by Main Flavor:
+                            @Html.TextBox("searchData", ViewBag.FilterValue as string,
+                           new { @class = "form-control", @placeholder = "Enter Main Flavor...", id = "Formbeg" })
+                            @*<input type="submit" id="submit_btn" class="btn btn-outline-google" value="Find" />*@
+                        </p>
+                    }
                     <div class="row">
                         @foreach (var item in Model)
                         {
@@ -184,7 +179,6 @@
             }
         </style>
         <div class="view">
-
             <!-- Mask & flexbox options-->
             <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
                 <!-- Content -->
@@ -195,7 +189,7 @@
                         <div class="col-md-12 mb-4 white-text text-center wow fadeIn">
                             <h3 class="display-3 font-weight-bold white-text mb-0 pt-md-5 pt-5">SPECIAL RECIPES</h3>
                             <hr class="hr-light my-4 w-75">
-                            <h4 class="subtext-header mt-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit deleniti consequuntur nihil.</h4>
+                            <h4 class="subtext-header mt-2 mb-4">It is important to take care of the patient, the outcome of the patient's outcome will be negative.</h4>
                             <p>Welcome</p>
                             <h3>You need to login to view recipes</h3>
                         </div>

@@ -15,9 +15,10 @@ namespace IceCreamParlour.Controllers
         private DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
 
         // GET: Books
-        public ActionResult Index()
+        public ActionResult Index(string searchData)
         {
-            return View(db.Books.ToList());
+            var boo = db.Books.Where(b => b.Title.Contains(searchData) || b.Author.Contains(searchData) || searchData == null).ToList();
+            return View(boo);
         }
 
         // GET: Books/Details/5

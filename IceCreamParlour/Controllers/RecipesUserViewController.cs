@@ -18,12 +18,12 @@ namespace IceCreamParlour.Controllers
         private const string CartSession = "CartSession";
 
         // GET: RecipesUserView
-        public ActionResult Index(int? page)
+        public ActionResult Index(string searchData, int? page)
         {
+            var res = db.Recipes.Where(r => r.Recipe_Name.Contains(searchData) || searchData == null).ToList();
+            return View(res);
             var recipes = db.Recipes.ToList();
             return View(recipes);
-
-
         }
 
 

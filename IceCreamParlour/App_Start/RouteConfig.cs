@@ -15,7 +15,7 @@ namespace IceCreamParlour
 
             routes.MapRoute(
                 name: "Add Cart",
-                url: "them-gio-hang",
+                url: "AddToCart",
                 defaults: new { controller = "Cart", action = "AddItem", id = UrlParameter.Optional },
                 namespaces: new[] { "IceCreamParlour.Controllers" }
                 );
@@ -24,12 +24,12 @@ namespace IceCreamParlour
                 url: "complete",
                 defaults: new { controller = "Cart", action = "Success", id = UrlParameter.Optional },
                 namespaces: new[] { "IceCreamParlour.Controllers" }
-                 );
+                );
             routes.MapRoute(
                 name: "payment error",
                 url: "payment error",
-                defaults: new { controller = "cart", action = "Success", id = UrlParameter.Optional },
-                namespaces: new[] { "icecreamparlour.controllers" }
+                defaults: new { controller = "Cart", action = "Success", id = UrlParameter.Optional },
+                namespaces: new[] { "Icecreamparlour.controllers" }
                  );
             routes.MapRoute(
                 name: "Default",

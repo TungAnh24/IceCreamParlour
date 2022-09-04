@@ -1,6 +1,7 @@
 ﻿using IceCreamParlour.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -129,58 +130,104 @@ namespace IceCreamParlour.Controllers
             return View(list);
         }
         [HttpPost]
-        public ActionResult Payment(string name, string address, string email, string contact)
+        //public ActionResult Payment(string name, string address, string email, string contact)
+        //{
+        //    var cart = Session[CartSession];
+        //    var order = new Order();
+        //    var list = new List<CartItem>();
+        //    if (cart != null)
+        //    {
+        //        list = (List<CartItem>)cart;
+        //    }
+        //    var userEmail = Session["Email"];
+        //    var user = db.Users.FirstOrDefault(x => x.Email == userEmail);
+        //    if (user != null)
+        //    {
+        //        order = new Order()
+        //        {
+        //            Name = user.Name,
+        //            Address = user.Address,
+        //            Email = user.Email,
+        //            Contact = user.Contact,
+        //            Card_No = user.Card_No
+        //        };
+        //    }
+        //    else
+        //    {
+        //        order = new Order()
+        //        {
+
+        //            Name = user.Name,
+        //            Address = user.Address,
+        //            Email = user.Email,
+        //            Contact=user.Contact,
+        //            Card_No = user.Card_No
+
+        //        };
+        //        return Redirect("/payment error");
+        //    }
+        //        db.Orders.Add(order);
+        //        db.SaveChanges();
+        //        foreach (var item in list)
+        //        {
+
+        //            var orderDetail = new Order_Detail()
+        //            {
+        //                Order_Id = order.Order_Id,
+        //                Book_Id = item.Book.Book_Id,
+        //                Quantity = item.Quantity,
+        //                Price = item.Book.Price,
+
+        //            };
+        //            db.Order_Detail.Add(orderDetail);
+        //        }
+        //        db.SaveChanges();
+        //        return Redirect("/complete");
+        //}
+        public ActionResult Payment(string name, string mobile, string address, string email)
         {
-            var cart = Session[CartSession];
             var order = new Order();
-            var list = new List<CartItem>();
-            if (cart != null)
+            order.Status = false;
+            order.Date = DateTime.Now;
+            order.Address = address;
+            order.Contact = mobile;
+            order.Name = name;
+            order.Email = email;
+
+            try
             {
-                list = (List<CartItem>)cart;
-            }
-            var userEmail = Session["Email"];
-            var user = db.Users.FirstOrDefault(x => x.Email == userEmail);
-            if (user != null)
-            {
-                order = new Order()
+                var id = new OrderContoller().Insert(order);
+                var cart = (List<CartItem>)Session[CartSession];
+                var detailController = new OrderDetailContoller();
+                decimal total = 0;
+                foreach (var item in cart)
                 {
-                    Name = user.Name,
-                    Address = user.Address,
-                    Email = user.Email,
-                    Contact = user.Contact,
-                };
+                    var orderDetail = new Order_Detail();
+                    orderDetail.Book_Id = item.Book.Book_Id;
+                    orderDetail.Order_Id = (int)id;
+                    orderDetail.Price = item.Book.Price;
+                    orderDetail.Quantity = item.Quantity;
+                    detailController.Insert(orderDetail);
+
+                    total = (decimal)(item.Book.Price * item.Quantity);
+                }
+                string content = System.IO.File.ReadAllText(Server.MapPath("~/Areas/Local/assets/template/neworder.html"));
+
+                content = content.Replace("{{Name}}", name);
+                content = content.Replace("{{Contact}}", mobile);
+                content = content.Replace("{{Email}}", email);
+                content = content.Replace("{{Address}}", address);
+                content = content.Replace("{{Card_No}}", total.ToString("N0"));
+                
+
             }
-            else
+            catch (Exception ex)
             {
-                order = new Order()
-                {
-                    Address = user.Address,
-                    Name = user.Name,
-                    Email = user.Email,
-                    Card_No = user.Card_No,
-                    Date = DateTime.Now
-                };
+                //ghi log
                 return Redirect("/payment error");
             }
-                db.Orders.Add(order);
-                db.SaveChanges();
-                foreach (var item in list)
-                {
-
-                    var orderDetail = new Order_Detail()
-                    {
-                        Order_Id = order.Order_Id,
-                        Book_Id = item.Book.Book_Id,
-                        Quantity = item.Quantity,
-                        Price = item.Book.Price,
-
-                    };
-                    db.Order_Detail.Add(orderDetail);
-                }
-                db.SaveChanges();
-                return Redirect("/complete");
+            return Redirect("/complete");
         }
-        
 
         public ActionResult Details(int book_Id)
         {

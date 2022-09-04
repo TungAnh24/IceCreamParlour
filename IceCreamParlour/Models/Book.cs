@@ -20,22 +20,26 @@ namespace IceCreamParlour.Models
         {
             this.Order_Detail = new HashSet<Order_Detail>();
         }
-    
+
         public int Book_Id { get; set; }
         [Required]
         public string Title { get; set; }
         public string Description { get; set; }
-        [Required]
+
+        //[Required]
         public string Image { get; set; }
         public double Price { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime Create_Date { get; set; }
         public long AdminAdd_Id { get; set; }
         public string Author { get; set; }
         public Nullable<long> AdminUpdate_Id { get; set; }
+
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Update_Date { get; set; }
         public Nullable<int> IsActive { get; set; }
         public Nullable<int> IsDelete { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Detail> Order_Detail { get; set; }
 

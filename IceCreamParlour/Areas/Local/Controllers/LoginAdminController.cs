@@ -161,8 +161,5 @@ namespace IceCreamParlour.Areas.Local.Controllers
             }
             return byte2String;
         }
-        //https://hoanguyenit.com/aspnet-mvc5-login-and-register.html
-
     }
-
 }

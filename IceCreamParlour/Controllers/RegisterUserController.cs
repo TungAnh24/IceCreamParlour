@@ -13,11 +13,6 @@ namespace IceCreamParlour.Controllers
     {
         DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
 
-        public ActionResult Index()
-        {
-       
-            return null;
-        }
         // GET: RegisterUser
 
         [HttpGet]
