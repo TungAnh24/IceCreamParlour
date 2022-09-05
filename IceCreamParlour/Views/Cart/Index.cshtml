@@ -1,0 +1,58 @@
+﻿@model List<IceCreamParlour.Models.CartItem>
+@section jsFooter{
+
+    <script src="~/Areas/Local/assets/js/controllers/cartController.js"></script>
+}
+<div class="content">
+    <div class="section group">
+        @if (Model.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Code</td>
+                        <td>Title</td>
+                        <td>Image</td>
+                        <td>Quantity</td>
+                        <td>Price</td>
+                        <td>Into Money</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{double a = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        a = a + item.Book.Price * item.Quantity;
+                        <tr>
+                            <td>@item.Book.Book_Id</td>
+                            <td>@item.Book.Title</td>
+                            <td><img src="~/Areas/Local/BookImages/@Url.Content(item.Book.Image)" width="100" /></td>
+                            <td><input type="text" class="txtQuantity" data-id="@item.Book.Book_Id" value="@item.Quantity" /></td>
+                            <td>@item.Book.Price.ToString("N0")</td>
+                            <td>@((item.Book.Price * item.Quantity).ToString("N0"))</td>
+                            <td><a href="#" data-id="@item.Book.Book_Id" class="btn-delete">Delete</a></td>
+                        </tr>
+                    }
+                <tr>
+                    <td colspan="5">Total Amount</td>
+                    <td>@a.ToString("N0")</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <button id="btnContinue" class="btn">Keep Buying</button>
+            <button id="btnUpdate" class="btn">Update</button>
+            <button id="btnDeleteAll" class="btn">Delete All</button>
+            <button id="btnPayment" class="btn">Payment</button>
+        }
+        else
+        {
+        <span class="alert alert-danger">There are no products in the cart yet</span>
+        }
+
+    </div>
+</div>
+
+

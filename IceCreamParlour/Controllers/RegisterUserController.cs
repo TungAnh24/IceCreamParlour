@@ -13,11 +13,6 @@ namespace IceCreamParlour.Controllers
     {
         DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
 
-        public ActionResult Index()
-        {
-       
-            return null;
-        }
         // GET: RegisterUser
 
         [HttpGet]
@@ -128,6 +123,7 @@ namespace IceCreamParlour.Controllers
                     //add session
                     Session["FullName"] = data.FirstOrDefault().Name;
                     Session["Email"] = data.FirstOrDefault().Email;
+                    Session["UserId"] = data.FirstOrDefault().User_Id;
 
                     return RedirectToAction("Index","Home");
                 }

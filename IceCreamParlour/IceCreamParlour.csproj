@@ -147,8 +147,13 @@
     <Compile Include="Areas\Local\LocalAreaRegistration.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CustomerFeedBackController.cs" />
+    <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CartItemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BookViewController.cs" />
+    <Compile Include="Controllers\OrderDetailContoller.cs" />
+    <Compile Include="Controllers\OrderContoller.cs" />
     <Compile Include="Controllers\RecipesUserViewController.cs" />
     <Compile Include="Controllers\RegisterUserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -161,6 +166,7 @@
       <DependentUpon>IceCreamParlour_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB_Entities.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Feedback.cs">
       <DependentUpon>IceCreamParlour_DB.tt</DependentUpon>
     </Compile>
@@ -195,9 +201,6 @@
       <DependentUpon>IceCreamParlour_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Subscription_Payment.cs">
-      <DependentUpon>IceCreamParlour_DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>IceCreamParlour_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
@@ -236,6 +239,7 @@
     <Content Include="Areas\Local\assets\js\carousel.js" />
     <Content Include="Areas\Local\assets\js\chartjs.js" />
     <Content Include="Areas\Local\assets\js\chat.js" />
+    <Content Include="Areas\Local\assets\js\controllers\cartController.js" />
     <Content Include="Areas\Local\assets\js\cropper.js" />
     <Content Include="Areas\Local\assets\js\dashboard.js" />
     <Content Include="Areas\Local\assets\js\data-table.js" />
@@ -261,6 +265,7 @@
     <Content Include="Areas\Local\assets\js\tinymce.js" />
     <Content Include="Areas\Local\assets\js\typeahead.js" />
     <Content Include="Areas\Local\assets\js\wizard.js" />
+    <Content Include="Areas\Local\assets\template\neworder.html" />
     <Content Include="Areas\Local\assets\vendors\ace-builds\src-min\ace.js" />
     <Content Include="Areas\Local\assets\vendors\ace-builds\src-min\ext-beautify.js" />
     <Content Include="Areas\Local\assets\vendors\ace-builds\src-min\ext-code_lens.js" />
@@ -1449,6 +1454,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cssBook\BookDetail.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\ion.rangeSlider.min.css" />
@@ -1515,6 +1521,7 @@
     <Content Include="Content\Login\js\owl.carousel.min.js" />
     <Content Include="Content\Login\js\popper.min.js" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\js\showMenuOnScroll.js" />
     <Content Include="Content\Recipes\css\background.css" />
     <Content Include="Content\Recipes\css\bootstrap-icons.css" />
     <Content Include="Content\Recipes\css\bootstrap.min.css" />
@@ -1932,6 +1939,12 @@
     <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <Content Include="Areas\Local\Views\Admins\Lock.cshtml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -1952,27 +1965,32 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Book\Create.cshtml" />
+    <Content Include="Views\Book\Delete.cshtml" />
+    <Content Include="Views\Book\Details.cshtml" />
+    <Content Include="Views\Book\Edit.cshtml" />
+    <Content Include="Views\Book\Index.cshtml" />
+    <Content Include="Views\CustomerFeedBack\Create.cshtml" />
     <Content Include="Views\CustomerFeedBack\Index.cshtml" />
     <Content Include="Views\CustomerFeedBack\Create.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\RegisterUser\AfterSignup.cshtml" />
+    <Content Include="Views\RegisterUser\Errorpage.cshtml" />
+    <Content Include="Views\RegisterUser\Index.cshtml" />
     <Content Include="Views\RegisterUser\Login.cshtml" />
     <Content Include="Views\RegisterUser\Register.cshtml" />
+    <Content Include="Views\RegisterUser\UserPannel.cshtml" />
+    <Content Include="Views\RecipesUserView\Details.cshtml" />
     <Content Include="Views\RecipesUserView\Index.cshtml" />
+    <Content Include="Views\Cart\Payment.cshtml" />
+    <Content Include="Views\Cart\Success.cshtml" />
     <Content Include="Views\RecipesUserView\Details.cshtml" />
     <Content Include="Views\bookView\Details.cshtml" />
     <Content Include="Views\bookView\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Local\BookImages\" />
-    <Folder Include="Areas\Local\Data\" />
-    <Folder Include="Areas\Local\FlavorImages\" />
-    <Folder Include="Areas\Local\RecipeImages\" />
-    <Folder Include="Content\Recipes\img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
