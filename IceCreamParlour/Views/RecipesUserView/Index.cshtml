@@ -92,7 +92,7 @@
 
 
 
-                    @*<select id="RecipeIds" name="RecipeIds" class="form-select" aria-label="Default select example">*@
+                 
                     <select style="color: #FF3399; border-color: #FF3399; border-block-end: #FF3399; ">
                         <option value="" disabled selected>Choose your flavor</option>
                         @foreach (var item in Model)
@@ -100,9 +100,6 @@
                             <option value=@item>    @Html.DisplayFor(modelItem => item.Flavor.Flavor_Name)</option>
                         }
 
-                        @*<option selected="selected" value="1">The Godfather</option>
-                            <option value="2">Forrest Gump</option>
-                            <option value="3">Fight Club</option>*@
                     </select>
 
                 </div>
