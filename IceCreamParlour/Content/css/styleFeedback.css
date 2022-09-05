@@ -29,20 +29,22 @@ img{max-width:100%;}
 /*-- end reset --*/
 body {
     font-family: 'Open Sans', sans-serif;
-    background: url(../images/1.jpg)no-repeat center;
+    /*background: url(../images/1.jpg)no-repeat center;*/
     background-attachment: fixed;
+    background: #C9CCD3;
+    background-image: linear-gradient(to top, #c79081 0%, #dfa579 100%);
 }
 h1 {
     font-size: 2.8em;
     text-align: center;
     color: #fff;
     font-weight: 100;
-	font-family: 'Amita', cursive;
-	line-height: 1em;
+    font-family: 'Amita', cursive;
+    line-height: 1em;
 }
 /*-- main --*/
 .main {
-    padding: 2em 0 0;
+    padding: 2em 0 0;    
 }
 .main-row {
     width: 30%;

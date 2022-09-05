@@ -8,19 +8,20 @@
 }
 <link href="~/Areas/Local/assets/css/PagedList.css" rel="stylesheet" />
 
-<h2>Index</h2>
+<h2>Subscription Payment</h2>
 
 @using (Html.BeginForm("Index", "Subscription_Payment", FormMethod.Get))
 {
     <p>
         <br />
         Search by Customer's Name':
-        @Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "form-control", @placeholder = "Enter Customer's Name..." })
-        <input type="submit" class="btn btn-outline-google" value="Find" />
+        @Html.TextBox("Search_Data", ViewBag.FilterValue as string,
+       new { @class = "form-control", @placeholder = "Enter Customer's Name...", id="Formbeg" })
+        @*<input type="submit" class="btn btn-outline-google" value="Find" />*@
     </p>
 }
 <center>
-    <input type="text" id="txtSearch" placeholder="Enter Customer Name..." />
+    @*<input type="text" id="txtSearch" placeholder="Enter Customer Name..." />*@
     <hr />
     <table class="table table-striped table-bordered">
         <tr>
@@ -60,17 +61,29 @@
 
     </table>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        $("#txtSearch").on("keyup", function () {
-            var txtEnter = $(this).val();
-            $("table tr").each(function (result) {
-                if (result !== 0) {
-                    var id = $(this).find("td:nth-child(3)").text();
-                    if (id.indexOf(txtEnter) !== 0 && id.toLowerCase().indexOf(txtEnter.toLowerCase()) < 0) {
-                        $(this).hide();
-                    } else {
-                        $(this).show();
+    @*<script>
+            $("#txtSearch").on("keyup", function () {
+                var txtEnter = $(this).val();
+                $("table tr").each(function (result) {
+                    if (result !== 0) {
+                        var id = $(this).find("td:nth-child(3)").text();
+                        if (id.indexOf(txtEnter) !== 0 && id.toLowerCase().indexOf(txtEnter.toLowerCase()) < 0) {
+                            $(this).hide();
+                        } else {
+                            $(this).show();
+                        }
                     }
+                });
+            });
+        </script>*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Formbeg").keypress(function (e) {
+                keycode = e.keyCode || e.charCode || e.which //for cross browser
+                if (keycode == 13)    //keyCode for enter key
+                {
+                    $("#").click();
+                    return false;
                 }
             });
         });

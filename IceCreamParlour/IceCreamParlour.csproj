@@ -145,6 +145,7 @@
     <Compile Include="Areas\Local\Controllers\Subscription_PaymentController.cs" />
     <Compile Include="Areas\Local\Controllers\UsersController.cs" />
     <Compile Include="Areas\Local\LocalAreaRegistration.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CustomerFeedBackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BookViewController.cs" />

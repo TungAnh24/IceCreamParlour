@@ -3,7 +3,6 @@
 @{
     Layout = "~/Areas/Local/Views/Shared/_AdminView.cshtml";
 }
-
 <div class="row justify-content-md-center">
     <div class="col-md-5">
         @using (Html.BeginForm("Register", "LoginAdmin", FormMethod.Post))
@@ -20,7 +19,6 @@
                         @Html.LabelFor(m => m.Name)
                         @Html.TextBoxFor(m => m.Name, "", new { @class = "form-control", @placeholder = "Name" })
                         @Html.ValidationMessageFor(m => m.Name, "", new { @class = "badge badge-danger" })
-
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Email)

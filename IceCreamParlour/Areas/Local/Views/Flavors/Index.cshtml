@@ -19,12 +19,13 @@
     <p>
         <br />
         Search by Name:
-        @Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "form-control", @placeholder = "Enter Flavor Name..." })
-        <input type="submit" class="btn btn-outline-google" value="Find" />
+        @Html.TextBox("Search_Data", ViewBag.FilterValue as string,
+       new { @class = "form-control", @placeholder = "Enter Flavor Name...",id= "Formbeg" })
+        @*<input type="submit" class="btn btn-outline-google" value="Find" />*@
     </p>
 }
 <center>
-    <input type="text" id="txtSearch" placeholder="Enter Flavor Name..." class="txtSearch" />
+    @*<input type="text" id="txtSearch" placeholder="Enter Flavor Name..." class="txtSearch" />*@
     <hr />
     <table class="table table-bordered table-striped">
         <tr>
@@ -82,7 +83,7 @@
 
     </table>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
+    @*<script>
         $("#txtSearch").on("keyup", function () {
             var txtEnter = $(this).val();
             $("table tr").each(function (result) {
@@ -93,6 +94,18 @@
                     } else {
                         $(this).show();
                     }
+                }
+            });
+        });*@
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Formbeg").keypress(function (e) {
+                keycode = e.keyCode || e.charCode || e.which //for cross browser
+                if (keycode == 13)    //keyCode for enter key
+                {
+                    $("#").click();
+                    return false;
                 }
             });
         });

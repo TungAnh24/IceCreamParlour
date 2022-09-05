@@ -14,15 +14,15 @@
 </p>
 @using (Html.BeginForm("Index", "Books", FormMethod.Get))
 {
-    <p>
-        <br />
+    <p><br />
         Search by Title or Author:
-        @Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "form-control", @placeholder = "Enter Title or Author..." })
-        <input type="submit" class="btn btn-outline-google" value="Find" />
+        @Html.TextBox("Search_Data", ViewBag.FilterValue as string, 
+       new { @class = "form-control", @placeholder = "Enter Title or Author...", id = "Formbeg" })
+        @*<input type="submit" id="submit_btn" class="btn btn-outline-google" value="Find" />*@        
     </p>
 }
 <center>
-    <input type="text" id="txtSearch" placeholder="Enter Title Name..." />
+    @*<input type="text" id="txtSearch" placeholder="Enter Title Name..." />*@
     <hr />
     <table class="table table-bordered table-striped">
         <tr>
@@ -38,27 +38,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.First().Price)
             </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Create_Date)
-                </th>*@
-            @*<th>
-                    @Html.DisplayNameFor(model => model.AdminAdd_Id)
-                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.First().Author)
             </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.AdminUpdate_Id)
-                </th>*@
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Update_Date)
-                </th>*@
-            @*<th>
-                    @Html.DisplayNameFor(model => model.IsActive)
-                </th>*@
-            @*<th>
-                    @Html.DisplayNameFor(model => model.IsDelete)
-                </th>*@
             <th></th>
         </tr>
 
@@ -77,27 +59,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Create_Date)
-                    </td>*@
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.AdminAdd_Id)
-                    </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.AuthorTrimmed)
                 </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.AdminUpdate_Id)
-                    </td>*@
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Update_Date)
-                    </td>*@
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.IsActive)
-                    </td>*@
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.IsDelete)
-                    </td>*@
                 <td>
                     <a href="@Url.Action("Edit", "Books", new { id = item.Book_Id })" class="btn btn-inverse-warning">Edit</a>
                     <a href="@Url.Action("Details", "Books", new { id = item.Book_Id })" class="btn btn-inverse-secondary">Details</a>
@@ -110,7 +74,7 @@
 
     </table>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
+    @*<script>
         $("#txtSearch").on("keyup", function () {
             var txtEnter = $(this).val();
             $("table tr").each(function (result) {
@@ -121,6 +85,18 @@
                     } else {
                         $(this).show();
                     }
+                }
+            });
+        });
+    </script>*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Formbeg").keypress(function (e) {
+                keycode = e.keyCode || e.charCode || e.which //for cross browser
+                if (keycode == 13)    //keyCode for enter key
+                {
+                    $("#").click();
+                    return false;
                 }
             });
         });
