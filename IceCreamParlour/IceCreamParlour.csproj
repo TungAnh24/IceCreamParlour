@@ -1755,11 +1755,11 @@
     <Content Include="Areas\Local\Views\Admins\Details.cshtml" />
     <Content Include="Areas\Local\Views\Admins\Edit.cshtml" />
     <Content Include="Areas\Local\Views\Admins\Index.cshtml" />
-    <Content Include="Areas\Local\Views\Book\Create.cshtml" />
-    <Content Include="Areas\Local\Views\Book\Delete.cshtml" />
-    <Content Include="Areas\Local\Views\Book\Details.cshtml" />
-    <Content Include="Areas\Local\Views\Book\Edit.cshtml" />
-    <Content Include="Areas\Local\Views\Book\Index.cshtml" />
+    <Content Include="Areas\Local\Views\Books\Create.cshtml" />
+    <Content Include="Areas\Local\Views\Books\Delete.cshtml" />
+    <Content Include="Areas\Local\Views\Books\Details.cshtml" />
+    <Content Include="Areas\Local\Views\Books\Edit.cshtml" />
+    <Content Include="Areas\Local\Views\Books\Index.cshtml" />
     <Content Include="Areas\Local\Views\Flavors\Create.cshtml" />
     <Content Include="Areas\Local\Views\Flavors\Delete.cshtml" />
     <Content Include="Areas\Local\Views\Flavors\Details.cshtml" />
