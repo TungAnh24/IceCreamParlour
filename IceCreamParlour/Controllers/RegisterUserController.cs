@@ -28,6 +28,7 @@ namespace IceCreamParlour.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(User _user)
         {
+            try { 
             if (ModelState.IsValid)
             {
                 var check = db.Users.FirstOrDefault(s => s.Email == _user.Email);
@@ -76,7 +77,12 @@ namespace IceCreamParlour.Controllers
                 ViewBag.error = "Oh noo";
                 return RedirectToAction("Register");
             }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
 
+            }
             return View();
 
         }

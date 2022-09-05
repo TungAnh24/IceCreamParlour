@@ -27,6 +27,7 @@ namespace IceCreamParlour.Models
 
         public int User_Id { get; set; }
         [Required]
+        [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
         [Required]
         [StringLength(12, MinimumLength = 10)]
@@ -36,6 +37,7 @@ namespace IceCreamParlour.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Required]
+        [StringLength(50, MinimumLength = 3)]
         public string Address { get; set; }
         [Required]
         [DataType(DataType.Password)]
