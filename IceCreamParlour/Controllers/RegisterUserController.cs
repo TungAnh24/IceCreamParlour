@@ -125,6 +125,10 @@ namespace IceCreamParlour.Controllers
                     Session["FullName"] = data.FirstOrDefault().Name;
                     Session["Email"] = data.FirstOrDefault().Email;
                     Session["UserId"] = data.FirstOrDefault().User_Id;
+                    Session["Name"] = data.FirstOrDefault().Name;
+                    Session["Address"] = data.FirstOrDefault().Address;
+                    Session["Contact"] = data.FirstOrDefault().Contact;
+                    Session["Card_No"] = data.FirstOrDefault().Card_No;
 
                     return RedirectToAction("Index","Home");
                 }
