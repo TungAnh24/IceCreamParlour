@@ -48,11 +48,15 @@ namespace IceCreamParlour.Models
         [Required]
         [StringLength(14)]
 
+        [CreditCard(ErrorMessage = "Please enter a valid card No")]
         public string Card_No { get; set; }
         [DataType(DataType.Date)]
         public System.DateTime JoinDate { get; set; }
         public int IsActive { get; set; }
         public int IsDelete { get; set; }
+
+          public virtual bool lockEnable { get; set; }
+        public virtual DateTime? LockEndDateUtc { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feedback> Feedbacks { get; set; }
@@ -72,5 +76,7 @@ namespace IceCreamParlour.Models
                 else return this.Email;
             }
         }
+
+        
     }
 }
