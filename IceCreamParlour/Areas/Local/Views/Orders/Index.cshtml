@@ -1,82 +1,130 @@
-﻿@model IEnumerable<IceCreamParlour.Models.Order>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<IceCreamParlour.Models.Order>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Local/Views/Shared/_AdminView.cshtml";
 }
+<link href="~/Areas/Local/assets/css/PagedList.css" rel="stylesheet" />
 
-<h2>Index</h2>
+<h2>Customer Order</h2>
 
-@*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contact)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Card_No)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Total_Amount)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.User.Name)
-        </th>*@
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contact)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Card_No)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Total_Amount)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.User.Name)
-        </td>*@
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.Order_Id }) |*@
-            @Html.ActionLink("Details", "Details", new { id=item.Order_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Order_Id })
-        </td>
-    </tr>
+@using (Html.BeginForm("Index", "Orders", FormMethod.Get))
+{
+    <p>
+        <br />
+        Search by Customer's Name':
+        @Html.TextBox("Search_Data", ViewBag.FilterValue as string,
+       new { @class = "form-control", @placeholder = "Enter Customer's Name...", id="Formbeg" })
+        @*<input type="submit" class="btn btn-outline-google" value="Find" />*@
+    </p>
 }
+<center>
+    @*<input type="text" id="txtSearch" placeholder="Enter Customer Name..." />*@
+    <hr />
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Status)*@
+                @Html.ActionLink("Status", "Index", new { Sort_Order = ViewBag.SortName })
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Contact)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.First().Address)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Card_No)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.First().Total_Amount)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.User.Name)
+                </th>*@
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contact)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Card_No)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total_Amount)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.User.Name)
+                    </td>*@
+                <td>
+                    <a href="@Url.Action("Edit", "Orders", new { id = item.Order_Id })" class="btn btn-inverse-warning">Edit</a>
+                    <a href="@Url.Action("Details", "Orders", new { id = item.Order_Id})" class="btn btn-inverse-secondary">Details</a>
+                    @*<a href="@Url.Action("Delete", "Orders", new { id = item.Order_Id})" class="btn btn-inverse-danger" onclick="return confirm('Are you sure you wish to delete this order?');">
+                            Delete
+                        </a>*@
+                </td>
+            </tr>
+        }
+
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    @*<script>
+        $("#txtSearch").on("keyup", function () {
+            var txtEnter = $(this).val();
+            $("table tr").each(function (result) {
+                if (result !== 0) {
+                    var id = $(this).find("td:nth-child(3)").text();
+                    if (id.indexOf(txtEnter) !== 0 && id.toLowerCase().indexOf(txtEnter.toLowerCase()) < 0) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                }
+            });
+        });
+    </script>*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Formbeg").keypress(function (e) {
+                keycode = e.keyCode || e.charCode || e.which //for cross browser
+                if (keycode == 13)    //keyCode for enter key
+                {
+                    $("#").click();
+                    return false;
+                }
+            });
+        });
+    </script>
+</center>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, Page_No => Url.Action("Index", new { Page_No, Sort_Order = ViewBag.CurrentSort }))

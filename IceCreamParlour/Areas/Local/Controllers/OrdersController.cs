@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using IceCreamParlour.Models;
+using PagedList;
 
 namespace IceCreamParlour.Areas.Local.Controllers
 {
@@ -15,10 +16,30 @@ namespace IceCreamParlour.Areas.Local.Controllers
         private DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
 
         // GET: Local/Orders
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var orders = db.Orders.Include(o => o.User);
+        //    return View(orders.ToList());
+        //}
+
+        public ActionResult Index(string Sort_Order, string Search_Data, int? Page_No)
         {
-            var orders = db.Orders.Include(o => o.User);
-            return View(orders.ToList());
+            ModelState.Clear();
+            ViewBag.CurrentSort = Sort_Order;
+            ViewBag.SortName = String.IsNullOrEmpty(Sort_Order) ? "Status_desc" : "";
+            var orders = from o in db.Orders select o;
+            switch (Sort_Order)
+            {
+                case "Status_desc":
+                    orders = orders.OrderByDescending(u => u.Status);
+                    break;
+                default:
+                    orders = orders.OrderBy(u => u.Status);
+                    break;
+            }
+            var use = orders
+                .Where(o=>o.Name.Contains(Search_Data) || Search_Data == null).ToList().ToPagedList(Page_No ?? 1, 5);
+            return View(use);
         }
 
         // GET: Local/Orders/Details/5

@@ -1,59 +1,115 @@
-﻿@model IEnumerable<IceCreamParlour.Models.Flavor>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<IceCreamParlour.Models.Flavor>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Local/Views/Shared/_AdminView.cshtml";
 }
+<link href="~/Areas/Local/assets/css/PagedList.css" rel="stylesheet" />
 
-<h2>Index</h2>
+<h2>Flavor</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
+    <a href="@Url.Action("Create", "Flavors")" class="btn btn-outline-reddit">Add Flavors</a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Flavor_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ingredients)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MakingProcess)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NameTrimmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InTrimmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MkTrimmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DesTrimmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageTrimmed)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Flavor_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Flavor_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Flavor_Id },
-            new { onclick = "return confirm('Are you sure you wish to delete this feedback?');" })
-        </td>
-    </tr>
+@using (Html.BeginForm("Index", "Flavors", FormMethod.Get))
+{
+    <p>
+        <br />
+        Search by Name:
+        @Html.TextBox("Search_Data", ViewBag.FilterValue as string,
+       new { @class = "form-control", @placeholder = "Enter Flavor Name...",id= "Formbeg" })
+        @*<input type="submit" class="btn btn-outline-google" value="Find" />*@
+    </p>
 }
+<center>
+    @*<input type="text" id="txtSearch" placeholder="Enter Flavor Name..." class="txtSearch" />*@
+    <hr />
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Flavor_Name)*@
+                @Html.ActionLink("Flavor_Name", "Index", new { Sort_Order = ViewBag.SortName })
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Ingredients)*@
+                @Html.ActionLink("Ingredients", "Index", new { Sort_Order = ViewBag.SortIn })
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().MakingProcess)
+                @*MakingProcess*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Description)
+                @*Description*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Image)
+                @*Image*@
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameTrimmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InTrimmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MkTrimmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DesTrimmed)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.ImageTrimmed)*@
+                    <img src="~/Areas/Local/FlavorImages/@Url.Content(item.Image)" style="height:50px;width:50px;" />
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Flavors", new { id = item.Flavor_Id })" class="btn btn-inverse-warning">Edit</a>
+                    <a href="@Url.Action("Details", "Flavors", new { id = item.Flavor_Id })" class="btn btn-inverse-secondary">Details</a>
+                    <a href="@Url.Action("Delete", "Flavors", new { id = item.Flavor_Id })" class="btn btn-inverse-danger" onclick="return confirm('Are you sure you wish to delete this flavor?');">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    @*<script>
+        $("#txtSearch").on("keyup", function () {
+            var txtEnter = $(this).val();
+            $("table tr").each(function (result) {
+                if (result !== 0) {
+                    var id = $(this).find("td:nth-child(1)").text();
+                    if (id.indexOf(txtEnter) !== 0 && id.toLowerCase().indexOf(txtEnter.toLowerCase()) < 0) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                }
+            });
+        });*@
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Formbeg").keypress(function (e) {
+                keycode = e.keyCode || e.charCode || e.which //for cross browser
+                if (keycode == 13)    //keyCode for enter key
+                {
+                    $("#").click();
+                    return false;
+                }
+            });
+        });
+    </script>
+</center>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index", new { Page_No, Sort_Order = ViewBag.CurrentSort }))

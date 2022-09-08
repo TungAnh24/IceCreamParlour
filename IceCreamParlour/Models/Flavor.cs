@@ -22,16 +22,22 @@ namespace IceCreamParlour.Models
         }
     
         public int Flavor_Id { get; set; }
+        [Required]
         public string Flavor_Name { get; set; }
+        [Required]
         public string Ingredients { get; set; }
+        [Required]
         public string MakingProcess { get; set; }
+        [Required]
         public string Description { get; set; }
+        //[Required]
         public string Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Recipe> Recipes { get; set; }
 
         public int limit = 15;
+        public int imageLimit = 10;
 
         [Display(Name = "Ingredients")]
         public string NameTrimmed
@@ -82,7 +88,7 @@ namespace IceCreamParlour.Models
         {
             get
             {
-                if (this.Image.Length > this.limit) return this.Image.Substring(0, this.limit) + "...";
+                if (this.Image.Length > this.imageLimit) return this.Image.Substring(0, this.imageLimit) + "...";
                 else return this.Image;
             }
         }

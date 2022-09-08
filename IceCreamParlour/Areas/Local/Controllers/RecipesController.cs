@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using IceCreamParlour.Models;
+using PagedList;
 
 namespace IceCreamParlour.Areas.Local.Controllers
 {
@@ -16,10 +17,30 @@ namespace IceCreamParlour.Areas.Local.Controllers
         private DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
 
         // GET: Local/Recipes
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var recipes = db.Recipes.Include(r => r.Admin).Include(r => r.Flavor);
+        //    return View(recipes.ToList());
+        //}
+
+        public ActionResult Index(string Sort_Order, string Search_Data, int? Page_No)
         {
-            var recipes = db.Recipes.Include(r => r.Admin).Include(r => r.Flavor);
-            return View(recipes.ToList());
+            ModelState.Clear();
+            ViewBag.CurrentSort = Sort_Order;
+            ViewBag.SortName = String.IsNullOrEmpty(Sort_Order) ? "Recipe_Name_desc" : "";
+            var recipes = from r in db.Recipes select r;
+            switch (Sort_Order)
+            {
+                case "Recipe_Name_desc":
+                    recipes = recipes.OrderByDescending(r => r.Recipe_Name);
+                    break;
+                default:
+                    recipes = recipes.OrderBy(r => r.Recipe_Name);
+                    break;
+            }
+            var rep = recipes.Include(r => r.Admin).Include(r => r.Flavor)
+                .Where(r => r.Recipe_Name.Contains(Search_Data) || r.Flavor.Flavor_Name.Contains(Search_Data) || Search_Data == null).ToList().ToPagedList(Page_No ?? 1, 5);
+            return View(rep);
         }
 
         // GET: Local/Recipes/Details/5
@@ -52,21 +73,36 @@ namespace IceCreamParlour.Areas.Local.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Recipe_Id,Recipe_Name,Image,Ingredients,MakingProcess,AdminCreate_Id,Publist_Date,Flavor_Id,Update_Date,AdminUpdate_Id")] Recipe recipe, HttpPostedFileBase fileUpLoad)
         {
-            if (ModelState.IsValid)
+            try
             {
-                if (fileUpLoad.ContentLength >0)
+                if (ModelState.IsValid)
                 {
-                    var fn = System.IO.Path.GetFileName(fileUpLoad.FileName);
-                    recipe.Image = fn;
-                    var fp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/RecipeImages"), recipe.Image);
-                    fileUpLoad.SaveAs(fp);
+                    if (fileUpLoad.ContentLength > 0)
+                    {
+                        var fn = System.IO.Path.GetFileName(fileUpLoad.FileName);
+                        recipe.Image = fn;
+                        var fp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/RecipeImages"), recipe.Image);
+                        fileUpLoad.SaveAs(fp);
+                    }
+                    var check = db.Recipes.FirstOrDefault(b => b.Recipe_Name == recipe.Recipe_Name);
+                    if (check == null)
+                    {
+                        db.Recipes.Add(recipe);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ViewBag.error = "Recipe's name is already exits!";
+                        return View();
+                    }                    
                 }
-                db.Recipes.Add(recipe);
-                db.SaveChanges();
-                return RedirectToAction("Index");
             }
-
-            ViewBag.AdminCreate_Id = new SelectList(db.Admins, "Admin_Id", "Name", recipe.AdminCreate_Id);
+            catch (Exception)
+            {
+                ModelState.AddModelError(string.Empty, "Please upload images");
+            }
+            //ViewBag.AdminCreate_Id = new SelectList(db.Admins, "Admin_Id", "Name", recipe.AdminCreate_Id);
             ViewBag.Flavor_Id = new SelectList(db.Flavors, "Flavor_Id", "Flavor_Name", recipe.Flavor_Id);
 
             return View(recipe);
@@ -94,20 +130,36 @@ namespace IceCreamParlour.Areas.Local.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Recipe_Id,Recipe_Name,Image,Ingredients,MakingProcess,AdminCreate_Id,Publist_Date,Flavor_Id,Update_Date,AdminUpdate_Id")] Recipe recipe,HttpPostedFileBase fileEdit)
+        public ActionResult Edit([Bind(Include = "Recipe_Id,Recipe_Name,Image,Ingredients,MakingProcess,AdminCreate_Id,Publist_Date,Flavor_Id,Update_Date,AdminUpdate_Id")] Recipe recipe, HttpPostedFileBase fileEdit)
         {
-            if (ModelState.IsValid)
+            try
             {
-                if (fileEdit.ContentLength > 0)
+                if (ModelState.IsValid)
                 {
-                    var fn = System.IO.Path.GetFileName(fileEdit.FileName);
-                    recipe.Image = fn;
-                    var fp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/RecipeImages"), recipe.Image);
-                    fileEdit.SaveAs(fp);
+                    if (fileEdit.ContentLength > 0)
+                    {
+                        var fn = System.IO.Path.GetFileName(fileEdit.FileName);
+                        recipe.Image = fn;
+                        var fp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/RecipeImages"), recipe.Image);
+                        fileEdit.SaveAs(fp);
+                    }
+                    var check = db.Recipes.FirstOrDefault(b => b.Recipe_Name == recipe.Recipe_Name && b.Recipe_Id != recipe.Recipe_Id);
+                    if (check == null)
+                    {
+                        db.Entry(recipe).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ViewBag.error = "Recipe's name is already exits!";
+                        return View();
+                    }
                 }
-                db.Entry(recipe).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(string.Empty, "Please upload images");
             }
             ViewBag.AdminCreate_Id = new SelectList(db.Admins, "Admin_Id", "Name", recipe.AdminCreate_Id);
             ViewBag.Flavor_Id = new SelectList(db.Flavors, "Flavor_Id", "Flavor_Name", recipe.Flavor_Id);

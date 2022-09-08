@@ -16,9 +16,12 @@ namespace IceCreamParlour.Models
     public partial class Recipe
     {
         public int Recipe_Id { get; set; }
+        [Required]
         public string Recipe_Name { get; set; }
         public string Image { get; set; }
+        [Required]
         public string Ingredients { get; set; }
+        [Required]
         public string MakingProcess { get; set; }
         public Nullable<long> AdminCreate_Id { get; set; }
         [DataType(DataType.Date)]

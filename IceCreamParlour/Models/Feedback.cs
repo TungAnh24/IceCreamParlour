@@ -11,17 +11,73 @@ namespace IceCreamParlour.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Feedback
     {
         public int Feedback_Id { get; set; }
+
+        [Required]
+        [StringLength(100)]
         public string Feedback_Detail { get; set; }
         public Nullable<int> User_Id { get; set; }
+
+        [Required]
+        [StringLength(100)]
         public string Name { get; set; }
         public System.DateTime Date { get; set; }
+
+        [Required]
+        [StringLength(1000)]
         public string Contact { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}")]
         public string Email { get; set; }
     
         public virtual User User { get; set; }
+
+        public int limit = 15;
+
+        [Display(Name = "Feedback_Detail")]
+        public string FdTrimmed
+        {
+            get
+            {
+                if (this.Feedback_Detail.Length > this.limit) return this.Feedback_Detail.Substring(0, this.limit) + "...";
+                else return this.Feedback_Detail;
+            }
+        }
+
+        [Display(Name = "Name")]
+        public string NameTrimmed
+        {
+            get
+            {
+                if (this.Name.Length > this.limit) return this.Name.Substring(0, this.limit) + "...";
+                else return this.Name;
+            }
+        }
+
+        [Display(Name = "Contact")]
+        public string ctTrimmed
+        {
+            get
+            {
+                if (this.Contact.Length > this.limit) return this.Contact.Substring(0, this.limit) + "...";
+                else return this.Contact;
+            }
+        }
+
+        [Display(Name = "Email")]
+        public string EmailTrimmed
+        {
+            get
+            {
+                if (this.Email.Length > this.limit) return this.Email.Substring(0, this.limit) + "...";
+                else return this.Email;
+            }
+        }
     }
 }

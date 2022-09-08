@@ -1,94 +1,106 @@
-﻿@model IEnumerable<IceCreamParlour.Models.Book>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<IceCreamParlour.Models.Book>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Local/Views/Shared/_AdminView.cshtml";
 }
-
-<h2>Index</h2>
+<link href="~/Areas/Local/assets/css/PagedList.css" rel="stylesheet" />
+<h2>Book</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create", "Books")" class="btn btn-outline-reddit">Add Books</a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Create_Date)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.AdminAdd_Id)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Author)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.AdminUpdate_Id)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.Update_Date)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.IsDelete)
-        </th>*@
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TitleTrimmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DesTrimmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageTrimmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Create_Date)
-        </td>*@
-        @*<td>
-            @Html.DisplayFor(modelItem => item.AdminAdd_Id)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.AuthorTrimmed)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.AdminUpdate_Id)
-        </td>*@
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Update_Date)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.IsDelete)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Book_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Book_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Book_Id })
-        </td>
-    </tr>
+@using (Html.BeginForm("Index", "Books", FormMethod.Get))
+{
+    <p><br />
+        Search by Title or Author:
+        @Html.TextBox("Search_Data", ViewBag.FilterValue as string, 
+       new { @class = "form-control", @placeholder = "Enter Title or Author...", id = "Formbeg" })
+        @*<input type="submit" id="submit_btn" class="btn btn-outline-google" value="Find" />*@        
+    </p>
 }
+<center>
+    @*<input type="text" id="txtSearch" placeholder="Enter Title Name..." />*@
+    <hr />
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>
+                @Html.ActionLink("Title", "Index", new { Sort_Order = ViewBag.SortName })
+            </th>
+            <th>
+                @Html.ActionLink("Description", "Index", new { Sort_Order = ViewBag.SortDes })
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Author)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TitleTrimmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DesTrimmed)
+                </td>
+                <td>
+                    <img src="~/Areas/Local/BookImages/@Url.Content(item.Image)" style="height:50px;width:50px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorTrimmed)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Books", new { id = item.Book_Id })" class="btn btn-inverse-warning">Edit</a>
+                    <a href="@Url.Action("Details", "Books", new { id = item.Book_Id })" class="btn btn-inverse-secondary">Details</a>
+                    <a href="@Url.Action("Delete", "Books", new { id = item.Book_Id })" class="btn btn-inverse-danger" onclick="return confirm('Are you sure you wish to delete this book?');">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    @*<script>
+        $("#txtSearch").on("keyup", function () {
+            var txtEnter = $(this).val();
+            $("table tr").each(function (result) {
+                if (result !== 0) {
+                    var id = $(this).find("td:nth-child(1)").text();
+                    if (id.indexOf(txtEnter) !== 0 && id.toLowerCase().indexOf(txtEnter.toLowerCase()) < 0) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                }
+            });
+        });
+    </script>*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Formbeg").keypress(function (e) {
+                keycode = e.keyCode || e.charCode || e.which //for cross browser
+                if (keycode == 13)    //keyCode for enter key
+                {
+                    $("#").click();
+                    return false;
+                }
+            });
+        });
+    </script>
+</center>@Html.Raw(TempData["msg"])
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index", new { Page_No, Sort_Order = ViewBag.CurrentSort }))

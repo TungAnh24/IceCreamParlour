@@ -32,7 +32,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Roles)
+            @*@Html.DisplayFor(model => model.Roles)*@
+            @if (Model.Roles==1)
+            {
+                <span>SuperAdmin</span>
+            }
+            else
+            {
+                <span>Admin</span>
+            }
         </dd>
 
         <dt>
