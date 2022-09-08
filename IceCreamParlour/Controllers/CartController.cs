@@ -132,7 +132,7 @@ namespace IceCreamParlour.Controllers
             return View(list);
         }
         [HttpPost]
-        public ActionResult ConfirmPayment(string name, string contact, string address, string email, string cardNo)
+        public ActionResult ConfirmPayment(string name, string contact, string address, string email, string cardNo )
         {
             var userEmail = Session["Email"];
 
@@ -146,6 +146,7 @@ namespace IceCreamParlour.Controllers
                 order.Name = Session["Name"].ToString();
                 order.Email = Session["Email"].ToString();
                 order.Card_No = Session["Card_No"].ToString();
+                
 
                 try
                 {
@@ -182,6 +183,7 @@ namespace IceCreamParlour.Controllers
                 order.Name = name;
                 order.Email = email;
                 order.Card_No = cardNo;
+                
 
                 try
                 {
@@ -199,6 +201,7 @@ namespace IceCreamParlour.Controllers
                         detailController.Insert(orderDetail);
 
                         total = (decimal)(item.Book.Price * item.Quantity);
+                        
                     }
                     string content = System.IO.File.ReadAllText(Server.MapPath("~/Areas/Local/assets/template/neworder.html"));
 
