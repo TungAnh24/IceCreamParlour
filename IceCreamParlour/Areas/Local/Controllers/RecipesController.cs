@@ -84,9 +84,18 @@ namespace IceCreamParlour.Areas.Local.Controllers
                         var fp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/RecipeImages"), recipe.Image);
                         fileUpLoad.SaveAs(fp);
                     }
-                    db.Recipes.Add(recipe);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                    var check = db.Recipes.FirstOrDefault(b => b.Recipe_Name == recipe.Recipe_Name);
+                    if (check == null)
+                    {
+                        db.Recipes.Add(recipe);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ViewBag.error = "Recipe's name is already exits!";
+                        return View();
+                    }                    
                 }
             }
             catch (Exception)
@@ -123,18 +132,34 @@ namespace IceCreamParlour.Areas.Local.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Recipe_Id,Recipe_Name,Image,Ingredients,MakingProcess,AdminCreate_Id,Publist_Date,Flavor_Id,Update_Date,AdminUpdate_Id")] Recipe recipe, HttpPostedFileBase fileEdit)
         {
-            if (ModelState.IsValid)
+            try
             {
-                if (fileEdit.ContentLength > 0)
+                if (ModelState.IsValid)
                 {
-                    var fn = System.IO.Path.GetFileName(fileEdit.FileName);
-                    recipe.Image = fn;
-                    var fp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/RecipeImages"), recipe.Image);
-                    fileEdit.SaveAs(fp);
+                    if (fileEdit.ContentLength > 0)
+                    {
+                        var fn = System.IO.Path.GetFileName(fileEdit.FileName);
+                        recipe.Image = fn;
+                        var fp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/RecipeImages"), recipe.Image);
+                        fileEdit.SaveAs(fp);
+                    }
+                    var check = db.Recipes.FirstOrDefault(b => b.Recipe_Name == recipe.Recipe_Name && b.Recipe_Id != recipe.Recipe_Id);
+                    if (check == null)
+                    {
+                        db.Entry(recipe).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ViewBag.error = "Recipe's name is already exits!";
+                        return View();
+                    }
                 }
-                db.Entry(recipe).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(string.Empty, "Please upload images");
             }
             ViewBag.AdminCreate_Id = new SelectList(db.Admins, "Admin_Id", "Name", recipe.AdminCreate_Id);
             ViewBag.Flavor_Id = new SelectList(db.Flavors, "Flavor_Id", "Flavor_Name", recipe.Flavor_Id);
