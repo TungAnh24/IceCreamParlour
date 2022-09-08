@@ -1462,6 +1462,7 @@
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\styleFeedback.css" />
+    <Content Include="Content\css\timeout-dialog.css" />
     <Content Include="Content\images\about-img.png" />
     <Content Include="Content\images\b1.jpg" />
     <Content Include="Content\images\b2.jpg" />
@@ -1489,6 +1490,7 @@
     <Content Include="Content\images\favicon.png" />
     <Content Include="Content\images\fruitNnuts-ic.png" />
     <Content Include="Content\images\kiwi-ic.png" />
+    <Content Include="Content\images\logo.ico" />
     <Content Include="Content\images\mango-ic-img.png" />
     <Content Include="Content\images\pineapple-ic-img.png" />
     <Content Include="Content\images\pistachio-ic.png" />
@@ -1503,6 +1505,7 @@
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\ion.rangeSlider.min.js" />
     <Content Include="Content\js\jquery-3.4.1.min.js" />
+    <Content Include="Content\js\timeout-dialog.js" />
     <Content Include="Content\Login\css\bootstrap.min.css" />
     <Content Include="Content\Login\css\bootstrap\bootstrap-grid.css" />
     <Content Include="Content\Login\css\bootstrap\bootstrap-reboot.css" />

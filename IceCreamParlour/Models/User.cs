@@ -48,7 +48,8 @@ namespace IceCreamParlour.Models
         [Required]
         [StringLength(14)]
 
-        [CreditCard(ErrorMessage = "Please enter a valid card No")]
+        //[CreditCard(ErrorMessage = "Please enter a valid card No")]
+        [DataType(DataType.CreditCard)]
         public string Card_No { get; set; }
         [DataType(DataType.Date)]
         public System.DateTime JoinDate { get; set; }
