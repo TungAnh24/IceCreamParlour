@@ -39,6 +39,7 @@
         </article>
         <div class="cardBody">
             @using (Html.BeginForm("Login", "LoginAdmin", FormMethod.Post))
+                
             {
                 @Html.AntiForgeryToken()
                 <div class="form-group">

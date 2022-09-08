@@ -20,7 +20,7 @@ namespace IceCreamParlour.Models
         {
             this.Order_Detail = new HashSet<Order_Detail>();
         }
-    
+
         public int Book_Id { get; set; }
         [Required]
         public string Title { get; set; }
@@ -39,7 +39,7 @@ namespace IceCreamParlour.Models
         public Nullable<System.DateTime> Update_Date { get; set; }
         public Nullable<int> IsActive { get; set; }
         public Nullable<int> IsDelete { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Detail> Order_Detail { get; set; }
 

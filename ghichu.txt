@@ -1,0 +1,3 @@
+- khi ai đó up code phải vào git trong visual (sync) để clone về máy
+- ghi chú thích ấn commit all: + Nếu mà hiện ra thông báo thì phải làm lại 2 cái trên
+					 + khi nào hiện lên success ở trên bấm push

@@ -31,7 +31,6 @@ namespace IceCreamParlour.Models
         public string Password { get; set; }
         public int UserType { get; set; }
         public string Card_No { get; set; }
-        [DataType(DataType.Date)]
         public System.DateTime JoinDate { get; set; }
         public int IsActive { get; set; }
         public int IsDelete { get; set; }

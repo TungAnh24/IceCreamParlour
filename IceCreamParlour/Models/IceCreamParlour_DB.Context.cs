@@ -34,7 +34,6 @@ namespace IceCreamParlour.Models
         public virtual DbSet<Recipe> Recipes { get; set; }
         public virtual DbSet<Subscription_Payment> Subscription_Payment { get; set; }
         public virtual DbSet<Subscription> Subscriptions { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }
