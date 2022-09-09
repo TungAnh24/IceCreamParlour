@@ -42,41 +42,27 @@
 </head>
 
 <body>
-    <div style="padding-top: 30px ; padding-bottom: 100px; border: hidden" class="container">
-        
-            <div class="container-fliud">
-                <div class="wrapper row">
-                    <div class="preview col-md-6">
-                        <img src="~/Areas/Local/RecipeImages/@Url.Content(Model.Image)" style="height:450px;width:450px;" />
-
-
-
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6"><img src="~/Areas/Local/RecipeImages/@Url.Content(Model.Image)" style="height:600px;width:500px;" /></div>
+                <div class="col-md-6">
+                    @*<div class="small mb-1">@Html.DisplayFor(model => model.Author)</div>*@
+                    <h1 class="display-5 fw-bolder">@Html.DisplayFor(model => model.Flavor.Flavor_Name)</h1>
+                    <div class="fs-5 mb-5">
+                        <span>@Html.DisplayFor(model => model.Ingredients)</span>
                     </div>
-                    <div class="details col-md-6">
-
-                        <div style="padding-bottom: 20px">
-                            <h4>Main Flavor: </h4>
-                            @Html.DisplayFor(model => model.Flavor.Flavor_Name)
-
-
-                        </div>
-                        <div style="padding-bottom: 20px">
-                            <h4>Ingredients</h4>
-                            @Html.DisplayFor(model => model.Ingredients)
-                        </div>
-                        <div style="padding-bottom: 20px">
-                            <h4>MakingProcess</h4>
-                            @Html.DisplayFor(model => model.MakingProcess)
-                        </div>
-                        
-                        <div>
+                    <p class="lead">@Html.DisplayFor(model => model.MakingProcess)</p>
+                    <div class="d-flex">
+                        <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                            <i class="bi-cart-fill me-1"></i>
                             @Html.ActionLink("Back to Recipe", "Index", "RecipesUserView")
-                        </div>
+                        </button>
                     </div>
-                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
     <script src="~/Content/Recipes/js/bootstrap.bundle.min.js"></script>
     <script src="~/Content/Recipes/js/custom.js"></script>
     <script src="~/Content/Recipes/js/jquery.min.js"></script>
