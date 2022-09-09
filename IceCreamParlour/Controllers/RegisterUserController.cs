@@ -36,7 +36,7 @@ namespace IceCreamParlour.Controllers
                     _user.IsDelete = 0;
                         _user.lockEnable = true;
                         _user.LockEndDateUtc = DateTime.Now.AddMinutes(1);
-
+                       
                         db.Configuration.ValidateOnSaveEnabled = false;
                     db.Users.Add(_user);
                     var sub = db.Subscriptions.Where(x => x.Subscription_Id == _user.UserType).FirstOrDefault();
@@ -53,7 +53,7 @@ namespace IceCreamParlour.Controllers
                         db.Subscription_Payment.Add(subPayment);
                     }
                     var Result = db.SaveChanges();
-                   
+                  
                     
                 }
                 else
@@ -110,14 +110,13 @@ namespace IceCreamParlour.Controllers
             
 
                 var f_password = GetMD5(password);
-                var data = db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
+                var data = db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) ).ToList();
                 if (data.Count() > 0)
                 {
                     //add session
                     Session["FullName"] = data.FirstOrDefault().Name;
                     Session["Email"] = data.FirstOrDefault().Email;
                     Session["UserId"] = data.FirstOrDefault().User_Id;
-
                     return RedirectToAction("Index","Home");
                 }
                 else
