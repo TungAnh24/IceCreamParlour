@@ -8,124 +8,206 @@
 
 @if (Session["FullName"] != null)
 {
-
+    <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-
-        <!-- CSS FILES -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Bootstrap Multiple Item Product Carousel</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Open+Sans">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
         <link href="~/Content/Recipes/css/SelectBOx.css" rel="stylesheet" />
-        @*<link href="~/Content/Recipes/css/bootstrap.min.css" rel="stylesheet" />
-
-            <link href="~/Content/Recipes/css/bootstrap-icons.css" rel="stylesheet" />
-
-            <link href="~/Content/Recipes/css/tooplate-crispy-kitchen.css" rel="stylesheet" />*@
         <link href="~/Content/Recipes/css/background.css" rel="stylesheet" />
         <style>
-            .hover01 figure img {
-                -webkit-transform: scale(1);
-                transform: scale(1);
-                -webkit-transition: .3s ease-in-out;
-                transition: .3s ease-in-out;
+            body {
+                background: #e2eaef;
+                font-family: "Open Sans", sans-serif;
             }
 
-            .hover01 figure:hover img {
-                -webkit-transform: scale(1.3);
-                transform: scale(1.3);
+            h2 {
+                color: #000;
+                font-size: 26px;
+                font-weight: 300;
+                text-align: center;
+                text-transform: uppercase;
+                position: relative;
+                margin: 30px 0 60px;
             }
 
-            figure {
-                width: 300px;
-                height: 300px;
-                margin: 0;
-                padding: 0;
-                background: #fff;
-                overflow: hidden;
+                h2::after {
+                    content: "";
+                    width: 100px;
+                    position: absolute;
+                    margin: 0 auto;
+                    height: 4px;
+                    border-radius: 1px;
+                    background: #7ac400;
+                    left: 0;
+                    right: 0;
+                    bottom: -20px;
+                }
+
+            .carousel {
+                margin: 50px auto;
+                padding: 0 70px;
             }
+
+                .carousel .item {
+                    color: #747d89;
+                    min-height: 325px;
+                    text-align: center;
+                    overflow: hidden;
+                }
+
+                .carousel .thumb-wrapper {
+                    padding: 25px 15px;
+                    background: #fff;
+                    border-radius: 6px;
+                    text-align: center;
+                    position: relative;
+                    box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+                    margin-bottom: 10px;
+                }
+
+                .carousel .item .img-box {
+                    height: 120px;
+                    margin-bottom: 20px;
+                    width: 100%;
+                    position: relative;
+                }
+
+                .carousel .item img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    display: inline-block;
+                    position: absolute;
+                    bottom: 0;
+                    margin: 0 auto;
+                    left: 0;
+                    right: 0;
+                }
+
+                .carousel .item h4 {
+                    font-size: 18px;
+                }
+
+                .carousel .item h6 {
+                    font-size: 13px;
+                }
+
+                .carousel .item h4, .item h6, .carousel .item p, .carousel .item ul {
+                    margin-bottom: 5px;
+                }
+
+                .carousel .thumb-content .btn {
+                    color: #7ac400;
+                    font-size: 11px;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    background: none;
+                    border: 1px solid #7ac400;
+                    padding: 6px 14px;
+                    margin-top: 5px;
+                    line-height: 16px;
+                    border-radius: 20px;
+                }
+
+                    .carousel .thumb-content .btn:hover, .carousel .thumb-content .btn:focus {
+                        color: #fff;
+                        background: #7ac400;
+                        box-shadow: none;
+                    }
+
+                    .carousel .thumb-content .btn i {
+                        font-size: 14px;
+                        font-weight: bold;
+                        margin-left: 5px;
+                    }
+
+                .carousel .item-price {
+                    font-size: 13px;
+                    padding: 2px 0;
+                }
+
+                    .carousel .item-price strike {
+                        opacity: 0.7;
+                        margin-right: 5px;
+                    }
         </style>
         <div class="view">
-
-            <!-- Mask & flexbox options-->
             <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
-                <!-- Content -->
                 <div class="container px-md-3 px-sm-0">
-                    <!--Grid row-->
                     <div class="row wow fadeIn">
-                        <!--Grid column-->
                         <div class="col-md-12 mb-4 white-text text-center wow fadeIn">
                             <h3 class="display-3 font-weight-bold white-text mb-0 pt-md-5 pt-5">SPECIAL RECIPES</h3>
                             <hr class="hr-light my-4 w-75">
                             <h4 class="subtext-header mt-2 mb-4">It is important to take care of the patient, the outcome of the patient's outcome will be negative.</h4>
-                            <p>Welcome @Session["FullName"].ToString()</p>
+                            <h3>Welcome @Session["FullName"].ToString()</h3>
                         </div>
-                        <!--Grid column-->
                     </div>
-                    <!--Grid row-->
                 </div>
-                <!-- Content -->
             </div>
-            <!-- Mask & flexbox options-->
         </div>
     </head>
-    
     <body>
-        <main class="">
-            <section>
-                <div class="container">
-                    @using (Html.BeginForm("Index", "RecipesUserView", FormMethod.Get))
-                    {
-                        <p>
-                            <br />
-                            Search by Main Flavor:
-                            @Html.TextBox("searchData", ViewBag.FilterValue as string,
-                           new { @class = "form-control", @placeholder = "Enter Main Flavor...", id = "Formbeg" })
-                            @*<input type="submit" id="submit_btn" class="btn btn-outline-google" value="Find" />*@
-                        </p>
-                    }
-                    <div class="row">
-                        @foreach (var item in Model)
-                        {
-                            <div class="col-lg-4 col-md-6 col-12" style="padding-top: 20px">
-                                <div class="menu-thumb" style="border:double">
-                                    <div class="menu-image-wrap">
-                                        <div class="hover01 column" style="padding-left: 30px">
-                                            <a href="~/RecipesUserView/Details/@item.Recipe_Id">
-                                                <figure> <img class="" src="~/Areas/Local/RecipeImages/@Url.Content(item.Image)" style="height:300px;width:300px;" /></figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div style="padding-bottom: 30px;" class="menu-info d-flex flex-wrap align-items-center">
-                                        <h5 class="mb-0">@Html.DisplayFor(modelItem => item.Recipe_Name)</h5>
+        <div class="container-xl">
+            @using (Html.BeginForm("Index", "Recipe", FormMethod.Get))
+            {
+                <p>
+                    <br />
+                    Search by Main Flavor:
+                    @Html.TextBox("searchData", ViewBag.FilterValue as string,
+                   new { @class = "form-control", @placeholder = "Enter Main Flavor..", id = "Formbeg" })
+                </p>
+            }
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Featured <b>Recipes</b></h2>
 
-                                        <div class="d-flex flex-wrap align-items-center w-100 mt-2">
-                                            @*@Html.DisplayFor(modelItem => item.NameTrimmed)*@
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+                        <div class="carousel-inner">
+                            <div class="item carousel-item active">
+                                <div class="row">
+                                    @foreach (var item in Model)
+                                     {
+                                        <div class="col-sm-3">
+                                            <div class="thumb-wrapper">
+                                                <div class="img-box">
+                                                    <a href="~/Book/Details/@item.Recipe_Id">
+                                                        <figure> <img class="" src="~/Areas/Local/RecipeImages/@Url.Content(item.Image)" style="height:300px;width:300px;" /></figure>
+                                                    </a>
+                                                </div>
+                                                <div class="thumb-content">
+                                                    <h4>@item.Recipe_Name</h4>
+                                                    <h6>@item.NameTrimmed</h6>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                     }
                                 </div>
                             </div>
-                        }
+                        </div>
                     </div>
                 </div>
-            </section>
-
-        </main>
-
-        <!-- Modal -->
-        <!-- JAVASCRIPT FILES -->
-
+            </div>
+        </div>
         <script src="~/Content/Recipes/js/bootstrap.bundle.min.js"></script>
         <script src="~/Content/Recipes/js/custom.js"></script>
         <script src="~/Content/Recipes/js/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#Formbeg").keypress(function (e) {
+                    keycode = e.keyCode || e.charCode || e.which
+                    if (keycode == 13) {
+                        $("#").click();
+                        return false;
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
 }
@@ -136,23 +218,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <meta name="description" content="">
         <meta name="author" content="">
-
-
-        <!-- CSS FILES -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
-
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
         <link href="~/Content/Recipes/css/SelectBOx.css" rel="stylesheet" />
-        @*<link href="~/Content/Recipes/css/bootstrap.min.css" rel="stylesheet" />
-
-            <link href="~/Content/Recipes/css/bootstrap-icons.css" rel="stylesheet" />
-
-            <link href="~/Content/Recipes/css/tooplate-crispy-kitchen.css" rel="stylesheet" />*@
         <link href="~/Content/Recipes/css/background.css" rel="stylesheet" />
         <style>
             .hover01 figure img {
@@ -188,7 +259,7 @@
                             <h3 class="display-3 font-weight-bold white-text mb-0 pt-md-5 pt-5">SPECIAL RECIPES</h3>
                             <hr class="hr-light my-4 w-75">
                             <h4 class="subtext-header mt-2 mb-4">It is important to take care of the patient, the outcome of the patient's outcome will be negative.</h4>
-                            <p>Welcome</p>
+                            <h3>Welcome</h3>
                             <h3>You need to login to view recipes</h3>
                         </div>
                         <!--Grid column-->

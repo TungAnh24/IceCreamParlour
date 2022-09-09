@@ -265,7 +265,6 @@
     <Content Include="Areas\Local\assets\js\tinymce.js" />
     <Content Include="Areas\Local\assets\js\typeahead.js" />
     <Content Include="Areas\Local\assets\js\wizard.js" />
-    <Content Include="Areas\Local\assets\template\neworder.html" />
     <Content Include="Areas\Local\assets\vendors\ace-builds\src-min\ace.js" />
     <Content Include="Areas\Local\assets\vendors\ace-builds\src-min\ext-beautify.js" />
     <Content Include="Areas\Local\assets\vendors\ace-builds\src-min\ext-code_lens.js" />
