@@ -34,7 +34,6 @@ namespace IceCreamParlour.Models
         public virtual Flavor Flavor { get; set; }
 
         public int limit = 15;
-
         [Display(Name = "Ingredients")]
         public string NameTrimmed
         {
