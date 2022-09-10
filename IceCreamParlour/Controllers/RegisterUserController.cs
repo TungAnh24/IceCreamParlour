@@ -1,10 +1,9 @@
 ﻿using IceCreamParlour.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
+
 using System.Web.Mvc;
 
 namespace IceCreamParlour.Controllers
@@ -15,20 +14,17 @@ namespace IceCreamParlour.Controllers
 
         // GET: RegisterUser
 
-        [HttpGet]
+       
         public ActionResult Register()
         {
-            //List<User> li = db.Users.ToList();
-            // ViewBag.list = new SelectList(li, "User_Id ");
-
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
-        public ActionResult Register(User _user)
+        public ActionResult Register([Bind(Include = "User_Id,Name,Contact,Email,Address,Password,UserType,Card_No,JoinDate,IsActive,IsDelete")] User _user)
         {
+            try { 
             if (ModelState.IsValid)
             {
                 var check = db.Users.FirstOrDefault(s => s.Email == _user.Email);
@@ -38,8 +34,10 @@ namespace IceCreamParlour.Controllers
                     _user.JoinDate = DateTime.Now;
                     _user.IsActive = 0;
                     _user.IsDelete = 0;
-                    
-                    db.Configuration.ValidateOnSaveEnabled = false;
+                        _user.lockEnable = true;
+                        _user.LockEndDateUtc = DateTime.Now.AddMinutes(1);
+                       
+                        db.Configuration.ValidateOnSaveEnabled = false;
                     db.Users.Add(_user);
                     var sub = db.Subscriptions.Where(x => x.Subscription_Id == _user.UserType).FirstOrDefault();
                     if (sub != null)
@@ -55,14 +53,7 @@ namespace IceCreamParlour.Controllers
                         db.Subscription_Payment.Add(subPayment);
                     }
                     var Result = db.SaveChanges();
-                    if(Result > 0)
-                    {
-                        ViewBag.SuccessMsg  = "You have just registered your account successfully";
-
-                        //return RedirectToAction("Login");
-                    }
-                   
-                    //return RedirectToAction("Index");
+                  
                     
                 }
                 else
@@ -72,13 +63,14 @@ namespace IceCreamParlour.Controllers
                     return RedirectToAction("Register");
                 }
             }
-            else
-            {
-                ViewBag.error = "Oh noo";
-                return RedirectToAction("Register");
+           
             }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
 
-            return View();
+            }
+            return View(_user);
 
         }
 
@@ -115,10 +107,10 @@ namespace IceCreamParlour.Controllers
         {
             if (ModelState.IsValid)
             {
-
+            
 
                 var f_password = GetMD5(password);
-                var data = db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
+                var data = db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) ).ToList();
                 if (data.Count() > 0)
                 {
                     //add session

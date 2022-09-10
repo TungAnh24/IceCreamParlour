@@ -18,18 +18,19 @@ namespace IceCreamParlour.Models
         public int Recipe_Id { get; set; }
         [Required]
         public string Recipe_Name { get; set; }
-        //[Required]
         public string Image { get; set; }
         [Required]
         public string Ingredients { get; set; }
         [Required]
         public string MakingProcess { get; set; }
         public Nullable<long> AdminCreate_Id { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime Publist_Date { get; set; }
         public int Flavor_Id { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Update_Date { get; set; }
         public long AdminUpdate_Id { get; set; }
-    
+
         public virtual Admin Admin { get; set; }
         public virtual Flavor Flavor { get; set; }
 

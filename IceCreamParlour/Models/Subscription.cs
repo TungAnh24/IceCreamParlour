@@ -11,7 +11,7 @@ namespace IceCreamParlour.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Subscription
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +19,11 @@ namespace IceCreamParlour.Models
         {
             this.Subscription_Payment = new HashSet<Subscription_Payment>();
         }
-    
+
         public int Subscription_Id { get; set; }
         public string Title { get; set; }
         public int Days { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subscription_Payment> Subscription_Payment { get; set; }
     }

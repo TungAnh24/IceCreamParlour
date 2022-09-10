@@ -20,7 +20,7 @@ namespace IceCreamParlour.Models
         {
             this.Order_Detail = new HashSet<Order_Detail>();
         }
-    
+
         public int Order_Id { get; set; }
         public Nullable<int> User_Id { get; set; }
         public bool Status { get; set; }
@@ -42,7 +42,7 @@ namespace IceCreamParlour.Models
         [RegularExpression("[^0-9]", ErrorMessage = "Card No must be numeric")]
         public string Card_No { get; set; }
         public double Total_Amount { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Detail> Order_Detail { get; set; }
         public virtual User User { get; set; }

@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
+
 using System.Web.Mvc;
 using IceCreamParlour.Models;
 using PagedList;
@@ -70,14 +70,7 @@ namespace IceCreamParlour.Areas.Local.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Admin_Id,Name,Email,Roles,Password,IsActive,IsDelete")] Admin admin)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    db.Admins.Add(admin);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
-            //return View(admin);
+           
             if (ModelState.IsValid)
             {
                 var check = db.Admins.FirstOrDefault(s => s.Email == admin.Email);

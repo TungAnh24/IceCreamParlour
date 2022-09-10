@@ -156,6 +156,7 @@
     <Compile Include="Controllers\OrderContoller.cs" />
     <Compile Include="Controllers\RecipesUserViewController.cs" />
     <Compile Include="Controllers\RegisterUserController.cs" />
+    <Compile Include="Controllers\UsersCưerewrewontroller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1489,6 +1490,7 @@
     <Content Include="Content\images\favicon.png" />
     <Content Include="Content\images\fruitNnuts-ic.png" />
     <Content Include="Content\images\kiwi-ic.png" />
+    <Content Include="Content\images\logo.ico" />
     <Content Include="Content\images\mango-ic-img.png" />
     <Content Include="Content\images\pineapple-ic-img.png" />
     <Content Include="Content\images\pistachio-ic.png" />
@@ -1503,7 +1505,25 @@
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\ion.rangeSlider.min.js" />
     <Content Include="Content\js\jquery-3.4.1.min.js" />
-    <Content Include="Content\js\showMenuOnScroll.js" />
+    <Content Include="Content\Login\css\bootstrap.min.css" />
+    <Content Include="Content\Login\css\bootstrap\bootstrap-grid.css" />
+    <Content Include="Content\Login\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="Content\Login\css\owl.carousel.min.css" />
+    <Content Include="Content\Login\css\style.css" />
+    <Content Include="Content\Login\fonts\icomoon\demo-files\demo.css" />
+    <Content Include="Content\Login\fonts\icomoon\demo-files\demo.js" />
+    <Content Include="Content\Login\fonts\icomoon\demo.html" />
+    <Content Include="Content\Login\fonts\icomoon\fonts\icomoon.svg" />
+    <Content Include="Content\Login\fonts\icomoon\Read Me.txt" />
+    <Content Include="Content\Login\fonts\icomoon\style.css" />
+    <Content Include="Content\Login\images\bg_1.jpg" />
+    <Content Include="Content\Login\images\undraw_remotely_2j6y.svg" />
+    <Content Include="Content\Login\js\bootstrap.min.js" />
+    <Content Include="Content\Login\js\jquery-3.3.1.min.js" />
+    <Content Include="Content\Login\js\main.js" />
+    <Content Include="Content\Login\js\owl.carousel.min.js" />
+    <Content Include="Content\Login\js\popper.min.js" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Recipes\css\background.css" />
     <Content Include="Content\Recipes\css\bootstrap-icons.css" />
     <Content Include="Content\Recipes\css\bootstrap.min.css" />
@@ -1904,6 +1924,14 @@
     <Content Include="Content\Register\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff" />
     <Content Include="Content\Register\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
     <Content Include="Areas\Local\Views\LoginAdmin\ChangePass.cshtml" />
+    <Content Include="Areas\Local\Views\Admins\Lock.cshtml" />
+    <Content Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </Content>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Content\Recipes\fonts\bootstrap-icons.woff" />
     <Content Include="Content\Recipes\fonts\bootstrap-icons.woff2" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
@@ -1949,16 +1977,14 @@
     <Content Include="Views\CustomerFeedBack\Create.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\RegisterUser\AfterSignup.cshtml" />
-    <Content Include="Views\RegisterUser\Errorpage.cshtml" />
-    <Content Include="Views\RegisterUser\Index.cshtml" />
     <Content Include="Views\RegisterUser\Login.cshtml" />
     <Content Include="Views\RegisterUser\Register.cshtml" />
-    <Content Include="Views\RegisterUser\UserPannel.cshtml" />
-    <Content Include="Views\RecipesUserView\Details.cshtml" />
     <Content Include="Views\RecipesUserView\Index.cshtml" />
     <Content Include="Views\Cart\Payment.cshtml" />
     <Content Include="Views\Cart\Success.cshtml" />
+    <Content Include="Views\bookView\Details.cshtml" />
+    <Content Include="Views\bookView\Index.cshtml" />
+    <Content Include="Views\RecipesUserView\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

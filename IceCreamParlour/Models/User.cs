@@ -12,6 +12,7 @@ namespace IceCreamParlour.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class User
     {
@@ -22,19 +23,42 @@ namespace IceCreamParlour.Models
             this.Orders = new HashSet<Order>();
             this.Subscription_Payment = new HashSet<Subscription_Payment>();
         }
-    
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+
         public int User_Id { get; set; }
+        [Required]
+        [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
+        [Required]
+        [StringLength(12, MinimumLength = 10)]
+        [Display(Name ="Phone number")]
         public string Contact { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [Required]
+        [StringLength(50, MinimumLength = 3)]
         public string Address { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+        [Required]
+        [Display(Name = "Registration term")]
         public int UserType { get; set; }
+        [Required]
+        [StringLength(14)]
+
+        //[CreditCard(ErrorMessage = "Please enter a valid card No")]
+        [DataType(DataType.CreditCard)]
         public string Card_No { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime JoinDate { get; set; }
         public int IsActive { get; set; }
         public int IsDelete { get; set; }
-    
+
+          public virtual bool lockEnable { get; set; }
+        public virtual DateTime? LockEndDateUtc { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -53,5 +77,7 @@ namespace IceCreamParlour.Models
                 else return this.Email;
             }
         }
+
+        
     }
 }
