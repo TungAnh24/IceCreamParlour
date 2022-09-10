@@ -28,8 +28,10 @@ namespace IceCreamParlour.Controllers
             if (ModelState.IsValid)
             {
                 var check = db.Users.FirstOrDefault(s => s.Email == _user.Email);
-                if (check == null)
+                var checkContact = db.Users.FirstOrDefault(s => s.Contact == _user.Contact);
+                if (check == null || checkContact == null)
                 {
+                    
                     _user.Password = GetMD5(_user.Password);
                     _user.JoinDate = DateTime.Now;
                     _user.IsActive = 0;
@@ -58,9 +60,9 @@ namespace IceCreamParlour.Controllers
                 }
                 else
                 {
-                    ViewBag.error = "Email already exists";
-                   
-                    return RedirectToAction("Register");
+                    ViewBag.checkEmail = "1";
+                    ViewBag.checkContact = "1";
+                    return View(_user);
                 }
             }
            
@@ -70,7 +72,7 @@ namespace IceCreamParlour.Controllers
                 ModelState.AddModelError(string.Empty, ex.Message);
 
             }
-            return View(_user);
+            return Redirect("/RegisterUser/Login");
 
         }
 

@@ -26,15 +26,16 @@ namespace IceCreamParlour.Models
         public bool Status { get; set; }
         public System.DateTime Date { get; set; }
         [Required]
-        [StringLength(50, MinimumLength = 3)]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Name must have at least 3 characters and maximum of 50 characters")]
         public string Name { get; set; }
         [Required]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",ErrorMessage = "Entered contact format is not valid.")]
         public string Contact { get; set; }
         [Required]
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}")]
+        [EmailAddress]
         public string Email { get; set; }
         [Required]
+        [StringLength(int.MaxValue, MinimumLength = 10 ,ErrorMessage = "You need to enter the address")]
         public string Address { get; set; }
         [Required]
         [MaxLength(15)]

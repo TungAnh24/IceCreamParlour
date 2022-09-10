@@ -17,7 +17,7 @@ namespace IceCreamParlour.Areas.Local
             context.MapRoute(
                 "Local_default",
                 "Local/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { controller = "LoginAdmin", action = "Login", id = UrlParameter.Optional }
             );
         }
     }

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using IceCreamParlour.Models;
 
@@ -17,7 +14,7 @@ namespace IceCreamParlour.Controllers
         // GET: Books
         public ActionResult Index(string searchData)
         {
-            var boo = db.Books.Where(b => b.Title.Contains(searchData) || b.Author.Contains(searchData) || searchData == null).ToList();
+            var boo = db.Books.Where(b=>b.IsActive == 0 && b.IsDelete == 0 &&(b.Title.Contains(searchData) || b.Author.Contains(searchData) || searchData == null)).ToList();
             return View(boo);
         }
 
