@@ -137,9 +137,18 @@ namespace IceCreamParlour.Areas.Local.Controllers
                         var fp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/FlavorImages"), flavor.Image);
                         fileEdit.SaveAs(fp);
                     }
-                    db.Entry(flavor).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                    var check = db.Flavors.FirstOrDefault(f => f.Flavor_Name == flavor.Flavor_Name && f.Flavor_Id !=flavor.Flavor_Id);
+                    if (check == null)
+                    {
+                        db.Entry(flavor).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ViewBag.error = "Flavor's name is already exits!";
+                        return View();
+                    }
                 }
             }
             catch (Exception)
