@@ -39,11 +39,6 @@ namespace IceCreamParlour.Controllers
         {
             return db.Books.Where(x => x.Update_Date != null && x.Update_Date > DateTime.Now).OrderByDescending(x => x.Create_Date).Take(top).ToList();
         }
-        //public List<Book> ListBook(ref int totalRecord, int pageIndex = 1, int pageSize = 2)
-        //{
-
-        //}
-        // GET: CartItem
         public Book ViewDetail(int id)
         {
             return db.Books.Find(id);

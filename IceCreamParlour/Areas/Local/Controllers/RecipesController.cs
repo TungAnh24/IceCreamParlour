@@ -73,6 +73,21 @@ namespace IceCreamParlour.Areas.Local.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Recipe_Id,Recipe_Name,Image,Ingredients,MakingProcess,AdminCreate_Id,Publist_Date,Flavor_Id,Update_Date,AdminUpdate_Id")] Recipe recipe, HttpPostedFileBase fileUpLoad)
         {
+            if (ModelState.IsValid)
+            {
+                if (fileUpLoad.ContentLength >0)
+                {
+                    var fn = System.IO.Path.GetFileName(fileUpLoad.FileName);
+                    recipe.Image = fn;
+                    var fp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/RecipeImages"), recipe.Image);
+                    fileUpLoad.SaveAs(fp);
+                }
+                db.Recipes.Add(recipe);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.AdminCreate_Id = new SelectList(db.Admins, "Admin_Id", "Name", recipe.AdminCreate_Id);
             try
             {
                 if (ModelState.IsValid)

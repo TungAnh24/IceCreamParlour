@@ -1,0 +1,13 @@
+﻿[*.cs]
+
+# IDE0065: Misplaced using directive
+csharp_using_directive_placement = inside_namespace
+
+# IDE0005: Using directive is unnecessary.
+dotnet_diagnostic.IDE0005.severity = error
+
+# Default severity for analyzer diagnostics with category 'Style'
+dotnet_analyzer_diagnostic.category-Style.severity = none
+
+# Default severity for all analyzer diagnostics
+dotnet_analyzer_diagnostic.severity = suggestion

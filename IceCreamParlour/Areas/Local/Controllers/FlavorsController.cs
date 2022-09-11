@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
+
 using System.Data;
 using System.Data.Entity;
-using System.Drawing.Printing;
+
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Services.Description;
+
 using System.Web.UI.WebControls;
 using IceCreamParlour.Models;
 using PagedList;
@@ -72,35 +72,35 @@ namespace IceCreamParlour.Areas.Local.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Flavor_Id,Flavor_Name,Ingredients,MakingProcess,Description,Image")] Flavor flavor, HttpPostedFileBase fileUpLoad)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    if (fileUpLoad.ContentLength > 0)
-                    {
-                        var fn = System.IO.Path.GetFileName(fileUpLoad.FileName);
-                        flavor.Image = fn;
-                        var fp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/FlavorImages"), flavor.Image);
-                        fileUpLoad.SaveAs(fp);
-                    }
-                    var check = db.Flavors.FirstOrDefault(f => f.Flavor_Name == flavor.Flavor_Name);
-                    if (check == null)
-                    {
-                        db.Flavors.Add(flavor);
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        ViewBag.error = "Flavor's name is already exits!";
-                        return View();
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                ModelState.AddModelError(string.Empty, "Please upload images");
-            }
+                                    try
+                                    {
+                                        if (ModelState.IsValid)
+                                        {
+                                            if (fileUpLoad.ContentLength > 0)
+                                            {
+                                                var fn = System.IO.Path.GetFileName(fileUpLoad.FileName);
+                                                flavor.Image = fn;
+                                                var fp = System.IO.Path.Combine(Server.MapPath("~/Areas/Local/FlavorImages"), flavor.Image);
+                                                fileUpLoad.SaveAs(fp);
+                                            }
+                                            var check = db.Flavors.FirstOrDefault(f => f.Flavor_Name == flavor.Flavor_Name);
+                                            if (check == null)
+                                            {
+                                                db.Flavors.Add(flavor);
+                                                db.SaveChanges();
+                                                return RedirectToAction("Index");
+                                            }
+                                            else
+                                            {
+                                                ViewBag.error = "Flavor's name is already exits!";
+                                                return View();
+                                            }
+                                        }
+                                    }
+                                    catch (Exception)
+                                    {
+                                        ModelState.AddModelError(string.Empty, "Please upload images");
+                                    }
             return View(flavor);
         }
 

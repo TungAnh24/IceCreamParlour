@@ -24,16 +24,17 @@ namespace IceCreamParlour.Models
         [Required]
         public string MakingProcess { get; set; }
         public Nullable<long> AdminCreate_Id { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime Publist_Date { get; set; }
         public int Flavor_Id { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Update_Date { get; set; }
         public long AdminUpdate_Id { get; set; }
-    
+
         public virtual Admin Admin { get; set; }
         public virtual Flavor Flavor { get; set; }
 
         public int limit = 15;
-
         [Display(Name = "Ingredients")]
         public string NameTrimmed
         {

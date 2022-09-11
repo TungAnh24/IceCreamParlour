@@ -20,7 +20,7 @@ namespace IceCreamParlour.Models
         {
             this.Recipes = new HashSet<Recipe>();
         }
-    
+
         public int Flavor_Id { get; set; }
         [Required]
         public string Flavor_Name { get; set; }
@@ -32,7 +32,7 @@ namespace IceCreamParlour.Models
         public string Description { get; set; }
         //[Required]
         public string Image { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Recipe> Recipes { get; set; }
 

@@ -11,7 +11,8 @@ namespace IceCreamParlour.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,18 +20,30 @@ namespace IceCreamParlour.Models
         {
             this.Order_Detail = new HashSet<Order_Detail>();
         }
-    
+
         public int Order_Id { get; set; }
         public Nullable<int> User_Id { get; set; }
         public bool Status { get; set; }
         public System.DateTime Date { get; set; }
+        [Required]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Name must have at least 3 characters and maximum of 50 characters")]
         public string Name { get; set; }
+        [Required]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",ErrorMessage = "Entered contact format is not valid.")]
         public string Contact { get; set; }
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
+        [Required]
+        [StringLength(int.MaxValue, MinimumLength = 10 ,ErrorMessage = "You need to enter the address")]
         public string Address { get; set; }
+        [Required]
+        [MaxLength(15)]
+        [MinLength(9)]
+        [RegularExpression("[^0-9]", ErrorMessage = "Card No must be numeric")]
         public string Card_No { get; set; }
         public double Total_Amount { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Detail> Order_Detail { get; set; }
         public virtual User User { get; set; }

@@ -29,15 +29,15 @@
                             <td>@item.Book.Book_Id</td>
                             <td>@item.Book.Title</td>
                             <td><img src="~/Areas/Local/BookImages/@Url.Content(item.Book.Image)" width="100" /></td>
-                            <td><input type="text" class="txtQuantity" data-id="@item.Book.Book_Id" value="@item.Quantity" /></td>
-                            <td>@item.Book.Price.ToString("N0")</td>
-                            <td>@((item.Book.Price * item.Quantity).ToString("N0"))</td>
+                            <td><input type="number" min="1" class="txtQuantity" data-id="@item.Book.Book_Id" value="@item.Quantity" oninput="validity.valid || (value = '');" /></td>
+                            <td>@item.Book.Price.ToString("N0")$</td>
+                            <td>@((item.Book.Price * item.Quantity).ToString("N0"))$</td>
                             <td><a href="#" data-id="@item.Book.Book_Id" class="btn-delete">Delete</a></td>
                         </tr>
                     }
                 <tr>
                     <td colspan="5">Total Amount</td>
-                    <td>@a.ToString("N0")</td>
+                    <td>@a.ToString("N0")$</td>
                 </tr>
                 </tbody>
             </table>

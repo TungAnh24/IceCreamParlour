@@ -135,10 +135,18 @@ namespace IceCreamParlour.Controllers
         public ActionResult ConfirmPayment(string name, string contact, string address, string email, string cardNo)
         {
             var userEmail = Session["Email"];
+            double totalAmount = 0;
+            var cart = (List<CartItem>)Session[CartSession];
+            var detailController = new OrderDetailContoller();
 
-            if (userEmail != null)
+            foreach (var item in cart)
+            {
+                totalAmount += item.Book.Price * item.Quantity;
+            }
+                if (userEmail != null)
             {
                 var order = new Order();
+
                 order.Status = false;
                 order.Date = DateTime.Now;
                 order.Address = Session["Address"].ToString();
@@ -146,23 +154,21 @@ namespace IceCreamParlour.Controllers
                 order.Name = Session["Name"].ToString();
                 order.Email = Session["Email"].ToString();
                 order.Card_No = Session["Card_No"].ToString();
+                order.Total_Amount = totalAmount;
 
                 try
                 {
+
                     var id = new OrderContoller().Insert(order);
-                    var cart = (List<CartItem>)Session[CartSession];
-                    var detailController = new OrderDetailContoller();
-                    decimal total = 0;
                     foreach (var item in cart)
                     {
                         var orderDetail = new Order_Detail();
                         orderDetail.Book_Id = item.Book.Book_Id;
                         orderDetail.Order_Id = (int)id;
                         orderDetail.Price = item.Book.Price;
-                        orderDetail.Quantity = item.Quantity;
-                        detailController.Insert(orderDetail);
-
-                        total = (decimal)(item.Book.Price * item.Quantity);
+                        orderDetail.Quantity = item.Quantity;                       
+                        detailController.Insert(orderDetail);                    
+                        
                     }
                 }
                 catch (Exception ex)
@@ -175,6 +181,7 @@ namespace IceCreamParlour.Controllers
             else
             {
                 var order = new Order();
+
                 order.Status = false;
                 order.Date = DateTime.Now;
                 order.Address = address;
@@ -182,13 +189,11 @@ namespace IceCreamParlour.Controllers
                 order.Name = name;
                 order.Email = email;
                 order.Card_No = cardNo;
+                order.Total_Amount = totalAmount;
 
                 try
                 {
-                    var id = new OrderContoller().Insert(order);
-                    var cart = (List<CartItem>)Session[CartSession];
-                    var detailController = new OrderDetailContoller();
-                    decimal total = 0;
+                    var id = new OrderContoller().Insert(order); 
                     foreach (var item in cart)
                     {
                         var orderDetail = new Order_Detail();
@@ -196,19 +201,8 @@ namespace IceCreamParlour.Controllers
                         orderDetail.Order_Id = (int)id;
                         orderDetail.Price = item.Book.Price;
                         orderDetail.Quantity = item.Quantity;
-                        detailController.Insert(orderDetail);
-
-                        total = (decimal)(item.Book.Price * item.Quantity);
+                        detailController.Insert(orderDetail); 
                     }
-                    string content = System.IO.File.ReadAllText(Server.MapPath("~/Areas/Local/assets/template/neworder.html"));
-
-                    content = content.Replace("{{Name}}", name);
-                    content = content.Replace("{{Contact}}", contact);
-                    content = content.Replace("{{Email}}", email);
-                    content = content.Replace("{{Address}}", address);
-                    content = content.Replace("{{Card_No}}", total.ToString("N0"));
-
-
                 }
                 catch (Exception ex)
                 {

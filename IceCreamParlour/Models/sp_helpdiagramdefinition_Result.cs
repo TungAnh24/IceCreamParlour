@@ -10,16 +10,10 @@
 namespace IceCreamParlour.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Subscription_Payment
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int SubscriptionPayment_Id { get; set; }
-        public int User_Id { get; set; }
-        public int Subscription_Id { get; set; }
-        public System.DateTime Date { get; set; }
-    
-        public virtual Subscription Subscription { get; set; }
-        public virtual User User { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

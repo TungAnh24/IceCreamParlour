@@ -11,7 +11,7 @@ namespace IceCreamParlour.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Order_Detail
     {
         public int OrderDetail_Id { get; set; }
@@ -19,7 +19,7 @@ namespace IceCreamParlour.Models
         public int Book_Id { get; set; }
         public double Price { get; set; }
         public int Quantity { get; set; }
-    
+
         public virtual Book Book { get; set; }
         public virtual Order Order { get; set; }
     }
