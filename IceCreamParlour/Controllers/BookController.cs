@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using IceCreamParlour.Models;
+using PagedList;
 
 namespace IceCreamParlour.Controllers
 {
@@ -12,9 +13,9 @@ namespace IceCreamParlour.Controllers
         private DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
 
         // GET: Books
-        public ActionResult Index(string searchData)
+        public ActionResult Index(string searchData, int? Page_No)
         {
-            var boo = db.Books.Where(b=>b.IsActive == 0 && b.IsDelete == 0 &&(b.Title.Contains(searchData) || b.Author.Contains(searchData) || searchData == null)).ToList();
+            var boo = db.Books.Where(b=>b.IsActive == 0 && b.IsDelete == 0 &&(b.Title.Contains(searchData) || b.Author.Contains(searchData) || searchData == null)).ToList().ToPagedList(Page_No??1,4);
             return View(boo);
         }
 

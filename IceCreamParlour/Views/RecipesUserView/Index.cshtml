@@ -1,4 +1,6 @@
-﻿@model IEnumerable<IceCreamParlour.Models.Recipe>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<IceCreamParlour.Models.Recipe>
 
 @{
     ViewBag.Title = "Index";
@@ -20,6 +22,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
         <link href="~/Content/Recipes/css/SelectBOx.css" rel="stylesheet" />
         <link href="~/Content/Recipes/css/background.css" rel="stylesheet" />
+        <link href="~/Areas/Local/assets/css/demo_1/PagedList.css" rel="stylesheet" />
         <style>
             body {
                 background: #e2eaef;
@@ -153,7 +156,7 @@
     </head>
     <body>
         <div class="container-xl">
-            @using (Html.BeginForm("Index", "Recipe", FormMethod.Get))
+            @using (Html.BeginForm("Index", "RecipesUserView", FormMethod.Get))
             {
                 <p>
                     <br />
@@ -171,11 +174,11 @@
                             <div class="item carousel-item active">
                                 <div class="row">
                                     @foreach (var item in Model)
-                                     {
+                                    {
                                         <div class="col-sm-3">
                                             <div class="thumb-wrapper">
                                                 <div class="img-box">
-                                                    <a href="~/Book/Details/@item.Recipe_Id">
+                                                    <a href="~/RecipesUserView/Details/@item.Recipe_Id">
                                                         <figure> <img class="" src="~/Areas/Local/RecipeImages/@Url.Content(item.Image)" style="height:300px;width:300px;" /></figure>
                                                     </a>
                                                 </div>
@@ -184,7 +187,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                     }
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -192,6 +195,8 @@
                 </div>
             </div>
         </div>
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, Page_No => Url.Action("Index", new { Page_No, Sort_Order = ViewBag.CurrentSort }))
         <script src="~/Content/Recipes/js/bootstrap.bundle.min.js"></script>
         <script src="~/Content/Recipes/js/custom.js"></script>
         <script src="~/Content/Recipes/js/jquery.min.js"></script>

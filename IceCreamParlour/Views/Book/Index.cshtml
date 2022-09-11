@@ -1,4 +1,6 @@
-﻿@model IEnumerable<IceCreamParlour.Models.Book>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<IceCreamParlour.Models.Book>
 
 @{
     ViewBag.Title = "Index";
@@ -18,6 +20,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
         <link href="~/Content/Recipes/css/SelectBOx.css" rel="stylesheet" />
         <link href="~/Content/Recipes/css/background.css" rel="stylesheet" />
+        <link href="~/Areas/Local/assets/css/demo_1/PagedList.css" rel="stylesheet" />
         <style>
             body {
                 background: #e2eaef;
@@ -191,6 +194,8 @@
                 </div>
             </div>
         </div>
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, Page_No => Url.Action("Index", new { Page_No, Sort_Order = ViewBag.CurrentSort }))
         <script src="~/Content/Recipes/js/bootstrap.bundle.min.js"></script>
         <script src="~/Content/Recipes/js/custom.js"></script>
         <script src="~/Content/Recipes/js/jquery.min.js"></script>
@@ -227,6 +232,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
         <link href="~/Content/Recipes/css/SelectBOx.css" rel="stylesheet" />
         <link href="~/Content/Recipes/css/background.css" rel="stylesheet" />
+        <link href="~/Areas/Local/assets/css/demo_1/PagedList.css" rel="stylesheet" />
         <style>
             body {
                 background: #e2eaef;
@@ -358,63 +364,65 @@
             </div>
         </div>
     </head>
-            <body>
-                <div class="container-xl">
-                    @using (Html.BeginForm("Index", "Book", FormMethod.Get))
-                    {
-                        <p>
-                            <br />
-                            Search by Title or Author:
-                            @Html.TextBox("searchData", ViewBag.FilterValue as string,
-                           new { @class = "form-control", @placeholder = "Enter Title or Author...", id = "Formbeg" })
-                        </p>
-                    }
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2>Featured <b>Books</b></h2>
+    <body>
+        <div class="container-xl">
+            @using (Html.BeginForm("Index", "Book", FormMethod.Get))
+            {
+                <p>
+                    <br />
+                    Search by Title or Author:
+                    @Html.TextBox("searchData", ViewBag.FilterValue as string,
+                   new { @class = "form-control", @placeholder = "Enter Title or Author...", id = "Formbeg" })
+                </p>
+            }
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Featured <b>Books</b></h2>
 
-                            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
-                                <div class="carousel-inner">
-                                    <div class="item carousel-item active">
-                                        <div class="row">
-                                            @foreach (var item in Model)
-                                            {
-                                                <div class="col-sm-3">
-                                                    <div class="thumb-wrapper">
-                                                        <div class="img-box">
-                                                            <a href="~/Book/Details/@item.Book_Id">
-                                                                <figure><img class="img-fluid" src="~/Areas/Local/BookImages/@Url.Content(item.Image)" /></figure>
-                                                            </a>
-                                                        </div>
-                                                        <div class="thumb-content">
-                                                            <h4>@item.TitleTrimmed</h4>
-                                                            <h6>@item.AuthorTrimmed</h6>
-                                                            <p class="item-price"> <b>$@item.Price</b></p>
-                                                        </div>
-                                                    </div>
-                                                </div>}
-                                        </div>
-                                    </div>
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+                        <div class="carousel-inner">
+                            <div class="item carousel-item active">
+                                <div class="row">
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="col-sm-3">
+                                            <div class="thumb-wrapper">
+                                                <div class="img-box">
+                                                    <a href="~/Book/Details/@item.Book_Id">
+                                                        <figure><img class="img-fluid" src="~/Areas/Local/BookImages/@Url.Content(item.Image)" /></figure>
+                                                    </a>
+                                                </div>
+                                                <div class="thumb-content">
+                                                    <h4>@item.TitleTrimmed</h4>
+                                                    <h6>@item.AuthorTrimmed</h6>
+                                                    <p class="item-price"> <b>$@item.Price</b></p>
+                                                </div>
+                                            </div>
+                                        </div>}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <script src="~/Content/Recipes/js/bootstrap.bundle.min.js"></script>
-                <script src="~/Content/Recipes/js/custom.js"></script>
-                <script src="~/Content/Recipes/js/jquery.min.js"></script>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        $("#Formbeg").keypress(function (e) {
-                            keycode = e.keyCode || e.charCode || e.which
-                            if (keycode == 13) {
-                                $("#").click();
-                                return false;
-                            }
-                        });
-                    });
-                </script>
-            </body>
-        </html>
-        }
+            </div>
+        </div>
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, Page_No => Url.Action("Index", new { Page_No, Sort_Order = ViewBag.CurrentSort }))
+        <script src="~/Content/Recipes/js/bootstrap.bundle.min.js"></script>
+        <script src="~/Content/Recipes/js/custom.js"></script>
+        <script src="~/Content/Recipes/js/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#Formbeg").keypress(function (e) {
+                    keycode = e.keyCode || e.charCode || e.which
+                    if (keycode == 13) {
+                        $("#").click();
+                        return false;
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
+}

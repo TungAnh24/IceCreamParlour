@@ -210,6 +210,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Local\assets\css\demo_1\PagedList.css" />
     <Content Include="Areas\Local\assets\css\demo_1\style.css" />
     <Content Include="Areas\Local\assets\css\demo_1\style.min.css" />
     <Content Include="Areas\Local\assets\css\demo_2\style.css" />

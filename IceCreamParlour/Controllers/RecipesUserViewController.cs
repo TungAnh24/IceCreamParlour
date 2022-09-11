@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using IceCreamParlour.Models;
-
+using PagedList;
 
 namespace IceCreamParlour.Controllers
 {
@@ -18,12 +18,10 @@ namespace IceCreamParlour.Controllers
         private const string CartSession = "CartSession";
 
         // GET: RecipesUserView
-        public ActionResult Index(string searchData, int? page)
+        public ActionResult Index(string searchData, int? Page_No)
         {
-            var res = db.Recipes.Where(r => r.Recipe_Name.Contains(searchData) || searchData == null).ToList();
+            var res = db.Recipes.Where(r => r.Recipe_Name.Contains(searchData) || searchData == null).ToList().ToPagedList(Page_No??1,4);
             return View(res);
-            //var recipes = db.Recipes.ToList();
-            //return View(recipes);
         }
 
 
