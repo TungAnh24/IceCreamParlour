@@ -41,11 +41,14 @@
             @using (Html.BeginForm("Login", "LoginAdmin", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
+                if (ViewBag.error != null)
+                {
+                    <span class="badge badge-danger">@ViewBag.error</span>
+                }
                 <div class="form-group">
                     @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
                 </div>
-                <div class="form-group input-box">
-                    @*@Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", @id = "myInput" })*@
+                <div class="form-group input-box">                    
                     <input id="password" name="password" type="password" class="form-control" placeholder="Password" />
                     <i class="bi bi-eye-slash eye-class" id="togglePassword"></i>
                 </div>
@@ -96,4 +99,4 @@
     </script>
 </body>
 </html>
-@Html.Raw(TempData["msg"])
+

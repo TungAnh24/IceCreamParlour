@@ -76,6 +76,8 @@ namespace IceCreamParlour.Areas.Local.Controllers
 
                 var f_password = GetMD5(password);
                 var data = _db.Admins.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) && s.IsActive ==0).ToList();
+                var lockData = _db.Admins.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) && s.IsActive == 1).ToList();
+
                 if (data.Count() > 0)
                 {
                     //add session
@@ -85,11 +87,15 @@ namespace IceCreamParlour.Areas.Local.Controllers
                     Session["Roles"] = data.FirstOrDefault().Roles;
                     return RedirectToAction("Index","Books");
                 }
+                if(lockData.Count() >0)
+                {
+                    ViewBag.error = "Your account has been lock";
+                    return View();
+                }
                 else
                 {
-                    ViewBag.error = "Login failed";
-                    TempData["msg"] = "<script>alert('Your account does not exist or has been locked !!!');</script>";
-                    return RedirectToAction("Login");
+                    ViewBag.error = "Incorrect email or password";
+                    return View();
                 }
             }
             return View();
