@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using IceCreamParlour.Models;
 
 namespace IceCreamParlour.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private DbIcecreamParlourEntities db = new DbIcecreamParlourEntities();
+        public ActionResult Index(int? page)
         {
-            return View();
+            var flavors = db.Flavors.ToList();
+            return View(flavors);
         }
 
         public ActionResult About()

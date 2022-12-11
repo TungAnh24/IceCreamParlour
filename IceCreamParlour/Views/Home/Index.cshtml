@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<IceCreamParlour.Models.Flavor>
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -152,101 +153,24 @@
                 </p>
             </div>
             <div class="row">
-                <div class="col-sm-6 col-md-4 ">
-                    <div class="box ">
-                        <div class="img-box">
-                            <img src="~/Content/images/chocolate-ic-img.png" alt="" />
-                        </div>
-                        <div class="detail-box">
-                            <h5>
-                                Chocolate
-                            </h5>
-                            <p>
-                                Chocolate ice cream is a flavour of ice cream which is the second most common flavour of ice cream, after vanilla
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 ">
-                    <div class="box ">
-                        <div class="img-box">
-                            <img src="~/Content/images/vanilla-ic-img.png" alt="" />
-                        </div>
-                        <div class="detail-box">
-                            <h5>
-                                Vanilla
-                            </h5>
-                            <p>
-                                Vanilla ice cream is a sweet frozen dessert made from milk, cream, sugar, and vanilla flavoring from vanilla seeds,
-                                pure vanilla extract, vanilla seed paste, or a combination
-                            </p>
+                @foreach (var item in Model.Take(6))
+                {
+                    <div class="col-sm-6 col-md-4 ">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img class="" src="~/Areas/Local/FlavorImages/@Url.Content(item.Image)" />
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    @item.Flavor_Name
+                                </h5>
+                                <p>
+                                    @item.Description
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-4 ">
-                    <div class="box ">
-                        <div class="img-box">
-                            <img src="~/Content/images/mango-ic-img.png" alt="" />
-                        </div>
-                        <div class="detail-box">
-                            <h5>
-                                Mango
-                            </h5>
-                            <p>
-                                Ice-cream flavoured with the King of Fruits! Mangoes impart a luscious creamy texture and rich flavour to this delicious frozen dessert. This ice-cream
-                                is available in the market but can also be made at home easily using fresh sweet mangoes or frozen mango pulp
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 ">
-                    <div class="box ">
-                        <div class="img-box">
-                            <img src="~/Content/images/strawberry-ic-img.png" alt="" />
-                        </div>
-                        <div class="detail-box">
-                            <h5>
-                                Strawberry
-                            </h5>
-                            <p>
-                                Strawberry ice cream is a flavor of ice cream made with strawberry or strawberry flavoring. It is made by blending in fresh strawberries or strawberry flavoring with the eggs,
-                                cream, vanilla and sugar used to make ice cream. Most strawberry ice cream is colored pink or light red.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 ">
-                    <div class="box ">
-                        <div class="img-box">
-                            <img src="~/Content/images/banana-ic-img.png" alt="" />
-                        </div>
-                        <div class="detail-box">
-                            <h5>
-                                Banana
-                            </h5>
-                            <p>
-                                It is rich in vitamin B6, vitamin C, magnesium and potassium. The soaked dates added for sweetness are also good for health as also other dry fruits added for garnishing at the end.
-                                Overall, the Sugar-Free Banana Ice Cream can boost energy, boost immunity, improve digestion and protect the body
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 ">
-                    <div class="box ">
-                        <div class="img-box">
-                            <img src="~/Content/images/pineapple-ic-img.png" alt="" />
-                        </div>
-                        <div class="detail-box">
-                            <h5>
-                                Pineapple
-                            </h5>
-                            <p>
-                                Homemade Pineapple Ice Cream is a delicious blend of creamy, sweet, and tart flavors. This ice cream recipe is made with simple ingredients, and traditionally churned using an ice cream maker.
-                                The sweet, tangy pineapple flavor is tropical and perfect for hot summer days
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                }              
 
                 <div class="col-sm-6 col-md-4 ">
                     <div class="box ">
@@ -264,6 +188,7 @@
 </section>
 
 @*end catagory section
+    
     about section*@
 
 <section class="about_section layout_padding">
@@ -295,6 +220,7 @@
 </section>
 
 @*end about section
+    
     client section*@
 
 <section class="client_section layout_padding">
@@ -386,6 +312,7 @@
 </section>
 
 @*end client section
+    
     blog section*@
 
 <section class="blog_section layout_padding">
@@ -447,6 +374,7 @@
 </section>
 
 @*end blog section
+    
     contact section*@
 
 <section class="contact_section layout_padding">
@@ -483,75 +411,8 @@
     </div>
 </section>
 
-@*end contact section
-    info section*@
+@*end contact section*@
 
-@*<section class="info_section layout_padding2">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-lg-3 info-col">
-                    <div class="info_detail">
-                        <h4>
-                            About Us
-                        </h4>
-                        <p>
-                            Why tell a story with words when you can tell it with plenty of images and compelling behind-the-scenes footage of your production process? That’s exactly what Ice-cream Parlour does as soon as you land on its colorful About Us page
-                        </p>
-                        <div class="info_social">
-                            <a href="">
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-linkedin" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 info-col">
-                    <div class="info_contact">
-                        <h4>
-                            Address
-                        </h4>
-                        <div class="contact_link_box">
-                            <a href="">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <span>
-                                    285 Doi Can Street,Ba Dinh, Hanoi
-                                </span>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                                <span>
-                                    Call +01 1234567890
-                                </span>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <span>
-                                    abcd@gmail.com
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 col-lg-5 info-col">
-                    <div class="map_container">
-                        <div class="map">
-                            <div id="googleMap">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.924278651609!2d105.81684051424541!3d21.035715592918297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab145bf89bd7%3A0xd94a869b494c04b6!2zMjg1IMSQ4buZaSBD4bqlbiwgVsSpbmggUGjDuiwgQmEgxJDDrG5oLCBIw6AgTuG7mWkgMTAwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1659923470378!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>*@
 
 <script src="~/Content/js/jquery-3.4.1.min.js"></script>
 <!-- bootstrap js -->
