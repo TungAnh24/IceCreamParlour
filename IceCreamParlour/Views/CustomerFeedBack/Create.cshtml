@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Client Contact Form Flat Responsive Widget Template :: w3layouts</title>
+    <title>Customer Feedback</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="" />
@@ -33,10 +33,15 @@
         <h1>Client Contact Form</h1>
         <div class="main-row">
             <h3>SEND A QUICK CONTACT TO US</h3>
-            <div class="contact-wthree">
-                @using (Html.BeginForm("Create", "CustomerFeedback", FormMethod.Post))
-                {
+            @using (Html.BeginForm("Create", "CustomerFeedback", FormMethod.Post))
+            {
+                <div class="contact-wthree">
+
                     @Html.AntiForgeryToken()
+                    @if (ViewBag.success != "")
+                    {
+                    <span class="badge badge-success">@ViewBag.success</span>
+                    }
                     @Html.TextBoxFor(m => m.Name, new { @placeholder = "Your Name" })
                     @Html.ValidationMessageFor(m => m.Name)
                     @Html.TextBoxFor(m => m.Email, new { @placeholder = "Your Email" })
@@ -45,11 +50,11 @@
                     @Html.ValidationMessageFor(m => m.Feedback_Detail)
                     @Html.TextBoxFor(m => m.Contact, new { @placeholder = "Your Contact with us" })
                     @Html.ValidationMessageFor(m => m.Contact)
-                    <input type="submit" value="SUBMIT" />
-                }
-            </div>
+                    <input type="submit" value="Send contact to us" />
+                </div>
+            }
         </div>
-        @Html.Raw(TempData["msg"])
+        @*@Html.Raw(TempData["msg"])*@
     </div>
     <section class="blog_section layout_padding" id="cfaq">
         <div class="container">

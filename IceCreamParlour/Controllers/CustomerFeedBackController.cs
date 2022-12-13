@@ -38,8 +38,10 @@ namespace IceCreamParlour.Controllers
                 model.Date = DateTime.Now;
                 db.Feedbacks.Add(model);
                 await db.SaveChangesAsync();
-                TempData["msg"] = "<script>alert('Your feedback has been sent to us !!!');</script>";
-                return RedirectToAction("Create");
+                //TempData["msg"] = "<script>alert('Your feedback has been sent to us !!!');</script>";
+                ViewBag.success = "Thanks for your comments, we will try to improve in the future";
+                ModelState.Clear();
+                return View();
             }
             return View();
         }
